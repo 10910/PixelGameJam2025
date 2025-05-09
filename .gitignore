@@ -74,10 +74,24 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Cursor-related files
+.cursor/
+.cursorignore
+.cursorrules
+cursor-tutorials/
+.cursor-temp/
+
+# IDE/Editor files
+.vscode/
+.history/
+.vsconfig/
+.idea/
 
 # Console Pro 插件忽略规则
+Assets/ConsolePro
 Assets/Plugins/ConsolePro/
 Assets/Plugins/ConsolePro.meta
 
 # Console Pro Editor 脚本
 Assets/Editor/ConsolePro*
+
