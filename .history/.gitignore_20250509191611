@@ -79,5 +79,5 @@ crashlytics-build.properties
 Assets/Plugins/ConsolePro/
 Assets/Plugins/ConsolePro.meta
 
-# Console Pro Editor 脚本
+# 如果有 Editor 脚本
 Assets/Editor/ConsolePro*

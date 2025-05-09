@@ -73,11 +73,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-
-# Console Pro 插件忽略规则
-Assets/Plugins/ConsolePro/
-Assets/Plugins/ConsolePro.meta
-
-# Console Pro Editor 脚本
-Assets/Editor/ConsolePro*
