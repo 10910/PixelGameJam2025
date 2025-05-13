@@ -8,3 +8,10 @@ public enum GhostType
 }
 
 
+public enum DocumentType
+{
+    GoodDeeds,//好事
+    MisDeeds,//坏事
+    Achievements,//成就
+}
+

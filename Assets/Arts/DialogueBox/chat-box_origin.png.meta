@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2d818e01150f9d94b8b16d077145ce2f
+guid: 974bd55a7086fb044ad0892f1f85e804
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6070627538995025639
-    second: chat-box 1_0
+      213: -1151509037000597148
+    second: chat-box_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,8 +51,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 14
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 4, y: 4, z: 4, w: 95}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -73,7 +73,7 @@ TextureImporter:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chat-box 1_0
+      name: chat-box_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 9
-        width: 94
-        height: 40
+        x: 4
+        y: 4
+        width: 232
+        height: 36
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9196f76ba6cc0cba0800000000000000
-      internalID: -6070627538995025639
+      spriteID: 4616dedb1a40500f0800000000000000
+      internalID: -1151509037000597148
       vertices: []
       indices: 
       edges: []
@@ -164,8 +164,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f10443ab11227fe489d72f2b62bfd178
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chat-box 1_0: -6070627538995025639
+      chat-box_0: -1151509037000597148
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

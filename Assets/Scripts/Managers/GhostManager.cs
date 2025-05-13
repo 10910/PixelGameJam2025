@@ -12,6 +12,11 @@ public class GhostManager : MonoBehaviour
         uiManager.onLightStateChanged += OnLightStateChanged;
     }
 
+    private void OnDestroy()
+    {
+        uiManager.onLightStateChanged -= OnLightStateChanged;
+    }
+
     private void OnLightStateChanged(bool isLightOn)
     {
         if (isLightOn)
