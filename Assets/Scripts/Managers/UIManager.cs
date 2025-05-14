@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     }
 
     [Button("Open Light")]
-    private void OpenLight()
+    public void OpenLight()
     {
         Light.SetActive(true);
         Background_Light.SetActive(true);
@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     }
 
     [Button("Close Light")]
-    private void CloseLight()
+    public void CloseLight()
     {
         Light.SetActive(false);
         Background_Light.SetActive(false);

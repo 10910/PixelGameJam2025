@@ -15,3 +15,10 @@ public enum DocumentType
     Achievements,//成就
 }
 
+public enum EndingType
+{
+    Good,
+    Bad,
+}
+
+
