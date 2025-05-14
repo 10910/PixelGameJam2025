@@ -11,5 +11,5 @@ public class Record{
 [CreateAssetMenu(fileName = "RecordsSO", menuName = "Scriptable Objects/RecordsSO")]
 public class RecordsSO: ScriptableObject
 {
-    public Record[] Records;
+    public Record[] records;
 }
