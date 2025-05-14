@@ -10,6 +10,13 @@ public enum GhostType
     rat
 }
 
+public enum GameState
+{
+    Judge,
+    Game,
+
+}
+
 
 public enum DocumentType
 {

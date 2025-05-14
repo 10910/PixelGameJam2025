@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class GhostManager : MonoBehaviour
 {
-    [SerializeField] private Ghost currentGhost;
+    public static GhostManager Instance;
+    [SerializeField] public Ghost currentGhost;
     [SerializeField] private UIManager uiManager;
+
 
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         uiManager = FindAnyObjectByType<UIManager>(FindObjectsInactive.Include);
         uiManager.onLightStateChanged += OnLightStateChanged;
     }
