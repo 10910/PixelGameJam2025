@@ -12,6 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: RecordsSO
   m_EditorClassIdentifier: Assembly-CSharp::RecordsSO
-  Records:
-  - description: Prevented a suicide
+  records:
+  - description: "Drew graffiti on a cow\u2019s back"
+    goodness: 0
+  - description: Married to a vending machine
+    goodness: 0
+  - description: Never finished a game jam on time
+    goodness: 0
+  - description: Saved a drowning child
     goodness: 3
+  - description: Rescued an injured pigeon
+    goodness: 2
+  - description: Volunteered during a local disaster
+    goodness: 1
+  - description: Replaced parachute with laundry bag
+    goodness: -3
+  - description: 'Killed people by baguette '
+    goodness: -2
+  - description: Owns 100+ unplayed games
+    goodness: -1
+  - description: Removed the emergency button from elevator
+    goodness: -1
