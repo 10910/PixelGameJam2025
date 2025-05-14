@@ -1,6 +1,9 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class GameManager : MonoBehaviour
 {
 
@@ -22,6 +25,33 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        // 设置帧率
+        Application.targetFrameRate = 60;
+        SetGameState(GameState.Menu);
+    }
+
+    public void SetGameState(GameState gameState)
+    {
+        this.gameState = gameState;
+        IEnumerable<IGameStateListener> gameStateListeners =
+        FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+        .OfType<IGameStateListener>();
+
+        foreach (IGameStateListener listener in gameStateListeners)
+        {
+            listener.GameStateChangedCallback(gameState);
+        }
+
+    }
+    public void StartGame()
+    {
+        SetGameState(GameState.Game);
+    }
+
     public void SettingsButtonCallback()
     {
         Time.timeScale = 0;
@@ -34,4 +64,9 @@ public class GameManager : MonoBehaviour
         onGameResume?.Invoke();
     }
 
+}
+
+public interface IGameStateListener
+{
+    void GameStateChangedCallback(GameState gameState);
 }

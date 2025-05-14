@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;
     [Header("Elements")]
@@ -14,14 +14,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject RebirthEffect;
 
     [Header("Panels")]
-    [SerializeField] private GameObject SettingsPanel;
-    [SerializeField] private GameObject JudgePanel;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject judgePanel;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject creditsPanel;
     private List<GameObject> panels = new List<GameObject>();
 
     [Header("Actions")]
     public Action<bool> onLightStateChanged;
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -35,12 +36,20 @@ public class UIManager : MonoBehaviour
 
         gameManager = FindAnyObjectByType<GameManager>();
 
-        panels.Add(JudgePanel);
-        panels.Add(SettingsPanel);
-
+        panels.Add(judgePanel);
+        panels.Add(settingsPanel);
+        panels.Add(menuPanel);
+        panels.Add(gamePanel);
+        panels.Add(creditsPanel);
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.onGamePause -= GamePausedCallback;
+        gameManager.onGameResume -= GameResumedCallback;
     }
 
     void Start()
@@ -49,6 +58,20 @@ public class UIManager : MonoBehaviour
         CloseRebirthEffect();
     }
 
+    public void GameStateChangedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Game:
+                ShowPanel(gamePanel);
+                break;
+            case GameState.Menu:
+                ShowPanel(menuPanel);
+                break;
+        }
+    }
+
+    //显示自己 关闭其他
     public void ShowPanel(GameObject panel)
     {
         foreach (GameObject p in panels)
@@ -63,22 +86,32 @@ public class UIManager : MonoBehaviour
 
     public void OpenJudgePanel()
     {
-        JudgePanel.SetActive(true);
+        judgePanel.SetActive(true);
     }
 
     public void CloseJudgePanel()
     {
-        JudgePanel.SetActive(false);
+        judgePanel.SetActive(false);
     }
 
     public void OpenSettingsPanel()
     {
-        SettingsPanel.SetActive(true);
+        settingsPanel.SetActive(true);
     }
 
     public void CloseSettingsPanel()
     {
-        SettingsPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+    }
+
+    public void OpenCreditsPanel()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void CloseCreditsPanel()
+    {
+        creditsPanel.SetActive(false);
     }
 
     public void OpenPullToHellEffect()
@@ -101,8 +134,6 @@ public class UIManager : MonoBehaviour
     {
         RebirthEffect.SetActive(false);
     }
-
-
 
     [Button("Open Light")]
     public void OpenLight()

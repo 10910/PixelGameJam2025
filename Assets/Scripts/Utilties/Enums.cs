@@ -12,6 +12,7 @@ public enum GhostType
 
 public enum GameState
 {
+    Menu,
     Judge,
     Game,
 
