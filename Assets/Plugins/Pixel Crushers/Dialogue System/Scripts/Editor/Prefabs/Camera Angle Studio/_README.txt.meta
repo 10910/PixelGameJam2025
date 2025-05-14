@@ -6,6 +6,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 11672
   packageName: Dialogue System for Unity
-  packageVersion: 2.2.53
-  assetPath: Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Camera Angle Studio/_README.txt
-  uploadId: 754228
+  packageVersion: 2.2.53.1
+  assetPath: Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Prefabs/Camera
+    Angle Studio/_README.txt
+  uploadId: 756296

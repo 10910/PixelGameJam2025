@@ -10,7 +10,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 11672
   packageName: Dialogue System for Unity
-  packageVersion: 2.2.53
-  assetPath: Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Animation/Expanding
+  packageVersion: 2.2.53.1
+  assetPath: Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Prefabs/Art/Animation/Expanding
     Panel Animator/Expanding Panel Animator Controller.controller
-  uploadId: 754228
+  uploadId: 756296
