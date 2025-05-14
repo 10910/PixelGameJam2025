@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class GhostInstance{
+public class GhostInstance
+{
     public string ghostName;
     public GhostType ghostType;
     public string profession;
@@ -12,7 +13,7 @@ public class GhostInstance{
     public int age;
     public List<Record> records = new List<Record>(10);
     public Sprite sprite;
-    public bool judgement; //ÉóÅĞ½á¹û
+    public bool judgement; //å®¡åˆ¤ç»“æœ
 }
 
 public class GhostGenerator : MonoBehaviour
@@ -43,40 +44,47 @@ public class GhostGenerator : MonoBehaviour
         DisplayGhost(0);
     }
 
-    void GenerateGhosts(){
-        // ¼ìÑénGhostÓĞĞ§ĞÔ
-        if (nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length) {
+    void GenerateGhosts()
+    {
+        // æ£€éªŒnGhostæœ‰æ•ˆæ€§
+        if (nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length)
+        {
             throw new System.Exception("Not enough elements to generate the requested number of ghosts");
         }
 
         ghosts = new List<GhostInstance>(nGhosts);
 
-        // ´òÂÒ
+        // æ‰“ä¹±
         names = namesSO.names.OrderBy(x => Random.value).ToArray();
         professions = profsSO.professions.OrderBy(x => Random.value).ToArray();
         records = recordsSO.records.OrderBy(x => Random.value).ToList();
 
-        // Ã¿¸öÈËÓÃµÄrecordsÊıÄ¿²»È·¶¨ ËùÒÔÓÃenumerator·ÃÎÊ
+        // æ¯ä¸ªäººç”¨çš„recordsæ•°ç›®ä¸ç¡®å®š æ‰€ä»¥ç”¨enumeratorè®¿é—®
         IEnumerator<Record> enumerator = records.GetEnumerator();
-        enumerator.MoveNext();  // ½øÈëµÚÒ»Ïî
+        enumerator.MoveNext();  // è¿›å…¥ç¬¬ä¸€é¡¹
 
-        for (int i = 0; i < nGhosts; i++){
+        for (int i = 0; i < nGhosts; i++)
+        {
             GhostInstance ghost = new GhostInstance();
             ghost.ghostName = names[i]._name;
             ghost.ghostType = names[i]._type;
-            if (names[i]._type == GhostType.male || names[i]._type == GhostType.female){
-                // ÈËÀà
+            if (names[i]._type == GhostType.male || names[i]._type == GhostType.female)
+            {
+                // äººç±»
                 ghost.profession = professions[i];
                 int age = Random.Range(25, 100);
                 ghost.age = age;
-                // ÔÚminimiumRecordsµÄ»ù´¡ÉÏÃ¿15ËêÔö¼ÓÒ»Ìõ¼ÇÂ¼
+                // åœ¨minimiumRecordsçš„åŸºç¡€ä¸Šæ¯15å²å¢åŠ ä¸€æ¡è®°å½•
                 int nRecord = minimiumRecords + (age - 25) % 15;
-                for (int j = 0; j < nGhosts; j++) {
-                    ghost.records.Add(enumerator.Current); 
+                for (int j = 0; j < nGhosts; j++)
+                {
+                    ghost.records.Add(enumerator.Current);
                     enumerator.MoveNext();
                 }
-            }else{
-                // ¶¯Îï
+            }
+            else
+            {
+                // åŠ¨ç‰©
                 ghost.profession = "";
                 ghost.age = Random.Range(1, 20);
             }
@@ -84,10 +92,13 @@ public class GhostGenerator : MonoBehaviour
         }
     }
 
-    void DisplayGhost(int idx){
-        // ÉóÅĞµ½½áÎ²ºóÊä³ö½á¹û
-        if(idx >= nGhosts){
-            foreach (GhostInstance ghst in ghosts) {
+    void DisplayGhost(int idx)
+    {
+        // å®¡åˆ¤åˆ°ç»“å°¾åè¾“å‡ºç»“æœ
+        if (idx >= nGhosts)
+        {
+            foreach (GhostInstance ghst in ghosts)
+            {
                 print(ghst.ghostName + "  " + ghst.judgement);
             }
             return;
@@ -96,15 +107,18 @@ public class GhostGenerator : MonoBehaviour
         currentGhostIdx = idx;
         // id
         string id;
-        if (ghosts[idx].ghostType == GhostType.male || ghosts[idx].ghostType == GhostType.female){
-            // ÈËÀà
+        if (ghosts[idx].ghostType == GhostType.male || ghosts[idx].ghostType == GhostType.female)
+        {
+            // äººç±»
             id = $"{ghosts[idx].ghostName}\n " +
                  $"{ghosts[idx].ghostType}\n" +
                  $"Age at Death: {ghosts[idx].age}\n" +
                  $"Profession: {ghosts[idx].profession}\n" +
                  $"Dead by: ";
-        }else{  
-            //¶¯Îï
+        }
+        else
+        {
+            //åŠ¨ç‰©
             id = $"{ghosts[idx].ghostName}\n " +
                  $"{ghosts[idx].ghostType}\n" +
                  $"Age at Death: {ghosts[idx].age}\n" +
@@ -114,16 +128,20 @@ public class GhostGenerator : MonoBehaviour
 
         // records
         string record = "";
-        if (ghosts[idx].records != null) { 
-            foreach(var rec in ghosts[idx].records){
+        if (ghosts[idx].records != null)
+        {
+            foreach (var rec in ghosts[idx].records)
+            {
                 record += $"{rec.description}\n";
             }
         }
         recordText.text = record;
     }
 
-    public void Judgement(bool isReincarnate){
+    public void Judgement(bool isReincarnate)
+    {
         ghosts[currentGhostIdx].judgement = isReincarnate;
         DisplayGhost(++currentGhostIdx);
+
     }
 }

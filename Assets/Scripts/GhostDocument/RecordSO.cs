@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Record{
+public class Record
+{
     public string description;
-    public int goodness;   //∫√ªµ≥Ã∂»
+    public int goodness;   //Â•ΩÂùèÁ®ãÂ∫¶
 }
 
 [CreateAssetMenu(fileName = "RecordsSO", menuName = "Scriptable Objects/RecordsSO")]
-public class RecordsSO: ScriptableObject
+public class RecordsSO : ScriptableObject
 {
     public Record[] records;
 }
