@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject Light;
     [SerializeField] private GameObject Background_Light;
     [SerializeField] private GameObject Background_Dark;
+
+    [SerializeField] private GameObject DocumentPanel;
+    [SerializeField] private GameObject IDPanel;
     [SerializeField] private GameObject PullToHellEffect;
     [SerializeField] private GameObject RebirthEffect;
 
@@ -42,19 +45,23 @@ public class UIManager : MonoBehaviour, IGameStateListener
         panels.Add(menuPanel);
         panels.Add(gamePanel);
         panels.Add(creditsPanel);
+        panels.Add(FilesPanel);
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
+        JudgeManager.onStartNewJudge += StartNewJudgeCallback;
     }
 
     private void OnDestroy()
     {
         gameManager.onGamePause -= GamePausedCallback;
         gameManager.onGameResume -= GameResumedCallback;
+        JudgeManager.onStartNewJudge -= StartNewJudgeCallback;
     }
 
     void Start()
     {
+        CloseLight();
         ClosePullToHellEffect();
         CloseRebirthEffect();
     }
@@ -115,6 +122,41 @@ public class UIManager : MonoBehaviour, IGameStateListener
         creditsPanel.SetActive(false);
     }
 
+    public void OpenFilesPanel()
+    {
+        Debug.Log("OpenFilesPanel");
+        FilesPanel.SetActive(true);
+        DocumentPanel.SetActive(true);
+        IDPanel.SetActive(false);
+    }
+
+    public void OpenIDPanel()
+    {
+        Debug.Log("OpenIDPanel");
+        FilesPanel.SetActive(true);
+        IDPanel.SetActive(true);
+        DocumentPanel.SetActive(false);
+    }
+
+    public void CloseFilesPanel()
+    {
+        FilesPanel.SetActive(false);
+        DocumentPanel.SetActive(false);
+        IDPanel.SetActive(false);
+    }
+
+    public void ToggleFilesPanel()
+    {
+        if (DocumentPanel.activeSelf)
+        {
+            OpenIDPanel();
+        }
+        else
+        {
+            OpenFilesPanel();
+        }
+    }
+
     public void OpenPullToHellEffect()
     {
         PullToHellEffect.SetActive(true);
@@ -163,6 +205,11 @@ public class UIManager : MonoBehaviour, IGameStateListener
     private void GameResumedCallback()
     {
         CloseSettingsPanel();
+    }
+
+    private void StartNewJudgeCallback()
+    {
+        Invoke("OpenLight", 1f);
     }
 
 }

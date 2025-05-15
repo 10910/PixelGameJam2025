@@ -11,6 +11,13 @@ public class LittleDemon : MonoBehaviour
     [SerializeField]
     public GhostDocument ghostDocument;
 
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
 
     void OnEnable()
     {
@@ -23,7 +30,10 @@ public class LittleDemon : MonoBehaviour
 
     public void DeliverFile()
     {
+        animator.SetBool("isWalk", true);
         float duration = Vector3.Distance(startPosition, targetPosition) / speed;
-        transform.DOMove(targetPosition, duration).SetEase(Ease.Linear);
+        transform.DOMove(targetPosition, duration)
+                 .SetEase(Ease.Linear)
+                 .OnComplete(() => animator.SetBool("isWalk", false)); // 在移动结束时设置 isWalk 为 false
     }
 }

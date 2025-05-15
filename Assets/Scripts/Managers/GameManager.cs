@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [Header("Actions")]
     public Action onGamePause;
     public Action onGameResume;
+    public static Action onStartNewJudge;
+    public static Action onStartNewRound;
     private void Awake()
     {
         if (Instance == null)
@@ -47,9 +49,32 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void StartGame()
+    public void StartGame()//menu的play里调用
     {
         SetGameState(GameState.Game);
+        StartNewRound();
+    }
+
+    //游戏开始时调用 还有结算页面的按钮调用
+    public void StartNewRound()
+    {
+        //应该直接调用生成新ghost 做成事件
+        onStartNewRound?.Invoke();
+        //这里直接生成一组ghost数据
+    }
+
+    //开始新的裁决
+    public void StartNewJudge()
+    {
+        onStartNewJudge?.Invoke();
+        //等待1秒
+        //开灯
+        //生成新的ghost
+        //等待1秒
+        //ghost 开始说话
+        //对话完成后
+        //小怪移动资料
+        //
     }
 
     public void SettingsButtonCallback()
