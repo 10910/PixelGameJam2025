@@ -50,7 +50,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: IsPlayer
-      value: False
+      value: True
       type: 2
       typeString: CustomFieldType_Boolean
     - title: Display Name
@@ -337,7 +337,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 299.28342
-        y: 141.94432
+        y: 142.54582
         width: 160
         height: 30
     - id: 3
@@ -385,8 +385,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 303.0556
-        y: 209.9721
+        x: 300.6496
+        y: 212.37814
         width: 160
         height: 30
     entryGroups: []

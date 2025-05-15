@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[DefaultExecutionOrder(-100)]
+[DefaultExecutionOrder(-110)]
 
 public class AudioManager : MonoBehaviour
 {
