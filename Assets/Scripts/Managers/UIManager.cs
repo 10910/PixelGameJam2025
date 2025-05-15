@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;
     [Header("Elements")]
@@ -10,18 +10,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Light;
     [SerializeField] private GameObject Background_Light;
     [SerializeField] private GameObject Background_Dark;
+
+    [SerializeField] private GameObject DocumentPanel;
+    [SerializeField] private GameObject IDPanel;
     [SerializeField] private GameObject PullToHellEffect;
     [SerializeField] private GameObject RebirthEffect;
 
     [Header("Panels")]
-    [SerializeField] private GameObject SettingsPanel;
-    [SerializeField] private GameObject JudgePanel;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject judgePanel;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject FilesPanel;
     private List<GameObject> panels = new List<GameObject>();
 
     [Header("Actions")]
     public Action<bool> onLightStateChanged;
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -35,20 +40,46 @@ public class UIManager : MonoBehaviour
 
         gameManager = FindAnyObjectByType<GameManager>();
 
-        panels.Add(JudgePanel);
-        panels.Add(SettingsPanel);
-
+        panels.Add(judgePanel);
+        panels.Add(settingsPanel);
+        panels.Add(menuPanel);
+        panels.Add(gamePanel);
+        panels.Add(creditsPanel);
+        panels.Add(FilesPanel);
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
+        JudgeManager.onStartNewJudge += StartNewJudgeCallback;
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.onGamePause -= GamePausedCallback;
+        gameManager.onGameResume -= GameResumedCallback;
+        JudgeManager.onStartNewJudge -= StartNewJudgeCallback;
     }
 
     void Start()
     {
+        CloseLight();
         ClosePullToHellEffect();
         CloseRebirthEffect();
     }
 
+    public void GameStateChangedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Game:
+                ShowPanel(gamePanel);
+                break;
+            case GameState.Menu:
+                ShowPanel(menuPanel);
+                break;
+        }
+    }
+
+    //显示自己 关闭其他
     public void ShowPanel(GameObject panel)
     {
         foreach (GameObject p in panels)
@@ -63,22 +94,67 @@ public class UIManager : MonoBehaviour
 
     public void OpenJudgePanel()
     {
-        JudgePanel.SetActive(true);
+        judgePanel.SetActive(true);
     }
 
     public void CloseJudgePanel()
     {
-        JudgePanel.SetActive(false);
+        judgePanel.SetActive(false);
     }
 
     public void OpenSettingsPanel()
     {
-        SettingsPanel.SetActive(true);
+        settingsPanel.SetActive(true);
     }
 
     public void CloseSettingsPanel()
     {
-        SettingsPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+    }
+
+    public void OpenCreditsPanel()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void CloseCreditsPanel()
+    {
+        creditsPanel.SetActive(false);
+    }
+
+    public void OpenFilesPanel()
+    {
+        Debug.Log("OpenFilesPanel");
+        FilesPanel.SetActive(true);
+        DocumentPanel.SetActive(true);
+        IDPanel.SetActive(false);
+    }
+
+    public void OpenIDPanel()
+    {
+        Debug.Log("OpenIDPanel");
+        FilesPanel.SetActive(true);
+        IDPanel.SetActive(true);
+        DocumentPanel.SetActive(false);
+    }
+
+    public void CloseFilesPanel()
+    {
+        FilesPanel.SetActive(false);
+        DocumentPanel.SetActive(false);
+        IDPanel.SetActive(false);
+    }
+
+    public void ToggleFilesPanel()
+    {
+        if (DocumentPanel.activeSelf)
+        {
+            OpenIDPanel();
+        }
+        else
+        {
+            OpenFilesPanel();
+        }
     }
 
     public void OpenPullToHellEffect()
@@ -101,8 +177,6 @@ public class UIManager : MonoBehaviour
     {
         RebirthEffect.SetActive(false);
     }
-
-
 
     [Button("Open Light")]
     public void OpenLight()
@@ -131,6 +205,11 @@ public class UIManager : MonoBehaviour
     private void GameResumedCallback()
     {
         CloseSettingsPanel();
+    }
+
+    private void StartNewJudgeCallback()
+    {
+        Invoke("OpenLight", 1f);
     }
 
 }

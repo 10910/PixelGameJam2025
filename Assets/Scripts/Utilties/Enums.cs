@@ -18,6 +18,7 @@ public enum GhostAge{
 
 public enum GameState
 {
+    Menu,
     Judge,
     Game,
 

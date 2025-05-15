@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: f122761fb256e5741a42e92c3a39153a
+guid: 66e42ef2fc4cf7e4c8ff831bb59b76e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8392404212986688218
-    second: btn_menu_0
+      213: -8229661562495497318
+    second: btn_menu 1_0
   - first:
-      213: -606559628127886595
-    second: btn_menu_1
+      213: 1438628230133565532
+    second: btn_menu 1_1
   - first:
-      213: -7583205517018476343
-    second: btn_menu_2
+      213: 3133017633854677623
+    second: btn_menu 1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -145,13 +145,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: btn_menu_0
+      name: btn_menu 1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 60
-        height: 31
+        width: 50
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 62dcf6945d0388b80800000000000000
-      internalID: -8392404212986688218
+      spriteID: a9b05c9596e5acd80800000000000000
+      internalID: -8229661562495497318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: btn_menu_1
+      name: btn_menu 1_1
       rect:
         serializedVersion: 2
-        x: 60
+        x: 65
         y: 0
-        width: 60
-        height: 31
+        width: 50
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df2285e5b311597f0800000000000000
-      internalID: -606559628127886595
+      spriteID: c58c5fcc0c807f310800000000000000
+      internalID: 1438628230133565532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: btn_menu_2
+      name: btn_menu 1_2
       rect:
         serializedVersion: 2
-        x: 120
+        x: 125
         y: 0
-        width: 60
-        height: 31
+        width: 50
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c0d45382ca03c690800000000000000
-      internalID: -7583205517018476343
+      spriteID: 77261f440f6ba7b20800000000000000
+      internalID: 3133017633854677623
       vertices: []
       indices: 
       edges: []
@@ -214,7 +214,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ff0378c56e890444e8fde3d31aadcbe8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -224,9 +224,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      btn_menu_0: -8392404212986688218
-      btn_menu_1: -606559628127886595
-      btn_menu_2: -7583205517018476343
+      btn_menu 1_0: -8229661562495497318
+      btn_menu 1_1: 1438628230133565532
+      btn_menu 1_2: 3133017633854677623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
