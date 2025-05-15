@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private GameObject FilesPanel;
+    [SerializeField] private GameObject EndingPanel;
+    [SerializeField] private GameObject ResultPanel;
     private List<GameObject> panels = new List<GameObject>();
 
     [Header("Actions")]
@@ -46,6 +48,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
         panels.Add(gamePanel);
         panels.Add(creditsPanel);
         panels.Add(FilesPanel);
+        panels.Add(EndingPanel);
+        panels.Add(ResultPanel);
+
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
@@ -143,6 +148,28 @@ public class UIManager : MonoBehaviour, IGameStateListener
         FilesPanel.SetActive(false);
         DocumentPanel.SetActive(false);
         IDPanel.SetActive(false);
+    }
+
+    [Button]
+    public void OpenEndingPanel()
+    {
+        EndingPanel.SetActive(true);
+    }
+
+    public void CloseEndingPanel()
+    {
+        EndingPanel.SetActive(false);
+    }
+
+    [Button]
+    public void OpenResultPanel()
+    {
+        ResultPanel.SetActive(true);
+    }
+
+    public void CloseResultPanel()
+    {
+        ResultPanel.SetActive(false);
     }
 
     public void ToggleFilesPanel()
