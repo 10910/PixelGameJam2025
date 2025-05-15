@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 2b46dd4e1046d8d419537930bf60ee91
+guid: c883b59f12230db42828c5536006cd17
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5774366535764461075
-    second: btn_cancel 1_0
+      213: -5236510829178363705
+    second: btn_cancel_0
   - first:
-      213: -1666152019241435216
-    second: btn_cancel 1_1
+      213: -1679184203925263505
+    second: btn_cancel_1
   - first:
-      213: 8419377296040030558
-    second: btn_cancel 1_2
+      213: -5641591917626226060
+    second: btn_cancel_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -150,18 +150,18 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0f656ed23644620448cc733bf9755b5b
-      internalID: 1517072008
+      spriteID: 7c06654252d2457b0800000000000000
+      internalID: -5236510829178363705
       vertices: []
       indices: 
       edges: []
@@ -170,20 +170,20 @@ TextureImporter:
       name: btn_cancel_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: df1cf2930e174a1408b05605231120a9
-      internalID: -1089908589
+      spriteID: f6b669cfcd652b8e0800000000000000
+      internalID: -1679184203925263505
       vertices: []
       indices: 
       edges: []
@@ -192,20 +192,20 @@ TextureImporter:
       name: btn_cancel_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ca9d12ed2d9d8b74181597f01d159e06
-      internalID: -1208321670
+      spriteID: 47a8c269a0a05b1b0800000000000000
+      internalID: -5641591917626226060
       vertices: []
       indices: 
       edges: []
@@ -214,7 +214,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6c25990e0ebba154f96c157e0795de3c
+    spriteID: 98ba4f8fe6ef7fd4b87f85d2e349a22a
     internalID: 0
     vertices: []
     indices: 
@@ -224,9 +224,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      btn_cancel_0: 1517072008
-      btn_cancel_1: -1089908589
-      btn_cancel_2: -1208321670
+      btn_cancel_0: -5236510829178363705
+      btn_cancel_1: -1679184203925263505
+      btn_cancel_2: -5641591917626226060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
