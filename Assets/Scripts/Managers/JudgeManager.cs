@@ -3,7 +3,9 @@ using System;
 public class JudgeManager : MonoBehaviour
 {
     public static JudgeManager Instance;
+    [Header("Actions")]
     public static Action onStartNewJudge;
+    public static Action onJudgeEnd;
 
     private void Awake()
     {
@@ -58,5 +60,18 @@ public class JudgeManager : MonoBehaviour
     {
         GhostManager.Instance.currentGhost.gameObject.SetActive(false);
         UIManager.Instance.OpenRebirthEffect();
+    }
+
+    public void JudgeEnd()
+    {
+        Debug.Log("JudgeEnd");
+        onJudgeEnd?.Invoke();
+    }
+
+    //结束裁决
+    public void OnJudgeEnd()
+    {
+        //关灯
+
     }
 }

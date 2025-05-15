@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [Header("Actions")]
     public Action onGamePause;
     public Action onGameResume;
-    public static Action onStartNewJudge;
     public static Action onStartNewRound;
     private void Awake()
     {
@@ -63,19 +62,6 @@ public class GameManager : MonoBehaviour
         //这里直接生成一组ghost数据
     }
 
-    //开始新的裁决
-    public void StartNewJudge()
-    {
-        onStartNewJudge?.Invoke();
-        //等待1秒
-        //开灯
-        //生成新的ghost
-        //等待1秒
-        //ghost 开始说话
-        //对话完成后
-        //小怪移动资料
-        //
-    }
 
     public void SettingsButtonCallback()
     {

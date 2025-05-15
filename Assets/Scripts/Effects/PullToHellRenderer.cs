@@ -25,4 +25,9 @@ public class PullToHellRenderer : MonoBehaviour
         pullToHellEffect.PullGhostDown();
     }
 
+    public void JudgeEnd()
+    {
+        JudgeManager.Instance.JudgeEnd();
+    }
+
 }

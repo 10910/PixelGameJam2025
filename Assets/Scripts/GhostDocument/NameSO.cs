@@ -9,7 +9,8 @@ public class Name
 }
 
 [CreateAssetMenu(fileName = "NamesSO", menuName = "Scriptable Objects/NamesSO")]
-public class NamesSO: ScriptableObject
+public class NamesSO : ScriptableObject
 {
     public Name[] names;
 }
+

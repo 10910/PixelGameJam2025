@@ -55,6 +55,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
         JudgeManager.onStartNewJudge += StartNewJudgeCallback;
+        JudgeManager.onJudgeEnd += JudgeEndCallback;
     }
 
     private void OnDestroy()
@@ -62,6 +63,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         gameManager.onGamePause -= GamePausedCallback;
         gameManager.onGameResume -= GameResumedCallback;
         JudgeManager.onStartNewJudge -= StartNewJudgeCallback;
+        JudgeManager.onJudgeEnd -= JudgeEndCallback;
     }
 
     void Start()
@@ -239,4 +241,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
         Invoke("OpenLight", 1f);
     }
 
+    private void JudgeEndCallback()
+    {
+        CloseLight();
+    }
 }
