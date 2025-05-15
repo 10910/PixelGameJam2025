@@ -243,6 +243,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
 
     private void JudgeEndCallback()
     {
-        CloseLight();
+        ClosePullToHellEffect();
+        CloseRebirthEffect();
+        Invoke("CloseLight", 1f);
     }
 }

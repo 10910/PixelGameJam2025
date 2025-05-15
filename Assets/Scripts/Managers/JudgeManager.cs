@@ -18,6 +18,13 @@ public class JudgeManager : MonoBehaviour
             Destroy(gameObject);
         }
         GameManager.onStartNewRound += OnStartNewRoundCallback;
+        onJudgeEnd += JudgeEndCallback;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.onStartNewRound -= OnStartNewRoundCallback;
+        onJudgeEnd -= JudgeEndCallback;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,9 +76,8 @@ public class JudgeManager : MonoBehaviour
     }
 
     //结束裁决
-    public void OnJudgeEnd()
+    private void JudgeEndCallback()
     {
-        //关灯
 
     }
 }

@@ -17,6 +17,7 @@ public class GhostInstance
     public bool judgement; //审判结果
 }
 
+
 public class GhostGenerator : MonoBehaviour
 {
     public NamesSO namesSO;
@@ -27,7 +28,7 @@ public class GhostGenerator : MonoBehaviour
     public TextMeshProUGUI idText;
     public TextMeshProUGUI recordText;
     public SpriteRenderer spriteRenderer;
-    
+
     public int nGhosts;
     public List<GhostInstance> ghosts;
     public int randomSeed = 10910;
@@ -88,16 +89,23 @@ public class GhostGenerator : MonoBehaviour
                 }
                 // 判断年龄区间
                 GhostAge ghostAge;
-                if (age <= 35){
+                if (age <= 35)
+                {
                     ghostAge = GhostAge.young;
-                }else if (age <= 65){
+                }
+                else if (age <= 65)
+                {
                     ghostAge = GhostAge.middle;
-                }else{
+                }
+                else
+                {
                     ghostAge = GhostAge.old;
                 }
                 // 查找对应ghostAge和ghostType的sprite列表
-                foreach (GhostSpriteList gs in spriteListsSO.gsLists){
-                    if (gs.age == ghostAge && gs.type == ghost.ghostType){
+                foreach (GhostSpriteList gs in spriteListsSO.gsLists)
+                {
+                    if (gs.age == ghostAge && gs.type == ghost.ghostType)
+                    {
                         // 从spriteList中随机选取一张
                         int nSprite = gs.spriteList.Length;
                         ghost.sprite = gs.spriteList[Random.Range(0, nSprite)];
@@ -160,7 +168,8 @@ public class GhostGenerator : MonoBehaviour
         recordText.text = record;
 
         // sprite
-        if (ghosts[idx].sprite != null){
+        if (ghosts[idx].sprite != null)
+        {
             spriteRenderer.sprite = ghosts[idx].sprite;
         }
     }
