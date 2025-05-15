@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 66e42ef2fc4cf7e4c8ff831bb59b76e6
+guid: f40c79c60288bf64f9a0c18744c52a91
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8229661562495497318
-    second: btn_menu 1_0
+      213: -5713737929091986973
+    second: demon_hand_0
   - first:
-      213: 1438628230133565532
-    second: btn_menu 1_1
-  - first:
-      213: 3133017633854677623
-    second: btn_menu 1_2
+      213: -7284429002639365337
+    second: demon_hand_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -145,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: btn_menu 1_0
+      name: demon_hand_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 50
-        height: 19
+        width: 112
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9b05c9596e5acd80800000000000000
-      internalID: -8229661562495497318
+      spriteID: 3e9cbcc40a9b4b0b0800000000000000
+      internalID: -5713737929091986973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: btn_menu 1_1
+      name: demon_hand_1
       rect:
         serializedVersion: 2
-        x: 65
+        x: 112
         y: 0
-        width: 50
-        height: 19
+        width: 112
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,30 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c58c5fcc0c807f310800000000000000
-      internalID: 1438628230133565532
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: btn_menu 1_2
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 0
-        width: 50
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77261f440f6ba7b20800000000000000
-      internalID: 3133017633854677623
+      spriteID: 72ba02aaa6288ea90800000000000000
+      internalID: -7284429002639365337
       vertices: []
       indices: 
       edges: []
@@ -214,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c3785d9f464145b469ebeb4e79b5a848
     internalID: 0
     vertices: []
     indices: 
@@ -224,9 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      btn_menu 1_0: -8229661562495497318
-      btn_menu 1_1: 1438628230133565532
-      btn_menu 1_2: 3133017633854677623
+      demon_hand_0: -5713737929091986973
+      demon_hand_1: -7284429002639365337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

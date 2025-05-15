@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject FilesPanel;
     private List<GameObject> panels = new List<GameObject>();
 
     [Header("Actions")]
