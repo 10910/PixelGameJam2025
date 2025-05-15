@@ -52,7 +52,9 @@ MonoBehaviour:
   - age: 0
     type: 2
     spriteList:
-    - {fileID: 1129955301159090255, guid: 7a813709202ffeb4781be5fff44584d2, type: 3}
+    - {fileID: -8857846866928009903, guid: 205d05662da66f344bae5a3d426582ff, type: 3}
+    - {fileID: -899539408637926469, guid: 5acd79cd51dd4d64aad924b0894ae482, type: 3}
+    - {fileID: -1100506892120742953, guid: 4ce448d83ac56184ebdacf67b6fce7fe, type: 3}
   - age: 0
     type: 3
     spriteList:

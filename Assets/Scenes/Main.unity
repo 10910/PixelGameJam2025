@@ -2772,10 +2772,10 @@ MonoBehaviour:
   profsSO: {fileID: 0}
   recordsSO: {fileID: 0}
   spriteListsSO: {fileID: 0}
-  idText: {fileID: 0}
-  recordText: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  nGhosts: 0
+  idText: {fileID: 463232333}
+  recordText: {fileID: 22931136}
+  spriteRenderer: {fileID: 2136373911}
+  nGhosts: 3
   ghosts: []
   randomSeed: 10910
   minimiumRecords: 5
