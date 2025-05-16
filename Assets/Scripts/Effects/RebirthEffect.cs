@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 public class RebirthEffect : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -7,11 +8,12 @@ public class RebirthEffect : MonoBehaviour
 
     [SerializeField] private Sprite babysprite;
     [SerializeField] private Sprite ratBabysprite;
+    [SerializeField] private Vector3 babyStartPosition = new Vector3(0, 1.7f, 0);
     // 上浮的持续时间
-    [SerializeField] private float floatDuration = 5.0f;
+    [SerializeField] private float floatDuration = 1.5f;
     // 上浮的距离
 
-    [SerializeField] private float floatDistance = 10.0f;
+    [SerializeField] private float floatDistance = 5.0f;
 
     // 存储动画引用
     private Tween babyMoveTween;
@@ -33,6 +35,7 @@ public class RebirthEffect : MonoBehaviour
 
     }
 
+    [Button]
     public void Rebirth()
     {
         ChangeBabySprite();
@@ -40,7 +43,13 @@ public class RebirthEffect : MonoBehaviour
 
         babyMoveTween = transform.DOMoveY(transform.position.y + floatDistance, floatDuration)
                  .SetEase(Ease.InOutSine) // 使用缓动效果
-                 .SetDelay(0.7f); // 延迟一秒开始
+                 .SetDelay(0.7f) // 延迟一秒开始
+                 .OnComplete(() =>
+                 {
+                     // 动画结束后 显示ghost
+                     JudgeManager.Instance.JudgeEnd();
+                     ResetBaby();
+                 });
     }
 
     private void ChangeBabySprite()
@@ -54,11 +63,11 @@ public class RebirthEffect : MonoBehaviour
             spriteRenderer.sprite = babysprite;
         }
     }
-
+    [Button]
     public void ResetBaby()
     {
         StopAnimation();
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = babyStartPosition;
     }
 
     public void StopAnimation()

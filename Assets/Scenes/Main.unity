@@ -3933,8 +3933,9 @@ MonoBehaviour:
   sprites: []
   babysprite: {fileID: 21300000, guid: db2abbf08ca3cfc4bb9019ef7d4df3db, type: 3}
   ratBabysprite: {fileID: 21300000, guid: 1042b56f7eb080947a72a75a37c1f608, type: 3}
-  floatDuration: 3
-  floatDistance: 10
+  babyStartPosition: {x: 0, y: 1.7, z: 0}
+  floatDuration: 1.5
+  floatDistance: 5
 --- !u!1 &368919560
 GameObject:
   m_ObjectHideFlags: 0

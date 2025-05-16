@@ -208,6 +208,7 @@ public class GhostGenerator : MonoBehaviour
         ghosts[currentGhostIdx].judgement = judgement;
     }
 
+
     public void nextGhost()
     {
         print("next ghost data");
