@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Action onGamePause;
     public Action onGameResume;
     public static Action onStartNewRound;
+    public bool hasCompletedTutorial;
+
     private void Awake()
     {
         if (Instance == null)

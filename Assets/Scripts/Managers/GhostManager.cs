@@ -26,8 +26,6 @@ public class GhostManager : MonoBehaviour
         pullToHellEffect = FindAnyObjectByType<PullToHellEffect>(FindObjectsInactive.Include);
 
         uiManager.onLightStateChanged += OnLightStateChanged;
-        //注册事件 之后要改
-        GameManager.onStartNewRound += GenerateNewGhost;
         // JudgeManager.onStartNewJudge += StartDialogue;
         ghostStartPoint = ghostSpawnPoint;
     }
@@ -36,7 +34,6 @@ public class GhostManager : MonoBehaviour
     {
         //注销事件
         uiManager.onLightStateChanged -= OnLightStateChanged;
-        GameManager.onStartNewRound -= GenerateNewGhost;
         // JudgeManager.onStartNewJudge -= StartDialogue;
     }
 
@@ -61,11 +58,8 @@ public class GhostManager : MonoBehaviour
     // public void StartDialogue()
     // {
     //     currentGhost.ghostDialogue.gameObject.SetActive(true);
-    // }
-    public void GenerateNewGhost()
-    {
-        //从so获取随机数据
 
+<<<<<<< HEAD
         // currentGhost = Instantiate(ghostPrefab, transform);
     }
 
@@ -102,4 +96,6 @@ public class GhostManager : MonoBehaviour
     {
 
     }
+=======
+>>>>>>> origin/10910
 }

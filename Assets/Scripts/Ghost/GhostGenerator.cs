@@ -1,7 +1,10 @@
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 
 [System.Serializable]
@@ -31,6 +34,9 @@ public class GhostGenerator : MonoBehaviour
 
     public int nGhosts;
     public List<GhostInstance> ghosts;
+    // string表示幽灵类型 int数组0位置表示转生 1位置表示地狱
+    [ShowInInspector]
+    public Dictionary<string, int[]> history = new Dictionary<string, int[]>();
     public int randomSeed = 10910;
     public int minimiumRecords = 5;
 
@@ -44,6 +50,8 @@ public class GhostGenerator : MonoBehaviour
         profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO");
         recordsSO = Resources.Load<RecordsSO>("RecordsSO");
         spriteListsSO = Resources.Load<SpriteLists>("SpriteListsSO");
+
+        JudgeManager.onJudgeEnd += nextGhost;
 
         Random.InitState(randomSeed);
         GenerateGhosts();
@@ -117,6 +125,14 @@ public class GhostGenerator : MonoBehaviour
                 // 动物
                 ghost.profession = "";
                 ghost.age = Random.Range(1, 20);
+                // 只按ghostType查找
+                foreach (GhostSpriteList gs in spriteListsSO.gsLists) {
+                    if (gs.type == ghost.ghostType) {
+                        // 从spriteList中随机选取一张
+                        int nSprite = gs.spriteList.Length;
+                        ghost.sprite = gs.spriteList[Random.Range(0, nSprite)];
+                    }
+                }
             }
             ghosts.Add(ghost);
         }
@@ -127,6 +143,7 @@ public class GhostGenerator : MonoBehaviour
         // 审判到结尾后输出结果
         if (idx >= nGhosts)
         {
+            getResult();
             foreach (GhostInstance ghst in ghosts)
             {
                 print(ghst.ghostName + "  " + ghst.judgement);
@@ -174,9 +191,45 @@ public class GhostGenerator : MonoBehaviour
         }
     }
 
-    public void Judgement(bool isReincarnate)
+    // true = 转生， false = 地狱
+    public void setJudgement(bool judgement)
     {
-        ghosts[currentGhostIdx].judgement = isReincarnate;
-        DisplayGhost(++currentGhostIdx);
+        print("judgement: " + judgement);
+        ghosts[currentGhostIdx].judgement = judgement;
+    }
+
+    public void nextGhost() {
+        print("next ghost data");
+        currentGhostIdx++;
+        DisplayGhost(currentGhostIdx);
+    }
+
+    void getResult() {
+        int totalGoodness = 0;  // 玩家功德值
+        foreach (var ghost in ghosts) {
+            // 计算单个幽灵的总善良值
+            int goodness = 0;
+            foreach (var record in ghost.records) {
+                goodness += record.goodness;
+            }
+
+            // 累积判决结果和功德值
+            string type = ghost.ghostType.ToString();
+            if (!history.ContainsKey(type)){
+                history[type] = new int[2];
+            }
+
+            if (ghost.judgement){
+                // 好人转生取正 坏人转生取反
+                goodness = goodness > 0 ? goodness : -goodness;
+                history[type][0]++;
+            }else{
+                // 好人下地狱取反 坏人下地狱取正
+                goodness = goodness < 0 ? -goodness : goodness;
+                history[type][1]++;
+            }
+            totalGoodness += goodness;
+        }
+        print(history);
     }
 }

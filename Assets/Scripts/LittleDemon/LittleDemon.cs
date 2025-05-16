@@ -8,8 +8,6 @@ public class LittleDemon : MonoBehaviour
     public Vector3 targetPosition;
     [SerializeField]
     public float speed;
-    [SerializeField]
-    public GhostDocument ghostDocument;
 
     private Animator animator;
 
@@ -22,10 +20,6 @@ public class LittleDemon : MonoBehaviour
     void OnEnable()
     {
         transform.position = startPosition;
-        if (ghostDocument != null)
-        {
-            DeliverFile();
-        }
     }
 
     public void DeliverFile()
