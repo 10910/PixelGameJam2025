@@ -239,8 +239,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
     private void StartNewJudgeCallback()
     {
         //我需要先重置ghost的位置
-
-        Invoke("OpenLight", 1f);
+        //2秒后打开灯
+        Invoke("OpenLight", 2f);
     }
 
     private void JudgeEndCallback()

@@ -209,6 +209,7 @@ public class GhostGenerator : MonoBehaviour
     }
 
 
+
     public void nextGhost()
     {
         print("next ghost data");

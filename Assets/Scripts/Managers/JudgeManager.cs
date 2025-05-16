@@ -8,6 +8,8 @@ public class JudgeManager : MonoBehaviour
     public static Action onJudgeEnd;
     public bool isFirstJudgement; // 用于显示教程
 
+    private Demon demon;
+
     private void Awake()
     {
         if (Instance == null)
@@ -18,6 +20,8 @@ public class JudgeManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        demon = FindFirstObjectByType<Demon>(FindObjectsInactive.Include);
         GameManager.onStartNewRound += OnStartNewRoundCallback;
         onJudgeEnd += JudgeEndCallback;
     }
@@ -62,12 +66,14 @@ public class JudgeManager : MonoBehaviour
     public void PullToHell()
     {
         UIManager.Instance.OpenPullToHellEffect();
+        demon.PullToHell();
     }
 
     public void Rebirth()
     {
         GhostManager.Instance.currentGhost.gameObject.SetActive(false);
         UIManager.Instance.OpenRebirthEffect();
+        demon.Rebirth();
     }
 
     public void JudgeEnd()

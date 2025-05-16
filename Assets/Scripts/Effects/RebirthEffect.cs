@@ -46,9 +46,8 @@ public class RebirthEffect : MonoBehaviour
                  .SetDelay(0.7f) // 延迟一秒开始
                  .OnComplete(() =>
                  {
-                     // 动画结束后 显示ghost
-                     JudgeManager.Instance.JudgeEnd();
                      ResetBaby();
+                     JudgeManager.Instance.JudgeEnd();
                  });
     }
 

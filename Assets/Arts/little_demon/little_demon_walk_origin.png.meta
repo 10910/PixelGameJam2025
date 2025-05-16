@@ -1,22 +1,34 @@
 fileFormatVersion: 2
-guid: f7099b0aa86b0b34ba8921bae6d507ec
+guid: 1b0649ae87cd4c448bd44372f6e8e492
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2336459158820591614
-    second: little_demon_walk 1_0
+      213: 1714737298729439556
+    second: little_demon_walk_0
   - first:
-      213: -9085422186895495594
-    second: little_demon_walk 1_1
+      213: -7850736548281018614
+    second: little_demon_walk_1
   - first:
-      213: 6353958363917459032
-    second: little_demon_walk 1_2
+      213: -6027771755616194492
+    second: little_demon_walk_2
   - first:
-      213: -524308133002137014
-    second: little_demon_walk 1_3
+      213: -4579126558040700354
+    second: little_demon_walk_3
   - first:
-      213: 4035869660152211971
-    second: little_demon_walk 1_4
+      213: -2593396964405841053
+    second: little_demon_walk_4
+  - first:
+      213: -5296685903354731560
+    second: little_demon_walk_5
+  - first:
+      213: 2375079297447381674
+    second: little_demon_walk_6
+  - first:
+      213: 8789741314107877694
+    second: little_demon_walk_7
+  - first:
+      213: 6828220139819033293
+    second: little_demon_walk_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -151,7 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: little_demon_walk 1_0
+      name: little_demon_walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2086a4e26ca339fd0800000000000000
-      internalID: -2336459158820591614
+      spriteID: 44191e5fc78fbc710800000000000000
+      internalID: 1714737298729439556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: little_demon_walk 1_1
+      name: little_demon_walk_1
       rect:
         serializedVersion: 2
         x: 64
@@ -188,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65e24ab58a81ae180800000000000000
-      internalID: -9085422186895495594
+      spriteID: a07988e44b49c0390800000000000000
+      internalID: -7850736548281018614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: little_demon_walk 1_2
+      name: little_demon_walk_2
       rect:
         serializedVersion: 2
         x: 128
@@ -210,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85e1cee977bcd2850800000000000000
-      internalID: 6353958363917459032
+      spriteID: 4403d57568d095ca0800000000000000
+      internalID: -6027771755616194492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: little_demon_walk 1_3
+      name: little_demon_walk_3
       rect:
         serializedVersion: 2
         x: 192
@@ -232,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a423f8be78849b8f0800000000000000
-      internalID: -524308133002137014
+      spriteID: e3a4d6e18aca370c0800000000000000
+      internalID: -4579126558040700354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: little_demon_walk 1_4
+      name: little_demon_walk_4
       rect:
         serializedVersion: 2
         x: 256
@@ -254,8 +266,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30a262da21a420830800000000000000
-      internalID: 4035869660152211971
+      spriteID: 36373078337620cd0800000000000000
+      internalID: -2593396964405841053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: little_demon_walk_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d3e8b3eb346e76b0800000000000000
+      internalID: -5296685903354731560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: little_demon_walk_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa4cbd890af5f020800000000000000
+      internalID: 2375079297447381674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: little_demon_walk_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e39a9f6b72f6bf970800000000000000
+      internalID: 8789741314107877694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: little_demon_walk_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc2e41a2a06b2ce50800000000000000
+      internalID: 6828220139819033293
       vertices: []
       indices: 
       edges: []
@@ -264,7 +364,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 476f34887f2ab654c91032ab4b2b6f24
+    spriteID: acb76f0591efe414daec230b0c281c17
     internalID: 0
     vertices: []
     indices: 
@@ -274,11 +374,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      little_demon_walk 1_0: -2336459158820591614
-      little_demon_walk 1_1: -9085422186895495594
-      little_demon_walk 1_2: 6353958363917459032
-      little_demon_walk 1_3: -524308133002137014
-      little_demon_walk 1_4: 4035869660152211971
+      little_demon_walk_0: 1714737298729439556
+      little_demon_walk_1: -7850736548281018614
+      little_demon_walk_2: -6027771755616194492
+      little_demon_walk_3: -4579126558040700354
+      little_demon_walk_4: -2593396964405841053
+      little_demon_walk_5: -5296685903354731560
+      little_demon_walk_6: 2375079297447381674
+      little_demon_walk_7: 8789741314107877694
+      little_demon_walk_8: 6828220139819033293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -16,12 +16,14 @@ public class LittleDemon_new : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         //订阅
         GhostDialogue.onDialogueEnd += DeliverFile;
+        JudgeManager.onJudgeEnd += WalkBackToGetNewFile;
     }
 
     private void OnDestroy()
     {
         //取消订阅
         GhostDialogue.onDialogueEnd -= DeliverFile;
+        JudgeManager.onJudgeEnd -= WalkBackToGetNewFile;
     }
 
 
@@ -42,6 +44,18 @@ public class LittleDemon_new : MonoBehaviour
         transform.DOMove(targetPosition.position, duration)
                  .SetEase(Ease.Linear)
                  .OnComplete(() => animator.SetBool("isWalk", false)); // 在移动结束时设置 isWalk 为 false
+    }
+
+    [Button("WalkBackToGetNewFile")]
+    public void WalkBackToGetNewFile()
+    {
+        transform.position = targetPosition.position;
+        // rectTransform.anchoredPosition = startPosition;
+        animator.SetBool("isWalkback", true);
+        float duration = Vector3.Distance(targetPosition.position, startPosition.position) / speed;
+        transform.DOMove(startPosition.position, duration)
+                 .SetEase(Ease.Linear)
+                 .OnComplete(() => animator.SetBool("isWalkback", false)); // 在移动结束时设置 isWalk 为 false
     }
 
     public void LittleDemonFileButtonCallback()
