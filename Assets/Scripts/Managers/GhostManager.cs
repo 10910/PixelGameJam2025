@@ -28,6 +28,7 @@ public class GhostManager : MonoBehaviour
         uiManager.onLightStateChanged += OnLightStateChanged;
         // JudgeManager.onStartNewJudge += StartDialogue;
         ghostStartPoint = ghostSpawnPoint;
+        JudgeManager.onJudgeEnd += ResetGhostPosition;
     }
 
     private void OnDestroy()
@@ -35,6 +36,7 @@ public class GhostManager : MonoBehaviour
         //注销事件
         uiManager.onLightStateChanged -= OnLightStateChanged;
         // JudgeManager.onStartNewJudge -= StartDialogue;
+        JudgeManager.onJudgeEnd -= ResetGhostPosition;
     }
 
     private void OnLightStateChanged(bool isLightOn)
@@ -42,14 +44,14 @@ public class GhostManager : MonoBehaviour
         if (isLightOn)
         {
             //重置ghost位置
-            ResetGhostPosition();
+            // ResetGhostPosition();
             currentGhost.gameObject.SetActive(true);
         }
         else//关灯
         {
             currentGhost.gameObject.SetActive(false);
             //重置ghost位置
-            ResetGhostPosition();
+            // ResetGhostPosition();
             //开始新的一轮裁决
             JudgeManager.Instance.StartNewJudge();
         }
@@ -59,30 +61,15 @@ public class GhostManager : MonoBehaviour
     // {
     //     currentGhost.ghostDialogue.gameObject.SetActive(true);
 
-<<<<<<< HEAD
-        // currentGhost = Instantiate(ghostPrefab, transform);
-    }
+    // currentGhost = Instantiate(ghostPrefab, transform);
+    //}
 
     //什么时候用？
     //这个方法有问题 不能获得现在的准确位置
     public void ResetGhostPosition()
     {
-        // Debug.Log("ResetGhostPosition");
-        // // currentGhost.transform.position = ghostSpawnPoint.position;
-
-        // // 如果有父对象，先解除父对象的影响
-        // Transform originalParent = currentGhost.transform.parent;
-        // currentGhost.transform.SetParent(null, true);
-
-        // // 设置世界坐标
-        // currentGhost.transform.position = ghostStartPoint.position;
-
-        // // 恢复父对象
-        // currentGhost.transform.SetParent(originalParent, true);
-
-        // currentGhost.ghostSpriteRenderer.transform.localPosition = new Vector3(0, 0, 0);
-
         pullToHellEffect.ResetGhost();
+        currentGhost.gameObject.SetActive(false);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -96,6 +83,6 @@ public class GhostManager : MonoBehaviour
     {
 
     }
-=======
->>>>>>> origin/10910
+
+
 }

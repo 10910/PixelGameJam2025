@@ -13,6 +13,9 @@ public class RebirthEffect : MonoBehaviour
 
     [SerializeField] private float floatDistance = 10.0f;
 
+    // 存储动画引用
+    private Tween babyMoveTween;
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -35,10 +38,9 @@ public class RebirthEffect : MonoBehaviour
         ChangeBabySprite();
         //等待一秒
 
-        transform.DOMoveY(transform.position.y + floatDistance, floatDuration)
+        babyMoveTween = transform.DOMoveY(transform.position.y + floatDistance, floatDuration)
                  .SetEase(Ease.InOutSine) // 使用缓动效果
                  .SetDelay(0.7f); // 延迟一秒开始
-
     }
 
     private void ChangeBabySprite()
@@ -52,4 +54,22 @@ public class RebirthEffect : MonoBehaviour
             spriteRenderer.sprite = babysprite;
         }
     }
+
+    public void ResetBaby()
+    {
+        StopAnimation();
+        transform.position = new Vector3(0, 0, 0);
+    }
+
+    public void StopAnimation()
+    {
+        if (babyMoveTween != null && babyMoveTween.IsActive())
+        {
+            babyMoveTween.Kill();
+            // 如果需要重置位置
+            // Kill(true); // true表示完全重置
+        }
+    }
+
+
 }

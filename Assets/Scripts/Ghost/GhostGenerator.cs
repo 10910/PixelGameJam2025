@@ -58,6 +58,11 @@ public class GhostGenerator : MonoBehaviour
         DisplayGhost(0);
     }
 
+    void OnDestroy()
+    {
+        JudgeManager.onJudgeEnd -= nextGhost;
+    }
+
     void GenerateGhosts()
     {
         // 检验nGhost有效性
@@ -126,8 +131,10 @@ public class GhostGenerator : MonoBehaviour
                 ghost.profession = "";
                 ghost.age = Random.Range(1, 20);
                 // 只按ghostType查找
-                foreach (GhostSpriteList gs in spriteListsSO.gsLists) {
-                    if (gs.type == ghost.ghostType) {
+                foreach (GhostSpriteList gs in spriteListsSO.gsLists)
+                {
+                    if (gs.type == ghost.ghostType)
+                    {
                         // 从spriteList中随机选取一张
                         int nSprite = gs.spriteList.Length;
                         ghost.sprite = gs.spriteList[Random.Range(0, nSprite)];
@@ -189,6 +196,9 @@ public class GhostGenerator : MonoBehaviour
         {
             spriteRenderer.sprite = ghosts[idx].sprite;
         }
+
+        // 设置ghostManager的currentGhostType 用于变婴儿动画显示baby图片
+        GhostManager.Instance.currentGhost.ghostType = ghosts[idx].ghostType;
     }
 
     // true = 转生， false = 地狱
@@ -198,32 +208,40 @@ public class GhostGenerator : MonoBehaviour
         ghosts[currentGhostIdx].judgement = judgement;
     }
 
-    public void nextGhost() {
+    public void nextGhost()
+    {
         print("next ghost data");
         currentGhostIdx++;
         DisplayGhost(currentGhostIdx);
     }
 
-    void getResult() {
+    void getResult()
+    {
         int totalGoodness = 0;  // 玩家功德值
-        foreach (var ghost in ghosts) {
+        foreach (var ghost in ghosts)
+        {
             // 计算单个幽灵的总善良值
             int goodness = 0;
-            foreach (var record in ghost.records) {
+            foreach (var record in ghost.records)
+            {
                 goodness += record.goodness;
             }
 
             // 累积判决结果和功德值
             string type = ghost.ghostType.ToString();
-            if (!history.ContainsKey(type)){
+            if (!history.ContainsKey(type))
+            {
                 history[type] = new int[2];
             }
 
-            if (ghost.judgement){
+            if (ghost.judgement)
+            {
                 // 好人转生取正 坏人转生取反
                 goodness = goodness > 0 ? goodness : -goodness;
                 history[type][0]++;
-            }else{
+            }
+            else
+            {
                 // 好人下地狱取反 坏人下地狱取正
                 goodness = goodness < 0 ? -goodness : goodness;
                 history[type][1]++;

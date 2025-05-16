@@ -2104,6 +2104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96be347616cc87478b79a3361796d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFirstJudgement: 0
 --- !u!1 &199814223
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,8 +2977,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullToHellDistance: 10
   pullToHellDuration: 6
-  pullToHellSpeed: 1.66
-  targetPosition: {fileID: 0}
 --- !u!1 &276764051
 GameObject:
   m_ObjectHideFlags: 0
@@ -7419,6 +7418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1997fa2314c54454ea567dace5e1e385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasCompletedTutorial: 0
 --- !u!1 &766373627
 GameObject:
   m_ObjectHideFlags: 0
@@ -7817,7 +7817,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 125850, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125852, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_Name
@@ -8175,7 +8175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: planarians
+  m_text: test by aabbcc
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7afbc3205e96e2e4c8ff2d19a3df791c, type: 2}
   m_sharedMaterial: {fileID: -3895267245871817306, guid: 7afbc3205e96e2e4c8ff2d19a3df791c, type: 2}
@@ -10057,7 +10057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &994184413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10098,7 +10098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5459668137509459937, guid: 843facd6b30c495439a0343e42832614, type: 3}
+  m_Sprite: {fileID: -5966878471107653870, guid: 3b72488f123c091419b6fd87e24fbc6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10168,7 +10168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1002411399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11078,7 +11078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostType: 1
-  ghostDataSO: {fileID: 0}
   ghostDialogue: {fileID: 733816885}
   ghostSpriteRenderer: {fileID: 0}
 --- !u!1 &1112934634
@@ -13568,7 +13567,7 @@ GameObject:
   - component: {fileID: 1459822684}
   - component: {fileID: 1459822685}
   m_Layer: 0
-  m_Name: Container-Programming
+  m_Name: Container-Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15916,7 +15915,6 @@ MonoBehaviour:
   startPosition: {x: -11, y: -2.9, z: 0}
   targetPosition: {x: -5.5, y: -2.9, z: 0}
   speed: 1
-  ghostDocument: {fileID: 2001874265}
 --- !u!1 &1785625145
 GameObject:
   m_ObjectHideFlags: 0
@@ -17465,7 +17463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10910
+  m_text: test by eeffgg
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7afbc3205e96e2e4c8ff2d19a3df791c, type: 2}
   m_sharedMaterial: {fileID: -3895267245871817306, guid: 7afbc3205e96e2e4c8ff2d19a3df791c, type: 2}
