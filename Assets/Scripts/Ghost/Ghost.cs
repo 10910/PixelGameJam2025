@@ -6,7 +6,6 @@ public class Ghost : MonoBehaviour
 
     [SerializeField]
     public GhostType ghostType;
-    public GhostDataSO ghostDataSO;
     [SerializeField] public GhostDialogue ghostDialogue;
 
     [SerializeField] public SpriteRenderer ghostSpriteRenderer;

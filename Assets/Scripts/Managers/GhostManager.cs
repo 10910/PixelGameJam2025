@@ -20,8 +20,6 @@ public class GhostManager : MonoBehaviour
         }
         uiManager = FindAnyObjectByType<UIManager>(FindObjectsInactive.Include);
         uiManager.onLightStateChanged += OnLightStateChanged;
-        //注册事件 之后要改
-        GameManager.onStartNewRound += GenerateNewGhost;
         // JudgeManager.onStartNewJudge += StartDialogue;
     }
 
@@ -29,7 +27,6 @@ public class GhostManager : MonoBehaviour
     {
         //注销事件
         uiManager.onLightStateChanged -= OnLightStateChanged;
-        GameManager.onStartNewRound -= GenerateNewGhost;
         // JudgeManager.onStartNewJudge -= StartDialogue;
     }
 
@@ -48,23 +45,5 @@ public class GhostManager : MonoBehaviour
     // public void StartDialogue()
     // {
     //     currentGhost.ghostDialogue.gameObject.SetActive(true);
-    // }
-    public void GenerateNewGhost()
-    {
-        //从so获取随机数据
 
-        // currentGhost = Instantiate(ghostPrefab, transform);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

@@ -6,6 +6,7 @@ public class JudgeManager : MonoBehaviour
     [Header("Actions")]
     public static Action onStartNewJudge;
     public static Action onJudgeEnd;
+    public bool isFirstJudgement; // 用于显示教程
 
     private void Awake()
     {
