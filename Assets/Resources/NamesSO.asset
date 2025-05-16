@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 859bae5de71aee74ab1a356aef56428c, type: 3}
   m_Name: NamesSO
   m_EditorClassIdentifier: Assembly-CSharp::NamesSO
   names:

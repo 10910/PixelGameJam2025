@@ -7,10 +7,12 @@ public class Name
     public string _name;
     public GhostType _type;
 }
+[System.Serializable]
 
 [CreateAssetMenu(fileName = "NamesSO", menuName = "Scriptable Objects/NamesSO")]
 public class NamesSO : ScriptableObject
 {
     public Name[] names;
 }
+
 
