@@ -75,9 +75,11 @@ public class JudgeManager : MonoBehaviour
         onJudgeEnd?.Invoke();
     }
 
+
     //结束裁决
     private void JudgeEndCallback()
     {
 
     }
+
 }
