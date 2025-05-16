@@ -2775,9 +2775,9 @@ MonoBehaviour:
   idText: {fileID: 463232333}
   recordText: {fileID: 22931136}
   spriteRenderer: {fileID: 2136373911}
-  nGhosts: 3
+  nGhosts: 5
   ghosts: []
-  randomSeed: 10910
+  randomSeed: 10911
   minimiumRecords: 5
 --- !u!1 &249596396
 GameObject:
@@ -7814,7 +7814,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 125850, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125852, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_Name
@@ -7822,7 +7822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 125852, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 425660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_LocalPosition.x
