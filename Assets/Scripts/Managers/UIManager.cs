@@ -99,6 +99,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
         }
     }
 
+
+
     public void OpenJudgePanel()
     {
         judgePanel.SetActive(true);
