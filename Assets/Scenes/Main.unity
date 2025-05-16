@@ -7051,6 +7051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05544aa00feefef4c9d4cce6d38e1d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catGhostDialogueSO: {fileID: 0}
+  dogGhostDialogueSO: {fileID: 0}
+  ratGhostDialogueSO: {fileID: 0}
+  humanGhostDialogueSO: {fileID: 0}
+  conversationName: Cat_Conversation
 --- !u!1 &737729482
 GameObject:
   m_ObjectHideFlags: 0

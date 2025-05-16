@@ -26,7 +26,6 @@ public class PullToHellEffect : MonoBehaviour
     public void PullGhostDown()
     {
         //让ghost跟着往下移动
-
         ghostMoveTween = GhostManager.Instance.currentGhost.ghostSpriteRenderer.transform.DOMoveY(transform.position.y - pullToHellDistance, pullToHellDuration);
 
         // GhostManager.Instance.currentGhost.ghostSpriteRenderer.transform.DOMoveY(transform.position.y - pullToHellDistance, pullToHellDistance * pullToHellSpeed);

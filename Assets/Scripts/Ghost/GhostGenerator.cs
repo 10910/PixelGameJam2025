@@ -20,7 +20,6 @@ public class GhostInstance
     public bool judgement; //审判结果
 }
 
-
 public class GhostGenerator : MonoBehaviour
 {
     public NamesSO namesSO;
@@ -199,6 +198,7 @@ public class GhostGenerator : MonoBehaviour
 
         // 设置ghostManager的currentGhostType 用于变婴儿动画显示baby图片
         GhostManager.Instance.currentGhost.ghostType = ghosts[idx].ghostType;
+        GhostManager.Instance.GenerateNewGhost();
     }
 
     // true = 转生， false = 地狱
@@ -207,7 +207,6 @@ public class GhostGenerator : MonoBehaviour
         print("judgement: " + judgement);
         ghosts[currentGhostIdx].judgement = judgement;
     }
-
 
 
     public void nextGhost()

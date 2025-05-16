@@ -10,7 +10,8 @@ public enum GhostType
     rat
 }
 
-public enum GhostAge{
+public enum GhostAge
+{
     young,
     middle,
     old
@@ -21,7 +22,6 @@ public enum GameState
     Menu,
     Judge,
     Game,
-
 }
 
 
