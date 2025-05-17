@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;
@@ -15,6 +17,15 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject IDPanel;
     [SerializeField] private GameObject PullToHellEffect;
     [SerializeField] private GameObject RebirthEffect;
+    [SerializeField] private TextMeshProUGUI IdTMP;
+    [SerializeField] private TextMeshProUGUI RecordsTMP;
+    [SerializeField] private GameObject Buttons;
+
+    [Header("Result")]
+    [SerializeField] private TextMeshProUGUI ResultRoundCounter;
+    [SerializeField] private TextMeshProUGUI ResultGoodness;
+    [SerializeField] private Slider ResultSlider;
+    [SerializeField] private GameObject ResultLayoutGroup;
 
     [Header("Panels")]
     [SerializeField] private GameObject settingsPanel;
@@ -56,6 +67,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
         gameManager.onGameResume += GameResumedCallback;
         JudgeManager.onStartNewJudge += StartNewJudgeCallback;
         JudgeManager.onJudgeEnd += JudgeEndCallback;
+        JudgeManager.onRoundEnd += RoundEndCallback;
+
+        Buttons.SetActive(false);
     }
 
     private void OnDestroy()
@@ -64,11 +78,12 @@ public class UIManager : MonoBehaviour, IGameStateListener
         gameManager.onGameResume -= GameResumedCallback;
         JudgeManager.onStartNewJudge -= StartNewJudgeCallback;
         JudgeManager.onJudgeEnd -= JudgeEndCallback;
+        JudgeManager.onRoundEnd -= RoundEndCallback;
     }
 
     void Start()
     {
-        CloseLight();
+        //CloseLight();
         ClosePullToHellEffect();
         CloseRebirthEffect();
     }
@@ -209,24 +224,6 @@ public class UIManager : MonoBehaviour, IGameStateListener
         RebirthEffect.SetActive(false);
     }
 
-    [Button("Open Light")]
-    public void OpenLight()
-    {
-        Light.SetActive(true);
-        Background_Light.SetActive(true);
-        Background_Dark.SetActive(false);
-        onLightStateChanged?.Invoke(true);
-    }
-
-    [Button("Close Light")]
-    public void CloseLight()
-    {
-        Light.SetActive(false);
-        Background_Light.SetActive(false);
-        Background_Dark.SetActive(true);
-        onLightStateChanged?.Invoke(false);
-    }
-
     private void GamePausedCallback()
     {
         Debug.Log("Game paused");
@@ -240,9 +237,10 @@ public class UIManager : MonoBehaviour, IGameStateListener
 
     private void StartNewJudgeCallback()
     {
-        //我需要先重置ghost的位置
-        //2秒后打开灯
-        Invoke("OpenLight", 2f);
+        Buttons.SetActive(true);
+        // 更新文件ui
+        IdTMP.text = JudgeManager.Instance.idText;
+        RecordsTMP.text = JudgeManager.Instance.recordsText;
     }
 
     private void JudgeEndCallback()
@@ -251,4 +249,63 @@ public class UIManager : MonoBehaviour, IGameStateListener
         CloseRebirthEffect();
         Invoke("CloseLight", 1f);
     }
+
+    [Button("roundend")]
+    private void RoundEndCallback(){
+        print("set result UI");
+        // 设置审判结果
+        var history = JudgeManager.Instance.history;
+        Transform human = ResultLayoutGroup.transform.Find("Human");
+        Transform cat = ResultLayoutGroup.transform.Find("Cat");
+        Transform dog = ResultLayoutGroup.transform.Find("Dog");
+        Transform rat = ResultLayoutGroup.transform.Find("Rat");
+
+        int[] cnts;
+        int[] humanCnts = new int[2];
+        int[] dogCnts = new int[2];
+        int[] catCnts = new int[2];
+        int[] ratCnts = new int[2];
+        if(history.TryGetValue("male", out cnts)){
+            humanCnts[0] += cnts[0];
+            humanCnts[1] += cnts[1];
+        }
+        if (history.TryGetValue("female", out cnts)) {
+            humanCnts[0] += cnts[0];
+            humanCnts[1] += cnts[1];
+        }
+        if (history.TryGetValue("cat", out cnts)){
+            catCnts[0] += cnts[0];
+            catCnts[1] += cnts[1];
+        }
+        if (history.TryGetValue("dot", out cnts)){
+            dogCnts[0] += cnts[0];
+            dogCnts[1] += cnts[1];
+        }
+        if (history.TryGetValue("rat", out cnts)) {
+            ratCnts[0] += cnts[0];
+            ratCnts[1] += cnts[1];
+        }
+        SetResultUI(human, humanCnts[0], humanCnts[1]);
+        SetResultUI(cat, catCnts[0], catCnts[1]);
+        SetResultUI(dog, dogCnts[0], dogCnts[1]);
+        SetResultUI(rat, ratCnts[0], ratCnts[1]);
+
+        // 设置轮次文本
+        ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
+
+        // 设置功德值文本
+        ResultGoodness.text = JudgeManager.Instance.goodness.ToString();
+    }
+
+    private void SetResultUI(Transform counterUI, int nRebirth, int nHell) {
+        // 一次都没有审判过时不显示这行UI
+        if (nRebirth == 0 && nHell == 0) { 
+            counterUI.gameObject.SetActive(false);
+            return;
+        }
+        // 设置文本
+        counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
+        counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
+    }
+
 }

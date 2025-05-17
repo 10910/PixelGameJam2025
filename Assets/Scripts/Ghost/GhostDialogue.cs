@@ -6,6 +6,9 @@ public class GhostDialogue : MonoBehaviour
 
     [Header("Actions")]
     public static Action onDialogueEnd;
+
+    
+
     void OnEnable()
     {
         // 注册对话结束事件
@@ -24,7 +27,7 @@ public class GhostDialogue : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        DialogueManager.instance.conversationEnded += OnConversationEnd;
     }
 
     // Update is called once per frame

@@ -2,32 +2,17 @@ using UnityEngine;
 
 public class PullToHellRenderer : MonoBehaviour
 {
-    private PullToHellEffect pullToHellEffect;
-
-    private void Awake()
-    {
-        pullToHellEffect = GetComponentInParent<PullToHellEffect>();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    // PullToHell动画期间由animation event调用
     public void PullGhostDown()
     {
-        pullToHellEffect.PullGhostDown();
+        AnimationManager.Instance.PullGhostDown();
     }
 
-    public void JudgeEnd()
+    // PullToHell动画结束后由animation event调用
+    public void PullAnimEnd()
     {
-        JudgeManager.Instance.JudgeEnd();
+        //AnimationManager.Instance.ResetGhostSprite();
+        //JudgeManager.Instance.JudgeEnd();
     }
 
 }

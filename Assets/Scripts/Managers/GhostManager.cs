@@ -68,8 +68,8 @@ public class GhostManager : MonoBehaviour
     //这个方法有问题 不能获得现在的准确位置
     public void ResetGhostPosition()
     {
-        pullToHellEffect.ResetGhost();
-        currentGhost.gameObject.SetActive(false);
+        //pullToHellEffect.ResetGhost();
+        //currentGhost.gameObject.SetActive(false);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -2,35 +2,35 @@ using UnityEngine;
 using UnityEngine.UI;
 public class scale : MonoBehaviour
 {
-    // private Button button;
     private Animator scaleAnimator;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake()
     {
-        // button = GetComponent<Button>();
         scaleAnimator = GetComponent<Animator>();
     }
 
+    public void OnScaleClicked(bool shouldReborn) {
+        // 记录审判
+        JudgeManager.Instance.SetJudgement(shouldReborn);
 
-
-    public void OnHeartClick()
-    {
-        //播放心脏动画
-        scaleAnimator.Play("balance_heart");
+        if (shouldReborn) {
+            //播放羽毛动画
+            scaleAnimator.Play("balance_feather");
+        }
+        else {
+            //播放心脏动画
+            scaleAnimator.Play("balance_heart");
+        }
     }
 
-    public void OnFeatherClick()
-    {
-        //播放羽毛动画
-        scaleAnimator.Play("balance_feather");
-    }
-
+    // 由Animation Event调用
     public void PullToHell()
     {
         CloseJudgePanel();
         JudgeManager.Instance.PullToHell();
     }
 
+    // 由Animation Event调用
     public void Rebirth()
     {
         CloseJudgePanel();
