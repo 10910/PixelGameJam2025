@@ -35,6 +35,12 @@ public class GhostDialogue : MonoBehaviour
     }
     void OnEnable()
     {
+
+    }
+
+    private void OnDisable()
+    {
+        DialogueManager.instance.StopConversation();
     }
 
     private void OnDestroy()

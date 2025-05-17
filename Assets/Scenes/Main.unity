@@ -2535,7 +2535,7 @@ MonoBehaviour:
   idText: {fileID: 463232333}
   recordText: {fileID: 22931136}
   spriteRenderer: {fileID: 2136373911}
-  nGhosts: 2
+  nGhosts: 3
   randomSeed: 10911
   minimiumRecords: 5
 --- !u!1 &249596396
@@ -6524,7 +6524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 32
+  trigger: 64
   delayOneFrame: 1
   condition:
     luaConditions: []
@@ -6638,7 +6638,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1571884141}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -17176,3 +17176,4 @@ SceneRoots:
   - {fileID: 766373628}
   - {fileID: 972606561}
   - {fileID: 2058085726}
+  - {fileID: 737729483}

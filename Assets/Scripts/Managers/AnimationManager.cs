@@ -7,7 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class AnimationManager: MonoBehaviour{
+public class AnimationManager : MonoBehaviour
+{
     public static AnimationManager Instance;
 
     [SerializeField] private GameObject Light;
@@ -22,17 +23,25 @@ public class AnimationManager: MonoBehaviour{
     [SerializeField] private Demon demon;
 
     public static Action onJudgeAnimEnd;
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
         GameManager.onStartNewRound += OnStartNewRound;
     }
 
-    
-    private void Start() {
-        
+    private void OnDestroy()
+    {
+        GameManager.onStartNewRound -= OnStartNewRound;
     }
 
-    void OnStartNewRound(){
+
+    private void Start()
+    {
+
+    }
+
+    void OnStartNewRound()
+    {
         Light.SetActive(false);
         ghostSprite.SetActive(false);
         Background_Light.SetActive(false);
@@ -41,9 +50,10 @@ public class AnimationManager: MonoBehaviour{
     }
 
     [Button("Open Light")]
-    public Sequence OpenLight() {
+    public Sequence OpenLight()
+    {
         Sequence seq = DOTween.Sequence();
-        // 1√Î∫Ûø™µ∆£¨ ‘Ÿπ˝0.5√Î∫⁄ƒªœ˚ ß
+        // 1ÁßíÂêéÂºÄÁÅØÔºå ÂÜçËøá0.5ÁßíÈªëÂπïÊ∂àÂ§±
         seq.AppendInterval(1.0f)
            .AppendCallback(() =>
            {
@@ -54,7 +64,7 @@ public class AnimationManager: MonoBehaviour{
            .AppendInterval(0.5f)
            .AppendCallback(() =>
            {
-               // …Ë÷√∫⁄ƒªÕ∏√˜∂»Œ™0
+               // ËÆæÁΩÆÈªëÂπïÈÄèÊòéÂ∫¶‰∏∫0
                Color c = blackBackground.color;
                c.a = 0f;
                blackBackground.color = c;
@@ -63,21 +73,22 @@ public class AnimationManager: MonoBehaviour{
     }
 
     [Button("Close Light")]
-    public Sequence CloseLight() {
+    public Sequence CloseLight()
+    {
         Sequence seq = DOTween.Sequence();
-        // 1√Î∫Ûπÿµ∆£¨ ‘Ÿπ˝0.5√Î»´∫⁄
+        // 1ÁßíÂêéÂÖ≥ÁÅØÔºå ÂÜçËøá0.5ÁßíÂÖ®Èªë
         seq.AppendInterval(1f)
            .AppendCallback(() =>
            {
                Light.SetActive(false);
-               // «–ªª≥…Œﬁπ‚’’±≥æ∞
+               // ÂàáÊç¢ÊàêÊó†ÂÖâÁÖßËÉåÊôØ
                Background_Light.SetActive(false);
                Background_Dark.SetActive(true);
            })
            .AppendInterval(0.5f)
            .AppendCallback(() =>
            {
-               // …Ë÷√∫⁄ƒªÕ∏√˜∂»Œ™1
+               // ËÆæÁΩÆÈªëÂπïÈÄèÊòéÂ∫¶‰∏∫1
                Color c = blackBackground.color;
                c.a = 1f;
                blackBackground.color = c;
@@ -86,21 +97,26 @@ public class AnimationManager: MonoBehaviour{
     }
 
     [Button("Reset Ghost Sprite")]
-    public void ResetGhostSprite(){
+    public void ResetGhostSprite()
+    {
         ghostSprite.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     [Button("Pull To Hell")]
-    public void PlayPullToHell(){
+    public void PlayPullToHell()
+    {
         pullToHellEffect.gameObject.SetActive(true);
+        Debug.Log("AnimationManager PlayPullToHell");
         demon.PullToHell();
     }
 
-    public void PullGhostDown(){
+    public void PullGhostDown()
+    {
         pullToHellEffect.PullGhostDown();
     }
 
-    void PlayReborn(){
+    void PlayReborn()
+    {
 
     }
 

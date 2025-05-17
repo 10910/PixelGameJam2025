@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using PixelCrushers.DialogueSystem;
 
-public class JudgeHistory{
+public class JudgeHistory
+{
 
 }
 
@@ -76,6 +77,7 @@ public class JudgeManager : MonoBehaviour
 
     public void PullToHell()
     {
+        Debug.Log("JudgeManager PullToHell");
         UIManager.Instance.OpenPullToHellEffect();
         demon.PullToHell();
     }
@@ -93,17 +95,21 @@ public class JudgeManager : MonoBehaviour
         //onJudgeEnd?.Invoke();
         // 移动到下一个ghost的索引
         currentGhostIdx++;
-        if (currentGhostIdx >= ghosts.Count) {
+        if (currentGhostIdx >= ghosts.Count)
+        {
             // 索引达到末尾时本局结束
             RoundEnd();
-        }else{
+        }
+        else
+        {
             UpdateGhostInfo();
             // 关灯动画完成之后开始新审判
             AnimationManager.Instance.CloseLight().AppendCallback(() => StartNewJudge());
         }
     }
 
-    void RoundEnd(){
+    void RoundEnd()
+    {
         // 所有幽灵审判完成 进入结局画面
         print("all judgement over");
         GetResult();
@@ -111,11 +117,13 @@ public class JudgeManager : MonoBehaviour
         onRoundEnd?.Invoke();
     }
 
-    void UpdateGhostInfo() {
+    void UpdateGhostInfo()
+    {
         int idx = currentGhostIdx;
         // id
         string id;
-        if (ghosts[idx].ghostType == GhostType.male || ghosts[idx].ghostType == GhostType.female) {
+        if (ghosts[idx].ghostType == GhostType.male || ghosts[idx].ghostType == GhostType.female)
+        {
             // 人类
             id = $"{ghosts[idx].ghostName}\n " +
                  $"{ghosts[idx].ghostType}\n" +
@@ -123,7 +131,8 @@ public class JudgeManager : MonoBehaviour
                  $"Profession: {ghosts[idx].profession}\n" +
                  $"Dead by: ";
         }
-        else {
+        else
+        {
             //动物
             id = $"{ghosts[idx].ghostName}\n " +
                  $"{ghosts[idx].ghostType}\n" +
@@ -134,43 +143,54 @@ public class JudgeManager : MonoBehaviour
 
         // records
         string record = "";
-        if (ghosts[idx].records != null) {
-            foreach (var rec in ghosts[idx].records) {
+        if (ghosts[idx].records != null)
+        {
+            foreach (var rec in ghosts[idx].records)
+            {
                 record += $"{rec.description}\n";
             }
         }
         recordsText = record;
 
         // sprite
-        if (ghosts[idx].sprite != null) {
+        if (ghosts[idx].sprite != null)
+        {
             ghostSpriteRenderer.sprite = ghosts[idx].sprite;
         }
 
         // 设置ghostManager的currentGhostType 用于变婴儿动画显示baby图片
         GhostManager.Instance.currentGhost.ghostType = ghosts[idx].ghostType;
+        // 生成新的幽灵 暂时只用来生成新的幽灵对话
+        GhostManager.Instance.GenerateNewGhost();
     }
 
-    void GetResult() {
+    void GetResult()
+    {
         int totalGoodness = 0;  // 玩家功德值
-        foreach (var ghost in ghosts) {
+        foreach (var ghost in ghosts)
+        {
             // 计算单个幽灵的总善良值
             int goodness = 0;
-            foreach (var record in ghost.records) {
+            foreach (var record in ghost.records)
+            {
                 goodness += record.goodness;
             }
 
             // 累积判决结果和功德值
             string type = ghost.ghostType.ToString();
-            if (!history.ContainsKey(type)) {
+            if (!history.ContainsKey(type))
+            {
                 history[type] = new int[2];
             }
 
-            if (ghost.judgement) {
+            if (ghost.judgement)
+            {
                 // 好人转生取正 坏人转生取反
                 goodness = goodness > 0 ? goodness : -goodness;
                 history[type][0]++;
             }
-            else {
+            else
+            {
                 // 好人下地狱取反 坏人下地狱取正
                 goodness = goodness < 0 ? -goodness : goodness;
                 history[type][1]++;
@@ -180,7 +200,8 @@ public class JudgeManager : MonoBehaviour
     }
 
     // true = 转生， false = 地狱
-    public void SetJudgement(bool judgement) {
+    public void SetJudgement(bool judgement)
+    {
         print("judgement: " + judgement);
         ghosts[currentGhostIdx].judgement = judgement;
     }

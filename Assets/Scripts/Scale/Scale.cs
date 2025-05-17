@@ -9,15 +9,18 @@ public class scale : MonoBehaviour
         scaleAnimator = GetComponent<Animator>();
     }
 
-    public void OnScaleClicked(bool shouldReborn) {
+    public void OnScaleClicked(bool shouldReborn)
+    {
         // 记录审判
         JudgeManager.Instance.SetJudgement(shouldReborn);
 
-        if (shouldReborn) {
+        if (shouldReborn)
+        {
             //播放羽毛动画
             scaleAnimator.Play("balance_feather");
         }
-        else {
+        else
+        {
             //播放心脏动画
             scaleAnimator.Play("balance_heart");
         }
@@ -27,6 +30,7 @@ public class scale : MonoBehaviour
     public void PullToHell()
     {
         CloseJudgePanel();
+        Debug.Log("Scale PullToHell");
         JudgeManager.Instance.PullToHell();
     }
 
