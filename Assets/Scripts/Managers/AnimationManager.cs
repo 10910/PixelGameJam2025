@@ -24,7 +24,14 @@ public class AnimationManager : MonoBehaviour
     public static Action onJudgeAnimEnd;
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         GameManager.onStartNewRound += OnStartNewRound;
     }
 

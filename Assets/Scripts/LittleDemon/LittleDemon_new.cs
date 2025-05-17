@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-public class LittleDemon_new : MonoBehaviour
+public class LittleDemon : MonoBehaviour
 {
     [SerializeField]
     public Transform startPosition;

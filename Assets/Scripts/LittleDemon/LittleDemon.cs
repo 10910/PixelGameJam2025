@@ -1,6 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
-public class LittleDemon : MonoBehaviour
+public class LittleDemon_origin : MonoBehaviour
 {
     [SerializeField]
     public Vector3 startPosition;
