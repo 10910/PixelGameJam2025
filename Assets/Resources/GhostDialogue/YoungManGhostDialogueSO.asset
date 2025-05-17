@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daa6fa06b662deb41bf8cea22443d5bd, type: 3}
-  m_Name: MiddleAgedManGhostDialogueSO
+  m_Name: YoungManGhostDialogueSO
   m_EditorClassIdentifier: 
   dialogueNames:
-  - MiddleAgedMan_Conversation
-  - MiddleAgedMan_Conversation2
-  - MiddleAgedMan_Conversation3
-  - MiddleAgedMan_Conversation4
-  - MiddleAgedMan_Conversation5
+  - YoungMan_Conversation
+  - YoungMan_Conversation2
+  - YoungMan_Conversation3

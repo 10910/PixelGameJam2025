@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
     //music
     public AudioClip noormalbattleSoundAudioClip;
     public AudioClip menuSoundAudioClip;
+    public AudioClip gamePlaySoundAudioClip;
 
     public AudioClip CreditSoundAudioClip;
     private int currentSFXIndex = 0;
@@ -81,10 +82,10 @@ public class AudioManager : MonoBehaviour
 
         Sound CreditSound = new Sound("credits", CreditSoundAudioClip, 0.4f);
 
-
+        Sound gamePlaySound = new Sound("gamePlay", gamePlaySoundAudioClip, 0.05f);
         musicSounds.Add(noormalbattleSound);
         musicSounds.Add(menuSound);
-
+        musicSounds.Add(gamePlaySound);
         musicSounds.Add(CreditSound);
 
         if (isFirstPlayGame.currentValue)
@@ -268,5 +269,10 @@ public class AudioManager : MonoBehaviour
         PlayMusicNotLoop("restRoom");
     }
 
+    public void PlayGamePlayMusic()
+    {
+        Debug.Log("PlayGamePlayMusic");
+        PlayMusicNotLoop("gamePlay");
+    }
 
 }
