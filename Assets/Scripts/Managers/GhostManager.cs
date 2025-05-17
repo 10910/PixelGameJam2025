@@ -72,17 +72,14 @@ public class GhostManager : MonoBehaviour
         //currentGhost.gameObject.SetActive(false);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void GenerateNewGhost()
     {
-
+        GetNewGhostDialogue();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetNewGhostDialogue()
     {
-
+        currentGhost.ghostDialogue.GetNewDialogue();
     }
-
 
 }

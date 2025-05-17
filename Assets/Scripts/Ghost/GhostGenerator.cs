@@ -20,7 +20,6 @@ public class GhostInstance
     public bool judgement; //审判结果
 }
 
-
 public class GhostGenerator : MonoBehaviour
 {
     public NamesSO namesSO;
@@ -140,7 +139,6 @@ public class GhostGenerator : MonoBehaviour
             }
             ghosts.Add(ghost);
         }
-
         return ghosts;
     }
 }
