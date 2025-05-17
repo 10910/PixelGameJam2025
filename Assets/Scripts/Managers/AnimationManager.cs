@@ -16,7 +16,6 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private GameObject Background_Dark;
     [SerializeField] private Image blackBackground;
     [SerializeField] public GameObject ghostSprite;
-
     [SerializeField] private LittleDemon littleDemon;
     [SerializeField] private PullToHellEffect pullToHellEffect;
     [SerializeField] private RebirthEffect rebirthEffect;
@@ -60,6 +59,8 @@ public class AnimationManager : MonoBehaviour
                ghostSprite.SetActive(true);
                Light.SetActive(true);
                Background_Light.SetActive(true);
+               // 延迟0.7秒开始幽灵对话
+               GhostManager.Instance.StartGhostDialogue(0.7f);
            })
            .AppendInterval(0.5f)
            .AppendCallback(() =>

@@ -48,4 +48,9 @@ public class Ghost : MonoBehaviour
     {
         ghostDialogue.gameObject.SetActive(true);
     }
+
+    public void StopDialogue()
+    {
+        ghostDialogue.gameObject.SetActive(false);
+    }
 }

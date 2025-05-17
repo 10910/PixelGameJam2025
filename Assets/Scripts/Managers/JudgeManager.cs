@@ -80,6 +80,8 @@ public class JudgeManager : MonoBehaviour
         Debug.Log("JudgeManager PullToHell");
         UIManager.Instance.OpenPullToHellEffect();
         demon.PullToHell();
+        // 停止幽灵对话
+        GhostManager.Instance.StopGhostDialogue();
     }
 
     public void Rebirth()
@@ -87,6 +89,8 @@ public class JudgeManager : MonoBehaviour
         GhostManager.Instance.currentGhost.gameObject.SetActive(false);
         UIManager.Instance.OpenRebirthEffect();
         demon.Rebirth();
+        // 停止幽灵对话
+        GhostManager.Instance.StopGhostDialogue();
     }
 
     public void JudgeEnd()
@@ -198,6 +202,7 @@ public class JudgeManager : MonoBehaviour
             totalGoodness += goodness;
         }
     }
+
 
     // true = 转生， false = 地狱
     public void SetJudgement(bool judgement)

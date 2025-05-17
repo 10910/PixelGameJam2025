@@ -82,4 +82,20 @@ public class GhostManager : MonoBehaviour
         currentGhost.ghostDialogue.GetNewDialogue();
     }
 
+    //应该在幽灵出现后等待一秒调用
+    public void StartGhostDialogue()
+    {
+        currentGhost.StartDialogue();
+    }
+
+    public void StopGhostDialogue()
+    {
+        currentGhost.StopDialogue();
+    }
+
+    public void StartGhostDialogue(float delay)
+    {
+        Invoke("StartGhostDialogue", delay);
+    }
+
 }
