@@ -77,7 +77,7 @@ public class GhostDialogue : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        DialogueManager.instance.conversationEnded += OnConversationEnd;
     }
 
     // Update is called once per frame

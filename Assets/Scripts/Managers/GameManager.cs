@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Action onGamePause;
     public Action onGameResume;
     public static Action onStartNewRound;
-    public bool hasCompletedTutorial;
+    public int RoundsPlayed = 0;
 
     private void Awake()
     {
@@ -59,9 +59,10 @@ public class GameManager : MonoBehaviour
     //游戏开始时调用 还有结算页面的按钮调用
     public void StartNewRound()
     {
+        RoundsPlayed++;
         //应该直接调用生成新ghost 做成事件
         onStartNewRound?.Invoke();
-        //这里直接生成一组ghost数据
+        print("new round start");
     }
 
 

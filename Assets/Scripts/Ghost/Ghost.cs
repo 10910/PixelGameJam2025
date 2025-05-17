@@ -21,7 +21,7 @@ public class Ghost : MonoBehaviour
     private void OnEnable()
     {
         //等待一秒
-        Invoke("StartDialogue", 1f);
+        //Invoke("StartDialogue", 1f);
     }
 
 
