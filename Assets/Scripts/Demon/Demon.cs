@@ -24,6 +24,7 @@ public class Demon : MonoBehaviour
     public void PullToHell()
     {
         Debug.Log("Demon PullToHell");
-        animator.Play("Demon_raiseHand_Hell");
+        // animator.Play("Demon_raiseHand_Hell");
+        animator.Play("Demon_raiseHand_Hell", -1, 0f); // 强制从头开始播放动画
     }
 }
