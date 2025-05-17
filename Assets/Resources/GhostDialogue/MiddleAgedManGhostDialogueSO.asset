@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daa6fa06b662deb41bf8cea22443d5bd, type: 3}
-  m_Name: RatGhostDialogueSO
+  m_Name: MiddleAgedManGhostDialogueSO
   m_EditorClassIdentifier: 
   dialogueNames:
-  - SewerRat_Conversation
-  - PetMouse_Conversation
-  - Mouse_Conversation
+  - MiddleAgedMan_Conversation
+  - MiddleAgedMan_Conversation2
+  - MiddleAgedMan_Conversation3

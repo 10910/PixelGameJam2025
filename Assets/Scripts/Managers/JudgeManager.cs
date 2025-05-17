@@ -30,7 +30,7 @@ public class JudgeManager : MonoBehaviour
     // string表示幽灵类型 int数组0位置表示转生 1位置表示地狱
     [ShowInInspector]
     public Dictionary<string, int[]> history = new Dictionary<string, int[]>();
-    int currentGhostIdx; // 当前审判的幽灵索引
+    public int currentGhostIdx; // 当前审判的幽灵索引
 
     private Demon demon;
 
