@@ -300,7 +300,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
 
         // 设置功德值文本
-        ResultGoodness.text = JudgeManager.Instance.currentGoodness.ToString();
+        ResultGoodness.text = JudgeManager.Instance.totalGoodness.ToString();
 
         // 设置结局图片和文本
         EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
@@ -318,10 +318,11 @@ public class UIManager : MonoBehaviour, IGameStateListener
         if (nRebirth == 0 && nHell == 0)
         {
             counterUI.gameObject.SetActive(false);
-            return;
+        }else{
+            counterUI.gameObject.SetActive(true);
+            // 设置文本
+            counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
+            counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
         }
-        // 设置文本
-        counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
-        counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
     }
 }
