@@ -11,11 +11,11 @@ public class AnimationManager : MonoBehaviour
 {
     public static AnimationManager Instance;
 
+    public GameObject ghostSprite;
     [SerializeField] private GameObject Light;
     [SerializeField] private GameObject Background_Light;
     [SerializeField] private GameObject Background_Dark;
     [SerializeField] private Image blackBackground;
-    [SerializeField] public GameObject ghostSprite;
     [SerializeField] private LittleDemon littleDemon;
     [SerializeField] private PullToHellEffect pullToHellEffect;
     [SerializeField] private RebirthEffect rebirthEffect;
@@ -32,7 +32,6 @@ public class AnimationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        littleDemon = FindAnyObjectByType<LittleDemon>();
         GameManager.onStartNewRound += OnStartNewRound;
 
     }
