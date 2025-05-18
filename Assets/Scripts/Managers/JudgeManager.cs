@@ -37,10 +37,9 @@ public class JudgeManager : MonoBehaviour
     public Ending currentEnding; // 本局结局
     public Dictionary<string, bool> endingHistory; // 记录结局是否被浏览过, 结局名作为key
 
-    private int currentGhostIdx; // 当前审判的幽灵索引
+    public int currentGhostIdx; // 当前审判的幽灵索引
     [SerializeField] private GhostGenerator generator;
     private EndingsSO endings;   // 结局数据
-    private Demon demon;
 
     private void Awake()
     {
@@ -55,7 +54,6 @@ public class JudgeManager : MonoBehaviour
 
         ghosts = new List<GhostInstance>();
         endingHistory = new Dictionary<string, bool>();
-        demon = FindFirstObjectByType<Demon>(FindObjectsInactive.Include);
         GameManager.onStartNewRound += OnStartNewRoundCallback;
         endings = Resources.Load<EndingsSO>("EndingsSO");
         
@@ -87,24 +85,6 @@ public class JudgeManager : MonoBehaviour
         currentGhostIdx = 0;
         UpdateGhostInfo();
         StartNewJudge();
-    }
-
-    public void PullToHell()
-    {
-        Debug.Log("JudgeManager PullToHell");
-        UIManager.Instance.OpenPullToHellEffect();
-        demon.PullToHell();
-        // 停止幽灵对话
-        GhostManager.Instance.StopGhostDialogue();
-    }
-
-    public void Rebirth()
-    {
-        GhostManager.Instance.currentGhost.gameObject.SetActive(false);
-        UIManager.Instance.OpenRebirthEffect();
-        demon.Rebirth();
-        // 停止幽灵对话
-        GhostManager.Instance.StopGhostDialogue();
     }
 
     public void JudgeEnd()
@@ -273,6 +253,14 @@ public class JudgeManager : MonoBehaviour
             endingHistory["Good2"] = true;
             roundEnding = endings.GetEndingByName("Good2");
         }
+        currentEnding = roundEnding;
+
+        // 坏人结局
+        if (totalGoodness <= -10  && !endingHistory["Bad1"]) {
+            endingHistory["Bad1"] = true;
+            roundEnding = endings.GetEndingByName("Bad1");
+        }
+        
         currentEnding = roundEnding;
     }
 

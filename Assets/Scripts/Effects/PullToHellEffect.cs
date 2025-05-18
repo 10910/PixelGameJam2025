@@ -41,13 +41,6 @@ public class PullToHellEffect : MonoBehaviour
         // GhostManager.Instance.currentGhost.ghostSpriteRenderer.transform.DOMoveY(transform.position.y - pullToHellDistance, pullToHellDistance * pullToHellSpeed);
     }
 
-    //[Button]
-    //public void ResetGhost()
-    //{
-    //    StopAnimation();
-    //    GhostManager.Instance.currentGhost.ghostSpriteRenderer.transform.localPosition = new Vector3(0, 0, 0);
-    //}
-
     //// 停止动画
     //void StopAnimation()
     //{

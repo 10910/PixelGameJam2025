@@ -13,19 +13,7 @@ MonoBehaviour:
   m_Name: DeathReasonsSO
   m_EditorClassIdentifier: 
   reasons:
-  - reason: 
-    ageCondition: 0
-    typeCondition: 0
-    professionCondition: 
-  - reason: 
-    ageCondition: 0
-    typeCondition: 0
-    professionCondition: 
-  - reason: 
-    ageCondition: 0
-    typeCondition: 0
-    professionCondition: 
-  - reason: 
+  - reason: Natural Death
     ageCondition: 0
     typeCondition: 0
     professionCondition: 

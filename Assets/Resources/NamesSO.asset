@@ -15,21 +15,21 @@ MonoBehaviour:
   names:
   - _name: James
     _type: 0
-  - _name: Mao
-    _type: 2
-  - _name: Lisa
-    _type: 1
   - _name: John
     _type: 0
-  - _name: Gnall
-    _type: 4
-  - _name: Whoof
-    _type: 3
   - _name: Wang
     _type: 0
   - _name: Diego
     _type: 0
+  - _name: Lisa
+    _type: 1
   - _name: Alexando
     _type: 1
+  - _name: Mao
+    _type: 2
   - _name: Nick
     _type: 2
+  - _name: Gnall
+    _type: 4
+  - _name: Whoof
+    _type: 3

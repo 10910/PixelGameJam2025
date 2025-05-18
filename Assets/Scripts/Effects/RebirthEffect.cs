@@ -38,6 +38,7 @@ public class RebirthEffect : MonoBehaviour
     [Button]
     public void Rebirth()
     {
+        AnimationManager.Instance.ghostSprite.SetActive(false);
         ChangeBabySprite();
         //等待一秒
 
@@ -67,6 +68,7 @@ public class RebirthEffect : MonoBehaviour
     {
         StopAnimation();
         transform.position = babyStartPosition;
+        gameObject.SetActive(false);
     }
 
     public void StopAnimation()

@@ -118,16 +118,20 @@ public class AnimationManager : MonoBehaviour
         pullToHellEffect.gameObject.SetActive(true);
         Debug.Log("AnimationManager PlayPullToHell");
         demon.PullToHell();
+        GhostManager.Instance.StopGhostDialogue();
+        littleDemon.WalkBackToGetNewFile();
+    }
+
+    public void PlayRebirth(){
+        rebirthEffect.gameObject.SetActive(true);
+        Debug.Log("AnimationManager PlayPullToHell");
+        demon.Rebirth();
+        GhostManager.Instance.StopGhostDialogue();
+        littleDemon.WalkBackToGetNewFile();
     }
 
     public void PullGhostDown()
     {
         pullToHellEffect.PullGhostDown();
     }
-
-    void PlayReborn()
-    {
-
-    }
-
 }
