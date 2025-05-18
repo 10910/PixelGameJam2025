@@ -15,21 +15,45 @@ MonoBehaviour:
   records:
   - description: "Drew graffiti on a cow\u2019s back"
     goodness: 0
+    typeCondition: 0
+    professionCondition: 
   - description: Married to a vending machine
     goodness: 0
+    typeCondition: 0
+    professionCondition: 
   - description: Never finished a game jam on time
     goodness: 0
+    typeCondition: 0
+    professionCondition: 
   - description: Saved a drowning child
     goodness: 3
+    typeCondition: 0
+    professionCondition: 
   - description: Rescued an injured pigeon
     goodness: 2
+    typeCondition: 0
+    professionCondition: 
   - description: Volunteered during a local disaster
     goodness: 1
+    typeCondition: 0
+    professionCondition: 
   - description: Replaced parachute with laundry bag
     goodness: -3
+    typeCondition: 0
+    professionCondition: 
   - description: 'Killed people by baguette '
     goodness: -2
+    typeCondition: 0
+    professionCondition: 
   - description: Owns 100+ unplayed games
     goodness: -1
+    typeCondition: 0
+    professionCondition: 
   - description: Removed the emergency button from elevator
     goodness: -1
+    typeCondition: 0
+    professionCondition: 
+  - description: 
+    goodness: 0
+    typeCondition: 3
+    professionCondition: 

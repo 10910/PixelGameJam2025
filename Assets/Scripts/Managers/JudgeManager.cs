@@ -7,7 +7,11 @@ using PixelCrushers.DialogueSystem;
 
 public class JudgeHistory
 {
+    Dictionary<string, int[]> history = new Dictionary<string, int[]>();
 
+    public void Add(JudgeHistory another) {
+
+    }
 }
 
 public class JudgeManager : MonoBehaviour
@@ -20,18 +24,22 @@ public class JudgeManager : MonoBehaviour
 
 
     public bool isFirstJudgement; // 用于显示教程
-    public string idText, recordsText;
-    public int goodness; // 每局累计功德值
+    public string idText, recordsText; // 幽灵信息
     public SpriteRenderer ghostSpriteRenderer;
 
     public DialogueSystemTrigger dialogueTrigger;
-    public GhostGenerator generator;
+    public int currentGoodness; // 本局功德值
+    public int totalGoodness; // 累计功德值
     public List<GhostInstance> ghosts;  // 本局生成的幽灵
     // string表示幽灵类型 int数组0位置表示转生 1位置表示地狱
     [ShowInInspector]
     public Dictionary<string, int[]> history = new Dictionary<string, int[]>();
-    int currentGhostIdx; // 当前审判的幽灵索引
+    public Ending currentEnding; // 本局结局
+    public Dictionary<string, bool> endingHistory; // 记录结局是否被浏览过, 结局名作为key
 
+    private int currentGhostIdx; // 当前审判的幽灵索引
+    [SerializeField] private GhostGenerator generator;
+    private EndingsSO endings;   // 结局数据
     private Demon demon;
 
     private void Awake()
@@ -46,9 +54,15 @@ public class JudgeManager : MonoBehaviour
         }
 
         ghosts = new List<GhostInstance>();
+        endingHistory = new Dictionary<string, bool>();
         demon = FindFirstObjectByType<Demon>(FindObjectsInactive.Include);
         GameManager.onStartNewRound += OnStartNewRoundCallback;
-        //AnimationManager.onJudgeAnimEnd += OnJudgeAnimEndCallback;
+        endings = Resources.Load<EndingsSO>("EndingsSO");
+        
+        // 初始化结局访问记录
+        foreach (Ending ending in endings.endings){
+            endingHistory.Add(ending.Title, false);
+        }
     }
 
     private void OnDestroy()
@@ -116,8 +130,8 @@ public class JudgeManager : MonoBehaviour
     {
         // 所有幽灵审判完成 进入结局画面
         print("all judgement over");
-        GetResult();
-        UIManager.Instance.OpenEndingPanel();
+        SetResult();
+        CheckEnding();
         onRoundEnd?.Invoke();
     }
 
@@ -168,16 +182,16 @@ public class JudgeManager : MonoBehaviour
         GhostManager.Instance.GenerateNewGhost();
     }
 
-    void GetResult()
+    void SetResult()
     {
-        int totalGoodness = 0;  // 玩家功德值
+        int goodness = 0;  // 玩家功德值
         foreach (var ghost in ghosts)
         {
             // 计算单个幽灵的总善良值
-            int goodness = 0;
+            int ghostGoodness = 0;
             foreach (var record in ghost.records)
             {
-                goodness += record.goodness;
+                ghostGoodness += record.goodness;
             }
 
             // 累积判决结果和功德值
@@ -187,27 +201,85 @@ public class JudgeManager : MonoBehaviour
                 history[type] = new int[2];
             }
 
-            if (ghost.judgement)
+            if (ghost.isReborn)
             {
                 // 好人转生取正 坏人转生取反
-                goodness = goodness > 0 ? goodness : -goodness;
+                ghostGoodness = ghostGoodness > 0 ? ghostGoodness : -ghostGoodness;
                 history[type][0]++;
             }
             else
             {
                 // 好人下地狱取反 坏人下地狱取正
-                goodness = goodness < 0 ? -goodness : goodness;
+                ghostGoodness = ghostGoodness < 0 ? -ghostGoodness : ghostGoodness;
                 history[type][1]++;
             }
-            totalGoodness += goodness;
+            goodness += ghostGoodness;
         }
+        currentGoodness = goodness;
+        totalGoodness += currentGoodness;
     }
 
+    void CheckEnding(){
+        // 默认普通结局， 多个结局同时发生时只会触发最后检测的 优先级：鼠>猫>狗>全转生>好人结局
+        Ending roundEnding = endings.GetEndingByName("Normal");
+        
+        // 老鼠结局 总计转生次数大于等于5
+        int[] cnt = new int[2];
+        if(history.TryGetValue("Rat", out cnt) && cnt[0] >= 5 && !endingHistory["Rat"]) {
+            endingHistory["Rat"] = true;
+            roundEnding = endings.GetEndingByName("Rat");
+        }
+
+        // 猫结局 总计转生次数大于等于5
+        if (history.TryGetValue("Cat", out cnt) && cnt[0] >= 5 && !endingHistory["Cat"]) {
+            endingHistory["Cat"] = true;
+            roundEnding = endings.GetEndingByName("Cat");
+        }
+
+        // 狗结局 总计转生次数大于等于5
+        if (history.TryGetValue("Dog", out cnt) && cnt[0] >= 5 && !endingHistory["Dog"]) {
+            endingHistory["Dog"] = true;
+            roundEnding = endings.GetEndingByName("Dog");
+        }
+
+        // 所有人转生/下地狱结局
+        bool areAllReborn = true;
+        bool areAllHell = true;
+        foreach (var ghost in ghosts) {
+            if (ghost.isReborn) {
+                areAllHell = false;
+            }
+            else {
+                areAllReborn = false;
+            }
+        }
+        // 所有人转生
+        if (areAllReborn && !endingHistory["AllReborn"]) {
+            endingHistory["AllReborn"] = true;
+            roundEnding = endings.GetEndingByName("AllReborn");
+        }
+        // 所有人下地狱
+        if (areAllHell && !endingHistory["AllHell"]) {
+            endingHistory["AllHell"] = true;
+            roundEnding = endings.GetEndingByName("AllHell");
+        }
+
+        // 好人结局 累计善良值达到一定数量时触发
+        if (totalGoodness >= 10 && totalGoodness < 20 && !endingHistory["Good1"]) {
+            endingHistory["Good1"] = true;
+            roundEnding = endings.GetEndingByName("Good1");
+        }
+        else if(totalGoodness >= 20){
+            endingHistory["Good2"] = true;
+            roundEnding = endings.GetEndingByName("Good2");
+        }
+        currentEnding = roundEnding;
+    }
 
     // true = 转生， false = 地狱
     public void SetJudgement(bool judgement)
     {
         print("judgement: " + judgement);
-        ghosts[currentGhostIdx].judgement = judgement;
+        ghosts[currentGhostIdx].isReborn = judgement;
     }
 }

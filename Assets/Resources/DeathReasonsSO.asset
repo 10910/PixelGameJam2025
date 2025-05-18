@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1436eec8be6b5fe489f32f9a7570b131, type: 3}
   m_Name: DeathReasonsSO
   m_EditorClassIdentifier: 
-  reasons: []
+  reasons:
+  - reason: 
+    ageCondition: 0
+    typeCondition: 0
+    professionCondition: 
+  - reason: 
+    ageCondition: 0
+    typeCondition: 0
+    professionCondition: 
+  - reason: 
+    ageCondition: 0
+    typeCondition: 0
+    professionCondition: 
+  - reason: 
+    ageCondition: 0
+    typeCondition: 0
+    professionCondition: 

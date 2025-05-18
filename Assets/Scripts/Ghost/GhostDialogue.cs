@@ -52,7 +52,7 @@ public class GhostDialogue : MonoBehaviour
         }
         DialogueManager.instance.StopConversation();
     }
-
+     
     public void GetNewDialogue()
     {
         // 初始化随机数生成器

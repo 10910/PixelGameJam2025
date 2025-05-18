@@ -12,4 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: EndingsSO
   m_EditorClassIdentifier: Assembly-CSharp::EndingsSO
-  endings: []
+  endings:
+  - Title: Normal
+    Description: The human world continues to run as usual. All in all, you are a
+      fair and impartial Demon Lord.
+    Image: {fileID: 0}
+  - Title: AllReborn
+    Description: "Due to your constant reincarnation of souls, the number of visitors
+      to the underworld keeps increasing. The overworked imps groan in agony\u2014even
+      their vacations are canceled!"
+    Image: {fileID: 21300000, guid: 998705c9acfc7ea43a8eb42a9639262f, type: 3}
+  - Title: AllHell
+    Description: You kept dragging everyone to hell until humanity vanished from
+      Earth. When aliens finally visited the Earth, they found nothing but primitive
+      creatures, and left with disappointment.
+    Image: {fileID: 21300000, guid: 534ad2f5b4222244ab1e5f01e25cddb7, type: 3}
+  - Title: Cat
+    Description: "Under your judgment, the world has become filled with cat-like
+      humans. They commit the murder of cups teetering on table edges and present
+      captured bugs as gifts\u2026And they\u2019re full of personality, masters of
+      saying no."
+    Image: {fileID: 21300000, guid: e46426c411d84964795a41e001794b92, type: 3}
+  - Title: Dog
+    Description: "Under your judgment, the world became full of people like this\u2014just
+      toss something in a public place, you'll spot them right away."
+    Image: {fileID: 21300000, guid: 7812de5a19336ed47809314699f3f288, type: 3}
+  - Title: Rat
+    Description: "Mice reincarnate as mice\u2014you\u2019ve stuck firmly to that
+      principle. Complimentary pet rodents have now become a non-optional part of
+      every takeout meal."
+    Image: {fileID: 21300000, guid: 00ffdd3f3d9a7494098eb5f93b392cb2, type: 3}
+  - Title: Good1
+    Description: "You stand on the side of justice\u2019s scale. Human kindness has
+      evolved\u2014rickshaws now roam the streets solely to help grandmas cross the
+      road. Sometimes, they get escorted across before they even consider crossing."
+    Image: {fileID: 21300000, guid: ee9fa647fa7f8064781a80948a172222, type: 3}
+  - Title: Good2
+    Description: "Your judgment has nearly wiped out all evil\u2014people believe
+      a divine force is punishing the wicked, and the world has plunged into religious
+      frenzy."
+    Image: {fileID: 21300000, guid: 696d3b180c7a5304ba06a91e93280f0d, type: 3}

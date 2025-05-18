@@ -13,6 +13,6 @@ public class Name
 public class NamesSO : ScriptableObject
 {
     public Name[] names;
-}
+} 
 
 

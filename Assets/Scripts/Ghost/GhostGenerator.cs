@@ -17,7 +17,7 @@ public class GhostInstance
     public int age;
     public List<Record> records = new List<Record>(10);
     public Sprite sprite;
-    public bool judgement; //审判结果
+    public bool isReborn; //审判结果
 }
 
 public class GhostGenerator : MonoBehaviour

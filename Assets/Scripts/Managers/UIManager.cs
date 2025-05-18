@@ -27,6 +27,10 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private Slider ResultSlider;
     [SerializeField] private GameObject ResultLayoutGroup;
 
+    [Header("Ending")]
+    [SerializeField] private Image EndingBackground;
+    [SerializeField] private TextMeshProUGUI EndingTMP;
+
     [Header("Panels")]
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject judgePanel;
@@ -294,7 +298,19 @@ public class UIManager : MonoBehaviour, IGameStateListener
         ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
 
         // 设置功德值文本
-        ResultGoodness.text = JudgeManager.Instance.goodness.ToString();
+        ResultGoodness.text = JudgeManager.Instance.currentGoodness.ToString();
+
+        // 设置结局图片和文本
+        if (JudgeManager.Instance.currentEnding.Title == "Normal") {
+            EndingBackground.sprite = null;
+        }
+        else {
+            EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
+        }
+        EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
+
+        // 打开结局面板
+        ShowPanel(EndingPanel);
     }
 
     private void SetResultUI(Transform counterUI, int nRebirth, int nHell) {
