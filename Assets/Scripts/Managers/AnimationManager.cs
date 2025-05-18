@@ -121,7 +121,8 @@ public class AnimationManager : MonoBehaviour
         littleDemon.WalkBackToGetNewFile();
     }
 
-    public void PlayRebirth(){
+    public void PlayRebirth()
+    {
         rebirthEffect.gameObject.SetActive(true);
         Debug.Log("AnimationManager PlayPullToHell");
         demon.Rebirth();

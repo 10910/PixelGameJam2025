@@ -114,6 +114,26 @@ public class UIManager : MonoBehaviour, IGameStateListener
         }
     }
 
+    public void OpenPullToHellEffect()
+    {
+        PullToHellEffect.SetActive(true);
+    }
+
+    public void ClosePullToHellEffect()
+    {
+        PullToHellEffect.SetActive(false);
+    }
+
+    public void OpenRebirthEffect()
+    {
+        RebirthEffect.SetActive(true);
+    }
+
+    public void CloseRebirthEffect()
+    {
+        RebirthEffect.SetActive(false);
+    }
+
     public void OpenJudgePanel()
     {
         judgePanel.SetActive(true);
@@ -296,6 +316,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
         Debug.Log("Opening EndingPanel");
         ShowPanel(EndingPanel);
     }
+
+
 
     private void SetResultUI(Transform counterUI, int nRebirth, int nHell)
     {
