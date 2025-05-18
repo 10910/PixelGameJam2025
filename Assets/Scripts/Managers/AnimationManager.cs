@@ -20,6 +20,8 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private PullToHellEffect pullToHellEffect;
     [SerializeField] private RebirthEffect rebirthEffect;
     [SerializeField] private Demon demon;
+
+    private LittleDemonScale littleDemonScale;
     private Light lighting;
 
     public static Action onJudgeAnimEnd;
@@ -34,6 +36,7 @@ public class AnimationManager : MonoBehaviour
             Destroy(gameObject);
         }
         lighting = FindAnyObjectByType<Light>();
+        littleDemonScale = FindAnyObjectByType<LittleDemonScale>();
         GameManager.onStartNewRound += OnStartNewRound;
     }
 
@@ -118,6 +121,7 @@ public class AnimationManager : MonoBehaviour
         demon.PullToHell();
         GhostManager.Instance.StopGhostDialogue();
         littleDemon.WalkBackToGetNewFile();
+        littleDemonScale.DisableInteraction();
     }
 
     public void PlayRebirth()
@@ -127,6 +131,7 @@ public class AnimationManager : MonoBehaviour
         demon.Rebirth();
         GhostManager.Instance.StopGhostDialogue();
         littleDemon.WalkBackToGetNewFile();
+        littleDemonScale.EnableInteraction();
     }
 
     public void PullGhostDown()

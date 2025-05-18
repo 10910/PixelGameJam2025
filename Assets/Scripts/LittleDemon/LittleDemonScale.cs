@@ -18,6 +18,11 @@ public class LittleDemonScale : MonoBehaviour
         GhostDialogue.onDialogueEnd -= EnableInteraction;
     }
 
+    private void Start()
+    {
+        DisableInteraction();
+    }
+
 
     //禁止交互  
     public void DisableInteraction()

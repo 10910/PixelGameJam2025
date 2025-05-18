@@ -38,6 +38,7 @@ public class myCursor : MonoBehaviour
 
     void OnEnable()
     {
+        Cursor.visible = false;
 
         // 设置鼠标光标并锁定
         SetCustomCursor(hiddenCursor);
@@ -80,7 +81,7 @@ public class myCursor : MonoBehaviour
     void OnDisable()
     {
         // 显示鼠标光标并解除锁定
-        // Cursor.visible = true;
+        Cursor.visible = true;
         // Cursor.lockState = CursorLockMode.None;
         // 将热点设置为光标中心
         Cursor.SetCursor(originCursor, Vector2.zero, CursorMode.Auto);
