@@ -20,6 +20,7 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private PullToHellEffect pullToHellEffect;
     [SerializeField] private RebirthEffect rebirthEffect;
     [SerializeField] private Demon demon;
+    private Light lighting;
 
     public static Action onJudgeAnimEnd;
     private void Awake()
@@ -32,8 +33,9 @@ public class AnimationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        littleDemon = FindAnyObjectByType<LittleDemon>();
+        lighting = FindAnyObjectByType<Light>();
         GameManager.onStartNewRound += OnStartNewRound;
-
     }
 
     private void OnDestroy()
@@ -41,15 +43,13 @@ public class AnimationManager : MonoBehaviour
         GameManager.onStartNewRound -= OnStartNewRound;
     }
 
-
     private void Start()
     {
 
     }
-
     void OnStartNewRound()
     {
-        Light.SetActive(false);
+        lighting.CloseLightImmediately();
         ghostSprite.SetActive(false);
         Background_Light.SetActive(false);
         Background_Dark.SetActive(true);
@@ -65,7 +65,7 @@ public class AnimationManager : MonoBehaviour
            .AppendCallback(() =>
            {
                ghostSprite.SetActive(true);
-               Light.SetActive(true);
+               lighting.OpenLight();
                Background_Light.SetActive(true);
                // 延迟0.7秒开始幽灵对话
                GhostManager.Instance.StartGhostDialogue(0.7f);
@@ -89,7 +89,7 @@ public class AnimationManager : MonoBehaviour
         seq.AppendInterval(1f)
            .AppendCallback(() =>
            {
-               Light.SetActive(false);
+               lighting.CloseLight();
                // 切换成无光照背景
                Background_Light.SetActive(false);
                Background_Dark.SetActive(true);

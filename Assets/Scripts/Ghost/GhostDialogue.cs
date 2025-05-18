@@ -60,7 +60,10 @@ public class GhostDialogue : MonoBehaviour
 
     private void OnDisable()
     {
-        DialogueManager.instance.StopConversation();
+        if (DialogueManager.instance != null)
+        {
+            DialogueManager.instance.StopConversation();
+        }
     }
 
     private void OnDestroy()
@@ -70,7 +73,10 @@ public class GhostDialogue : MonoBehaviour
         {
             DialogueManager.instance.conversationEnded -= OnConversationEnd;
         }
-        DialogueManager.instance.StopConversation();
+        if (DialogueManager.instance != null)
+        {
+            DialogueManager.instance.StopConversation();
+        }
     }
 
     public void GetNewDialogue()

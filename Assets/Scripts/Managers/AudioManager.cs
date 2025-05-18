@@ -189,7 +189,10 @@ public class AudioManager : MonoBehaviour
     }
     public void PauseMusic()
     {
-        musicSource.Pause();
+        if (musicSource != null)
+        {
+            musicSource.Pause();
+        }
     }
     public void StartMusic()
     {

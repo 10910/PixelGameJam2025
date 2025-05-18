@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     public static UIManager Instance;
     [Header("Elements")]
     private GameManager gameManager;
-    [SerializeField] private GameObject Light;
+    // [SerializeField] private GameObject Light;
     [SerializeField] private GameObject Background_Light;
     [SerializeField] private GameObject Background_Dark;
 
@@ -220,6 +220,13 @@ public class UIManager : MonoBehaviour, IGameStateListener
         RecordsTMP.text = JudgeManager.Instance.recordsText;
     }
 
+    private void JudgeEndCallback()
+    {
+        ClosePullToHellEffect();
+        CloseRebirthEffect();
+        // Invoke("CloseLight", 1f);
+    }
+
     [Button("roundend")]
     private void RoundEndCallback()
     {
@@ -267,6 +274,8 @@ public class UIManager : MonoBehaviour, IGameStateListener
         SetResultUI(dog, dogCnts[0], dogCnts[1]);
         SetResultUI(rat, ratCnts[0], ratCnts[1]);
 
+        Debug.Log("humanCnts: " + humanCnts[0] + " " + humanCnts[1]);
+
         // 设置轮次文本
         ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
 
@@ -293,5 +302,4 @@ public class UIManager : MonoBehaviour, IGameStateListener
         counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
         counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
     }
-
 }
