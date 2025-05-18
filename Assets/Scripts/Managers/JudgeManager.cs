@@ -9,7 +9,8 @@ public class JudgeHistory
 {
     Dictionary<string, int[]> history = new Dictionary<string, int[]>();
 
-    public void Add(JudgeHistory another) {
+    public void Add(JudgeHistory another)
+    {
 
     }
 }
@@ -56,9 +57,10 @@ public class JudgeManager : MonoBehaviour
         endingHistory = new Dictionary<string, bool>();
         GameManager.onStartNewRound += OnStartNewRoundCallback;
         endings = Resources.Load<EndingsSO>("EndingsSO");
-        
+
         // 初始化结局访问记录
-        foreach (Ending ending in endings.endings){
+        foreach (Ending ending in endings.endings)
+        {
             endingHistory.Add(ending.Title, false);
         }
     }
@@ -199,25 +201,29 @@ public class JudgeManager : MonoBehaviour
         totalGoodness += currentGoodness;
     }
 
-    void CheckEnding(){
+    void CheckEnding()
+    {
         // 默认普通结局， 多个结局同时发生时只会触发最后检测的 优先级：鼠>猫>狗>全转生>好人结局
         Ending roundEnding = endings.GetEndingByName("Normal");
-        
+
         // 老鼠结局 总计转生次数大于等于5
         int[] cnt = new int[2];
-        if(history.TryGetValue("Rat", out cnt) && cnt[0] >= 5 && !endingHistory["Rat"]) {
+        if (history.TryGetValue("Rat", out cnt) && cnt[0] >= 5 && !endingHistory["Rat"])
+        {
             endingHistory["Rat"] = true;
             roundEnding = endings.GetEndingByName("Rat");
         }
 
         // 猫结局 总计转生次数大于等于5
-        if (history.TryGetValue("Cat", out cnt) && cnt[0] >= 5 && !endingHistory["Cat"]) {
+        if (history.TryGetValue("Cat", out cnt) && cnt[0] >= 5 && !endingHistory["Cat"])
+        {
             endingHistory["Cat"] = true;
             roundEnding = endings.GetEndingByName("Cat");
         }
 
         // 狗结局 总计转生次数大于等于5
-        if (history.TryGetValue("Dog", out cnt) && cnt[0] >= 5 && !endingHistory["Dog"]) {
+        if (history.TryGetValue("Dog", out cnt) && cnt[0] >= 5 && !endingHistory["Dog"])
+        {
             endingHistory["Dog"] = true;
             roundEnding = endings.GetEndingByName("Dog");
         }
@@ -225,31 +231,38 @@ public class JudgeManager : MonoBehaviour
         // 所有人转生/下地狱结局
         bool areAllReborn = true;
         bool areAllHell = true;
-        foreach (var ghost in ghosts) {
-            if (ghost.isReborn) {
+        foreach (var ghost in ghosts)
+        {
+            if (ghost.isReborn)
+            {
                 areAllHell = false;
             }
-            else {
+            else
+            {
                 areAllReborn = false;
             }
         }
         // 所有人转生
-        if (areAllReborn && !endingHistory["AllReborn"]) {
+        if (areAllReborn && !endingHistory["AllReborn"])
+        {
             endingHistory["AllReborn"] = true;
             roundEnding = endings.GetEndingByName("AllReborn");
         }
         // 所有人下地狱
-        if (areAllHell && !endingHistory["AllHell"]) {
+        if (areAllHell && !endingHistory["AllHell"])
+        {
             endingHistory["AllHell"] = true;
             roundEnding = endings.GetEndingByName("AllHell");
         }
 
         // 好人结局 累计善良值达到一定数量时触发
-        if (totalGoodness >= 10 && totalGoodness < 20 && !endingHistory["Good1"]) {
+        if (totalGoodness >= 10 && totalGoodness < 20 && !endingHistory["Good1"])
+        {
             endingHistory["Good1"] = true;
             roundEnding = endings.GetEndingByName("Good1");
         }
-        else if(totalGoodness >= 20){
+        else if (totalGoodness >= 20)
+        {
             endingHistory["Good2"] = true;
             roundEnding = endings.GetEndingByName("Good2");
         }

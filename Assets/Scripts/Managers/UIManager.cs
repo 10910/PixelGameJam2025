@@ -103,6 +103,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     //显示自己 关闭其他
     public void ShowPanel(GameObject panel)
     {
+        Debug.Log("ShowPanel: " + panel.name);
         foreach (GameObject p in panels)
         {
             p.SetActive(p == panel);
@@ -220,7 +221,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
     }
 
     [Button("roundend")]
-    private void RoundEndCallback(){
+    private void RoundEndCallback()
+    {
+        Debug.Log("RoundEndCallback");
         print("set result UI");
         // 设置审判结果
         var history = JudgeManager.Instance.history;
@@ -234,23 +237,28 @@ public class UIManager : MonoBehaviour, IGameStateListener
         int[] dogCnts = new int[2];
         int[] catCnts = new int[2];
         int[] ratCnts = new int[2];
-        if(history.TryGetValue("male", out cnts)){
+        if (history.TryGetValue("male", out cnts))
+        {
             humanCnts[0] += cnts[0];
             humanCnts[1] += cnts[1];
         }
-        if (history.TryGetValue("female", out cnts)) {
+        if (history.TryGetValue("female", out cnts))
+        {
             humanCnts[0] += cnts[0];
             humanCnts[1] += cnts[1];
         }
-        if (history.TryGetValue("cat", out cnts)){
+        if (history.TryGetValue("cat", out cnts))
+        {
             catCnts[0] += cnts[0];
             catCnts[1] += cnts[1];
         }
-        if (history.TryGetValue("dot", out cnts)){
+        if (history.TryGetValue("dot", out cnts))
+        {
             dogCnts[0] += cnts[0];
             dogCnts[1] += cnts[1];
         }
-        if (history.TryGetValue("rat", out cnts)) {
+        if (history.TryGetValue("rat", out cnts))
+        {
             ratCnts[0] += cnts[0];
             ratCnts[1] += cnts[1];
         }
@@ -266,21 +274,25 @@ public class UIManager : MonoBehaviour, IGameStateListener
         ResultGoodness.text = JudgeManager.Instance.currentGoodness.ToString();
 
         // 设置结局图片和文本
-        if (JudgeManager.Instance.currentEnding.Title == "Normal") {
+        if (JudgeManager.Instance.currentEnding.Title == "Normal")
+        {
             EndingBackground.sprite = null;
         }
-        else {
+        else
+        {
             EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
         }
         EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
-
         // 打开结局面板
+        Debug.Log("Opening EndingPanel");
         ShowPanel(EndingPanel);
     }
 
-    private void SetResultUI(Transform counterUI, int nRebirth, int nHell) {
+    private void SetResultUI(Transform counterUI, int nRebirth, int nHell)
+    {
         // 一次都没有审判过时不显示这行UI
-        if (nRebirth == 0 && nHell == 0) { 
+        if (nRebirth == 0 && nHell == 0)
+        {
             counterUI.gameObject.SetActive(false);
             return;
         }
