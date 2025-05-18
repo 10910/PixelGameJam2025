@@ -190,7 +190,7 @@ public class JudgeManager : MonoBehaviour
             else
             {
                 // 好人下地狱取反 坏人下地狱取正
-                ghostGoodness = ghostGoodness < 0 ? -ghostGoodness : ghostGoodness;
+                ghostGoodness = ghostGoodness > 0 ? -ghostGoodness : ghostGoodness;
                 history[type][1]++;
             }
             goodness += ghostGoodness;
