@@ -21,6 +21,7 @@ public class myCursor : MonoBehaviour
         sizeDelta = rectTransform.sizeDelta;
         // 确保 RectTransform 的 pivot 在顶部中心
         rectTransform.pivot = new Vector2(0.5f, 1.0f);
+        Cursor.visible = false;
 
         // 获取 UI 相机，通常是 Canvas 的相机
         Canvas canvas = GetComponentInParent<Canvas>();

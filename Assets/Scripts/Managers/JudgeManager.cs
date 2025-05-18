@@ -126,16 +126,16 @@ public class JudgeManager : MonoBehaviour
             id = $"{ghosts[idx].ghostName}\n " +
                  $"{ghosts[idx].ghostType}\n" +
                  $"Age at Death: {ghosts[idx].age}\n" +
-                 $"Profession: {ghosts[idx].profession}\n" +
-                 $"Dead by: ";
+                 $"Profession: {ghosts[idx].profession}\n";
+                 //$"Dead by: ";
         }
         else
         {
             //动物
             id = $"{ghosts[idx].ghostName}\n " +
                  $"{ghosts[idx].ghostType}\n" +
-                 $"Age at Death: {ghosts[idx].age}\n" +
-                 $"Dead by: ";
+                 $"Age at Death: {ghosts[idx].age}\n";
+                 //$"Dead by: ";
         }
         idText = id;
 
@@ -183,14 +183,13 @@ public class JudgeManager : MonoBehaviour
 
             if (ghost.isReborn)
             {
-                // 好人转生取正 坏人转生取反
-                ghostGoodness = ghostGoodness > 0 ? ghostGoodness : -ghostGoodness;
+                // 转生时好人增加功德值 坏人减少功德值 幽灵善良值正负不变
                 history[type][0]++;
             }
             else
             {
-                // 好人下地狱取反 坏人下地狱取正
-                ghostGoodness = ghostGoodness > 0 ? -ghostGoodness : ghostGoodness;
+                // 下地狱时好人减少功德值 坏人增加功德值 给幽灵善良值正负取反
+                ghostGoodness = -ghostGoodness;
                 history[type][1]++;
             }
             goodness += ghostGoodness;
