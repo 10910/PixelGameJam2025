@@ -8,10 +8,8 @@ using PixelCrushers.DialogueSystem;
 public class JudgeHistory
 {
     Dictionary<string, int[]> history = new Dictionary<string, int[]>();
-
     public void Add(JudgeHistory another)
     {
-
     }
 }
 

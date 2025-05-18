@@ -151,12 +151,12 @@ TextureImporter:
       name: light_close_animation_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 13
-        width: 60
-        height: 83
+        x: 0
+        y: 0
+        width: 80
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: light_close_animation_1
       rect:
         serializedVersion: 2
-        x: 97
-        y: 13
-        width: 46
-        height: 83
+        x: 80
+        y: 0
+        width: 80
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,12 +195,12 @@ TextureImporter:
       name: light_close_animation_2
       rect:
         serializedVersion: 2
-        x: 180
-        y: 13
-        width: 40
-        height: 83
+        x: 160
+        y: 0
+        width: 80
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -217,12 +217,12 @@ TextureImporter:
       name: light_close_animation_3
       rect:
         serializedVersion: 2
-        x: 271
-        y: 13
-        width: 18
-        height: 83
+        x: 240
+        y: 0
+        width: 80
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,11 +235,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: light_close_animation_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 80
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259dc228c75e2024f999580cf3e3c5de
+      internalID: 1410507890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 96960cce50a60b64aa8640fd79e1bcf2
     internalID: 0
     vertices: []
     indices: 
@@ -253,6 +275,7 @@ TextureImporter:
       light_close_animation_1: 7489623428810195626
       light_close_animation_2: -5666513726121403144
       light_close_animation_3: 6604787850377861809
+      light_close_animation_4: 1410507890
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
