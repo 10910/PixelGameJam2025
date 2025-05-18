@@ -2008,6 +2008,7 @@ MonoBehaviour:
     Title: 
     Description: 
     Image: {fileID: 0}
+  currentGhostIdx: 0
   generator: {fileID: 219220225}
 --- !u!1 &199833755
 GameObject:
@@ -5951,7 +5952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &684132619
 RectTransform:
   m_ObjectHideFlags: 0
