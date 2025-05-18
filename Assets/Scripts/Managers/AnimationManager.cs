@@ -32,7 +32,9 @@ public class AnimationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        littleDemon = FindAnyObjectByType<LittleDemon>();
         GameManager.onStartNewRound += OnStartNewRound;
+
     }
 
     private void OnDestroy()

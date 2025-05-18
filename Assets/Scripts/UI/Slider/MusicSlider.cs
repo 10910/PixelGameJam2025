@@ -11,6 +11,8 @@ public class MusicSlider : MonoBehaviour
 
     private void Awake()
     {
+        _musicSlider.value = AudioManager.Instance.globalMusicVolume.currentValue;
+        _sfxSlider.value = AudioManager.Instance.globalSFXVolume.currentValue;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -14,6 +14,21 @@ public class GhostDialogue : MonoBehaviour
     private GhostDialogueSO ratGhostDialogueSO;
     [SerializeField]
     private GhostDialogueSO humanGhostDialogueSO;
+    [SerializeField]
+    private GhostDialogueSO oldManghostDialogueSO;
+    [SerializeField]
+    private GhostDialogueSO oldWomanghostDialogueSO;
+    [SerializeField]
+    private GhostDialogueSO middleAgedWomanghostDialogueSO;
+
+    [SerializeField]
+    private GhostDialogueSO middleAgedManghostDialogueSO;
+
+    [SerializeField]
+    private GhostDialogueSO youngManghostDialogueSO;
+    [SerializeField]
+    private GhostDialogueSO youngWomanghostDialogueSO;
+
 
     [Header("Actions")]
     public static Action onDialogueEnd;
@@ -32,10 +47,15 @@ public class GhostDialogue : MonoBehaviour
         dogGhostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/DogGhostDialogueSO");
         ratGhostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/RatGhostDialogueSO");
         humanGhostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/HumanGhostDialogueSO");
+        oldManghostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/OldManGhostDialogueSO");
+        oldWomanghostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/OldWomanGhostDialogueSO");
+        middleAgedWomanghostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/MiddleAgedWomanGhostDialogueSO");
+        middleAgedManghostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/MiddleAgedManGhostDialogueSO");
+        youngManghostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/YoungManGhostDialogueSO");
+        youngWomanghostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/YoungWomanGhostDialogueSO");
     }
     void OnEnable()
     {
-
     }
 
     private void OnDisable()
@@ -69,10 +89,10 @@ public class GhostDialogue : MonoBehaviour
                 conversationName = ratGhostDialogueSO.dialogueNames[Random.Range(0, ratGhostDialogueSO.dialogueNames.Count)];
                 break;
             case GhostType.male:
-                conversationName = humanGhostDialogueSO.dialogueNames[Random.Range(0, humanGhostDialogueSO.dialogueNames.Count)];
+                GetManDialogue();
                 break;
             case GhostType.female:
-                conversationName = humanGhostDialogueSO.dialogueNames[Random.Range(0, humanGhostDialogueSO.dialogueNames.Count)];
+                GetWomanDialogue();
                 break;
             default:
                 break;
@@ -89,7 +109,72 @@ public class GhostDialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
 
+
+    public void GetManDialogue()
+    {
+        if (JudgeManager.Instance.ghosts[JudgeManager.Instance.currentGhostIdx].age >= 65)
+        {
+            GetOldManDialogue();
+        }
+        else if (JudgeManager.Instance.ghosts[JudgeManager.Instance.currentGhostIdx].age >= 35)
+        {
+            GetMiddleAgedManDialogue();
+        }
+        else
+        {
+            GetYoungManDialogue();
+        }
+    }
+    public void GetWomanDialogue()
+    {
+        if (JudgeManager.Instance.ghosts[JudgeManager.Instance.currentGhostIdx].age >= 65)
+        {
+            GetOldWomanDialogue();
+        }
+        else if (JudgeManager.Instance.ghosts[JudgeManager.Instance.currentGhostIdx].age >= 35)
+        {
+            GetMiddleAgedWomanDialogue();
+        }
+        else
+        {
+            GetYoungWomanDialogue();
+        }
+    }
+
+    public void GetYoungManDialogue()
+    {
+        conversationName = youngManghostDialogueSO.dialogueNames[Random.Range(0, youngManghostDialogueSO.dialogueNames.Count)];
+    }
+
+    public void GetYoungWomanDialogue()
+    {
+        conversationName = youngWomanghostDialogueSO.dialogueNames[Random.Range(0, youngWomanghostDialogueSO.dialogueNames.Count)];
+    }
+
+    public void GetMiddleAgedManDialogue()
+    {
+        conversationName = middleAgedManghostDialogueSO.dialogueNames[Random.Range(0, middleAgedManghostDialogueSO.dialogueNames.Count)];
+    }
+
+    public void GetMiddleAgedWomanDialogue()
+    {
+        conversationName = middleAgedWomanghostDialogueSO.dialogueNames[Random.Range(0, middleAgedWomanghostDialogueSO.dialogueNames.Count)];
+    }
+    public void GetDogDialogue()
+    {
+        conversationName = dogGhostDialogueSO.dialogueNames[Random.Range(0, dogGhostDialogueSO.dialogueNames.Count)];
+    }
+
+    public void GetOldManDialogue()
+    {
+        conversationName = oldManghostDialogueSO.dialogueNames[Random.Range(0, oldManghostDialogueSO.dialogueNames.Count)];
+    }
+
+    public void GetOldWomanDialogue()
+    {
+        conversationName = oldWomanghostDialogueSO.dialogueNames[Random.Range(0, oldWomanghostDialogueSO.dialogueNames.Count)];
     }
 
     //不知道为什么每次对话结束会触发两次
