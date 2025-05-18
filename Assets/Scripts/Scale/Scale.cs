@@ -31,14 +31,15 @@ public class scale : MonoBehaviour
     {
         CloseJudgePanel();
         Debug.Log("Scale PullToHell");
-        JudgeManager.Instance.PullToHell();
+        AnimationManager.Instance.PlayPullToHell();
     }
 
     // 由Animation Event调用
     public void Rebirth()
     {
         CloseJudgePanel();
-        JudgeManager.Instance.Rebirth();
+        //JudgeManager.Instance.Rebirth();
+        AnimationManager.Instance.PlayRebirth();
     }
 
     private void CloseJudgePanel()

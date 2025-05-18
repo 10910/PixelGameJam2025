@@ -70,7 +70,6 @@ public class UIManager : MonoBehaviour, IGameStateListener
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
         JudgeManager.onStartNewJudge += StartNewJudgeCallback;
-        JudgeManager.onJudgeEnd += JudgeEndCallback;
         JudgeManager.onRoundEnd += RoundEndCallback;
 
         Buttons.SetActive(false);
@@ -81,15 +80,11 @@ public class UIManager : MonoBehaviour, IGameStateListener
         gameManager.onGamePause -= GamePausedCallback;
         gameManager.onGameResume -= GameResumedCallback;
         JudgeManager.onStartNewJudge -= StartNewJudgeCallback;
-        JudgeManager.onJudgeEnd -= JudgeEndCallback;
         JudgeManager.onRoundEnd -= RoundEndCallback;
     }
 
     void Start()
     {
-        //CloseLight();
-        ClosePullToHellEffect();
-        CloseRebirthEffect();
     }
 
     public void GameStateChangedCallback(GameState gameState)
@@ -118,8 +113,6 @@ public class UIManager : MonoBehaviour, IGameStateListener
             // }
         }
     }
-
-
 
     public void OpenJudgePanel()
     {
@@ -206,27 +199,6 @@ public class UIManager : MonoBehaviour, IGameStateListener
         {
             OpenFilesPanel();
         }
-    }
-
-    public void OpenPullToHellEffect()
-    {
-        PullToHellEffect.SetActive(true);
-    }
-
-    public void ClosePullToHellEffect()
-    {
-        PullToHellEffect.SetActive(false);
-    }
-
-    public void OpenRebirthEffect()
-    {
-        RebirthEffect.SetActive(true);
-        GhostManager.Instance.currentGhost.gameObject.SetActive(false);
-    }
-
-    public void CloseRebirthEffect()
-    {
-        RebirthEffect.SetActive(false);
     }
 
     private void GamePausedCallback()

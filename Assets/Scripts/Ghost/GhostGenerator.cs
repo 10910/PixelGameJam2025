@@ -46,16 +46,14 @@ public class GhostGenerator : MonoBehaviour
         recordsSO = Resources.Load<RecordsSO>("RecordsSO");
         spriteListsSO = Resources.Load<SpriteLists>("SpriteListsSO");
 
-        //JudgeManager.onJudgeEnd += nextGhost;
-
+#if UNITY_EDITOR
+        // 仅在编辑器模式下设置随机种子
         Random.InitState(randomSeed);
-        //GenerateGhosts();
-        //DisplayGhost(0);
+#endif
     }
 
     void OnDestroy()
     {
-        //JudgeManager.onJudgeEnd -= nextGhost;
     }
 
     public List<GhostInstance> GenerateGhosts()

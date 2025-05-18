@@ -2524,7 +2524,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGhost: {fileID: 1105601983}
-  uiManager: {fileID: 0}
   ghostSpawnPoint: {fileID: 2136373910}
 --- !u!114 &219220225
 MonoBehaviour:
@@ -2899,7 +2898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &276143841
 Transform:
   m_ObjectHideFlags: 0
@@ -6881,12 +6880,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924745e4301d8a5428b44dc983ba069b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Light: {fileID: 1710980361}
+  ghostSprite: {fileID: 2136373909}
+  Light: {fileID: 2055943749}
   Background_Light: {fileID: 2120527301}
   Background_Dark: {fileID: 629644137}
   blackBackground: {fileID: 1632399268}
-  ghostSprite: {fileID: 2136373909}
-  littleDemon: {fileID: 0}
+  littleDemon: {fileID: 731578410}
   pullToHellEffect: {fileID: 276143842}
   rebirthEffect: {fileID: 365434850}
   demon: {fileID: 2101993425}
