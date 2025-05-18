@@ -29,6 +29,8 @@ public class GhostDialogue : MonoBehaviour
     [SerializeField]
     private GhostDialogueSO youngWomanghostDialogueSO;
 
+    private bool isDialogueEndForced = false;
+
 
     [Header("Actions")]
     public static Action onDialogueEnd;
@@ -38,6 +40,7 @@ public class GhostDialogue : MonoBehaviour
     private void Awake()
     {
         dialogueSystemTrigger = GetComponent<DialogueSystemTrigger>();
+        isDialogueEndForced = false;
 
         // 注册对话结束事件
         DialogueManager.instance.conversationEnded += OnConversationEnd;
@@ -56,14 +59,12 @@ public class GhostDialogue : MonoBehaviour
     }
     void OnEnable()
     {
+        isDialogueEndForced = false;
     }
 
     private void OnDisable()
     {
-        if (DialogueManager.instance != null)
-        {
-            DialogueManager.instance.StopConversation();
-        }
+        ForceEndDialogue();
     }
 
     private void OnDestroy()
@@ -73,6 +74,12 @@ public class GhostDialogue : MonoBehaviour
         {
             DialogueManager.instance.conversationEnded -= OnConversationEnd;
         }
+        ForceEndDialogue();
+    }
+
+    public void ForceEndDialogue()
+    {
+        isDialogueEndForced = true;
         if (DialogueManager.instance != null)
         {
             DialogueManager.instance.StopConversation();
@@ -189,6 +196,10 @@ public class GhostDialogue : MonoBehaviour
         Debug.Log("对话已结束");
         // 在这里执行对话结束后的逻辑
         //让小恶魔把资料拿过来
-        onDialogueEnd?.Invoke();
+        //判断如果对话不是被强行结束的，则让小恶魔把资料拿过来
+        if (!isDialogueEndForced)
+        {
+            onDialogueEnd?.Invoke();
+        }
     }
 }

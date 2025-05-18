@@ -22,7 +22,7 @@ public class LittleDemon : MonoBehaviour
     private void OnDestroy()
     {
         //取消订阅
-        GhostDialogue.onDialogueEnd -= DeliverFile;
+        GhostDialogue.onDialogueEnd -= OnDialogueEndCallback;
         JudgeManager.onJudgeEnd -= WalkBackToGetNewFile;
     }
 
@@ -47,15 +47,24 @@ public class LittleDemon : MonoBehaviour
     }
 
     [Button("WalkBackToGetNewFile")]
+    //可能需要判断一下现在的位置是否在targetposition 如果不是则不需要往回走
     public void WalkBackToGetNewFile()
     {
-        transform.position = targetPosition.position;
-        // rectTransform.anchoredPosition = startPosition;
-        animator.SetBool("isWalkback", true);
-        float duration = Vector3.Distance(targetPosition.position, startPosition.position) / speed;
-        transform.DOMove(startPosition.position, duration)
-                 .SetEase(Ease.Linear)
-                 .OnComplete(() => animator.SetBool("isWalkback", false)); // 在移动结束时设置 isWalk 为 false
+        if (transform.position == targetPosition.position)
+        {
+            transform.position = targetPosition.position;
+            // rectTransform.anchoredPosition = startPosition;
+            animator.SetBool("isWalkback", true);
+            float duration = Vector3.Distance(targetPosition.position, startPosition.position) / speed;
+            transform.DOMove(startPosition.position, duration)
+                     .SetEase(Ease.Linear)
+                     .OnComplete(() => animator.SetBool("isWalkback", false)); // 在移动结束时设置 isWalk 为 false
+        }
+    }
+
+    public void OnDialogueEndCallback()
+    {
+        DeliverFile();
     }
 
     public void LittleDemonFileButtonCallback()
@@ -68,3 +77,4 @@ public class LittleDemon : MonoBehaviour
         UIManager.Instance.OpenIDPanel();
     }
 }
+
