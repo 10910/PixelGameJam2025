@@ -275,7 +275,7 @@ public class AudioManager : MonoBehaviour
     public void PlayGamePlayMusic()
     {
         Debug.Log("PlayGamePlayMusic");
-        PlayMusicNotLoop("gamePlay");
+        PlayMusic("gamePlay");
     }
 
 }

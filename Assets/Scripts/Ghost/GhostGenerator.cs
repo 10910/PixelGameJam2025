@@ -1,12 +1,6 @@
-using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor.Drawers;
-using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
 
 [System.Serializable]
 public class GhostInstance
@@ -55,7 +49,7 @@ public class GhostGenerator : MonoBehaviour
 
     public List<GhostInstance> GenerateGhosts()
     {
-        List <GhostInstance> ghosts = new List <GhostInstance>(nGhosts);
+        List<GhostInstance> ghosts = new List<GhostInstance>(nGhosts);
         // 检验nGhost有效性
         if (nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length)
         {
@@ -135,13 +129,16 @@ public class GhostGenerator : MonoBehaviour
                     }
                 }
                 // 随机选两个生平
-                if (ghost.ghostType == GhostType.cat){
+                if (ghost.ghostType == GhostType.cat)
+                {
                     ghost.records = RandomPick(2, catRecords);
                 }
-                else if (ghost.ghostType == GhostType.dog) {
+                else if (ghost.ghostType == GhostType.dog)
+                {
                     ghost.records = RandomPick(2, dogRecords);
                 }
-                else if (ghost.ghostType == GhostType.rat) {
+                else if (ghost.ghostType == GhostType.rat)
+                {
                     ghost.records = RandomPick(2, ratRecords);
                 }
 
@@ -151,10 +148,12 @@ public class GhostGenerator : MonoBehaviour
         return ghosts;
     }
 
-    List<T> RandomPick<T>(int n, List<T> list){
+    List<T> RandomPick<T>(int n, List<T> list)
+    {
         var shuffled = list.OrderBy(x => Random.value).ToList();
         List<T> result = new List<T>(n);
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++)
+        {
             result.Add(shuffled[i]);
         }
         return result;
