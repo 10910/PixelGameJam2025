@@ -34,6 +34,7 @@ public class GhostDialogue : MonoBehaviour
 
     [Header("Actions")]
     public static Action onDialogueEnd;
+    public static Action onDialogueStart;
     private DialogueSystemTrigger dialogueSystemTrigger;
     public string conversationName = "Cat_Conversation";
 
@@ -44,6 +45,7 @@ public class GhostDialogue : MonoBehaviour
 
         // 注册对话结束事件
         DialogueManager.instance.conversationEnded += OnConversationEnd;
+        DialogueManager.instance.conversationStarted += OnConversationStart;
         dialogueSystemTrigger.conversation = conversationName;
 
         catGhostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/CatGhostDialogueSO");
@@ -73,6 +75,7 @@ public class GhostDialogue : MonoBehaviour
         if (DialogueManager.instance != null)
         {
             DialogueManager.instance.conversationEnded -= OnConversationEnd;
+            DialogueManager.instance.conversationStarted -= OnConversationStart;
         }
         ForceEndDialogue();
     }
@@ -201,5 +204,12 @@ public class GhostDialogue : MonoBehaviour
         {
             onDialogueEnd?.Invoke();
         }
+    }
+
+    private void OnConversationStart(Transform actor)
+    {
+        Debug.Log("对话已开始");
+        //禁止天平小恶魔按钮交互
+        onDialogueStart?.Invoke();
     }
 }
