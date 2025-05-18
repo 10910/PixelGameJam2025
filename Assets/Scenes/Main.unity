@@ -2546,7 +2546,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2136373911}
   nGhosts: 3
   randomSeed: 10912
-  minimiumRecords: 5
+  minimiumRecords: 3
 --- !u!1 &249596396
 GameObject:
   m_ObjectHideFlags: 0
