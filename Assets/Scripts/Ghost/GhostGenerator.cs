@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor.Drawers;
 using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +28,9 @@ public class GhostGenerator : MonoBehaviour
     public RecordsSO recordsSO;
     public SpriteLists spriteListsSO;
 
-    public TextMeshProUGUI idText;
-    public TextMeshProUGUI recordText;
-    public SpriteRenderer spriteRenderer;
-
     public int nGhosts;
     public int randomSeed = 10910;
-    public int minimiumRecords = 5;
+    public int minimiumRecords = 3;
 
     Name[] names;
     string[] professions;
@@ -71,6 +68,10 @@ public class GhostGenerator : MonoBehaviour
         names = namesSO.names.OrderBy(x => Random.value).ToArray();
         professions = profsSO.professions.OrderBy(x => Random.value).ToArray();
         records = recordsSO.records.OrderBy(x => Random.value).ToList();
+        List<Record> dogRecords = records.Where(r => r.typeCondition == GhostType.dog).ToList();
+        List<Record> catRecords = records.Where(r => r.typeCondition == GhostType.cat).ToList();
+        List<Record> ratRecords = records.Where(r => r.typeCondition == GhostType.rat).ToList();
+        List<Record> humanRecords = records.Where(r => r.typeCondition == GhostType.male || r.typeCondition == GhostType.female).ToList();
 
         // 每个人用的records数目不确定 所以用enumerator访问
         IEnumerator<Record> enumerator = records.GetEnumerator();
@@ -84,15 +85,14 @@ public class GhostGenerator : MonoBehaviour
             if (ghost.ghostType == GhostType.male || ghost.ghostType == GhostType.female)
             {
                 // 人类
-                ghost.profession = professions[i];
-                int age = Random.Range(15, 100);
+                ghost.profession = professions[i];  // 职业
+                int age = Random.Range(15, 100);    // 年龄
                 ghost.age = age;
-                // 在minimiumRecords的基础上每15岁增加一条记录
-                int nRecord = minimiumRecords; //+ (age - 15) % 15;
-                for (int j = 0; j < nGhosts; j++)
+                //+ (age - 15) % 15; //在minimiumRecords的基础上每15岁增加一条记录（作废）
+                int startIdx = minimiumRecords * i;
+                for (int j = startIdx; j < startIdx + minimiumRecords; j++)
                 {
-                    ghost.records.Add(enumerator.Current);
-                    enumerator.MoveNext();
+                    ghost.records.Add(humanRecords[j]);
                 }
                 // 判断年龄区间
                 GhostAge ghostAge;
@@ -134,9 +134,29 @@ public class GhostGenerator : MonoBehaviour
                         ghost.sprite = gs.spriteList[Random.Range(0, nSprite)];
                     }
                 }
+                // 随机选两个生平
+                if (ghost.ghostType == GhostType.cat){
+                    ghost.records = RandomPick(2, catRecords);
+                }
+                else if (ghost.ghostType == GhostType.dog) {
+                    ghost.records = RandomPick(2, dogRecords);
+                }
+                else if (ghost.ghostType == GhostType.rat) {
+                    ghost.records = RandomPick(2, ratRecords);
+                }
+
             }
             ghosts.Add(ghost);
         }
         return ghosts;
+    }
+
+    List<T> RandomPick<T>(int n, List<T> list){
+        var shuffled = list.OrderBy(x => Random.value).ToList();
+        List<T> result = new List<T>(n);
+        for (int i = 0; i < n; i++){
+            result.Add(shuffled[i]);
+        }
+        return result;
     }
 }

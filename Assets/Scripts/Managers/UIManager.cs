@@ -274,14 +274,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         ResultGoodness.text = JudgeManager.Instance.currentGoodness.ToString();
 
         // 设置结局图片和文本
-        if (JudgeManager.Instance.currentEnding.Title == "Normal")
-        {
-            EndingBackground.sprite = null;
-        }
-        else
-        {
-            EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
-        }
+        EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
         EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
         // 打开结局面板
         Debug.Log("Opening EndingPanel");

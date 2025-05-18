@@ -66,10 +66,18 @@ MonoBehaviour:
     typeCondition: 3
     professionCondition: 
   - description: Cleaned up all leftovers
+    goodness: 1
+    typeCondition: 3
+    professionCondition: 
+  - description: Broke 25 office mugs
+    goodness: 1
+    typeCondition: 2
+    professionCondition: 
+  - description: Spun 10,910 times in lifetime
     goodness: 0
     typeCondition: 3
     professionCondition: 
-  - description: Broke 15 cups
+  - description: Sartled by a cucumber 12 times
     goodness: 0
     typeCondition: 2
     professionCondition: 
@@ -77,11 +85,31 @@ MonoBehaviour:
     goodness: -1
     typeCondition: 2
     professionCondition: 
-  - description: Helped catch bugs
+  - description: Caught bugs for the family
     goodness: 1
     typeCondition: 2
     professionCondition: 
-  - description: Doesn't mind belly rubs
-    goodness: 0
+  - description: Never hurt anyone during belly rubs
+    goodness: 1
     typeCondition: 2
+    professionCondition: 
+  - description: Chewed main Internet Cable
+    goodness: -1
+    typeCondition: 4
+    professionCondition: 
+  - description: Ate through 23 bags of rice
+    goodness: -1
+    typeCondition: 4
+    professionCondition: 
+  - description: Spent over 500 days zoning out
+    goodness: 0
+    typeCondition: 4
+    professionCondition: 
+  - description: Once worked for a research lab
+    goodness: 1
+    typeCondition: 4
+    professionCondition: 
+  - description: Helped the owner overcome depression
+    goodness: 1
+    typeCondition: 4
     professionCondition: 
