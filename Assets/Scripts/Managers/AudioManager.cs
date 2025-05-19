@@ -25,6 +25,13 @@ public class AudioManager : MonoBehaviour
     private float defaultSFXVolume = 0.5f;
 
     public BoolVariable isFirstPlayGame;
+    private GhostManager ghostManager;
+
+    [SerializeField]
+    private BoolVariable isNPC;
+
+    [SerializeField]
+    private BoolVariable isPC;
 
     [Header("sfx")]
 
@@ -39,7 +46,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip rebirthAudioClip;
     public AudioClip lightOnAudioClip;
 
-    public AudioClip dialogueAudioClip;
+    public AudioClip typingdialogueAudioClip;
+    public AudioClip catDialogueAudioClip;
+    public AudioClip dogDialogueAudioClip;
+    public AudioClip ratDialogueAudioClip;
+    public AudioClip humanDialogueAudioClip;
+    public AudioClip womanDialogueAudioClip;
+    public AudioClip demonDialogueAudioClip;
+
 
 
     [Header("music")]
@@ -63,6 +77,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        ghostManager = FindAnyObjectByType<GhostManager>(FindObjectsInactive.Include);
 
         // 初始化四个 SFX AudioSource
         for (int i = 0; i < sfxSources.Length; i++)
@@ -82,7 +97,14 @@ public class AudioManager : MonoBehaviour
         Sound hellSound = new Sound("hell", hellAudioClip, 1f);
         Sound rebirthSound = new Sound("rebirth", rebirthAudioClip, 1f);
         Sound lightOnSound = new Sound("lightOn", lightOnAudioClip, 1f);
-        Sound dialogueSound = new Sound("dialogue", dialogueAudioClip, 1f);
+        Sound typingdialogueSound = new Sound("typingdialogue", typingdialogueAudioClip, 1f);
+        Sound catDialogueSound = new Sound("catDialogue", catDialogueAudioClip, 0.3f);
+        Sound dogDialogueSound = new Sound("dogDialogue", dogDialogueAudioClip, 0.3f);
+        Sound ratDialogueSound = new Sound("ratDialogue", ratDialogueAudioClip, 0.3f);
+        Sound humanDialogueSound = new Sound("humanDialogue", humanDialogueAudioClip, 0.3f);
+        Sound womanDialogueSound = new Sound("womanDialogue", womanDialogueAudioClip, 0.3f);
+        Sound demonDialogueSound = new Sound("demonDialogue", demonDialogueAudioClip, 0.3f);
+
 
         sfxSounds.Add(moveFailSound);
 
@@ -94,7 +116,13 @@ public class AudioManager : MonoBehaviour
         sfxSounds.Add(hellSound);
         sfxSounds.Add(rebirthSound);
         sfxSounds.Add(lightOnSound);
-        sfxSounds.Add(dialogueSound);
+        sfxSounds.Add(typingdialogueSound);
+        sfxSounds.Add(catDialogueSound);
+        sfxSounds.Add(dogDialogueSound);
+        sfxSounds.Add(ratDialogueSound);
+        sfxSounds.Add(humanDialogueSound);
+        sfxSounds.Add(womanDialogueSound);
+        sfxSounds.Add(demonDialogueSound);
         Sound noormalbattleSound = new Sound("noormalBattle", noormalbattleSoundAudioClip, 0.05f);
 
         Sound menuSound = new Sound("menu", menuSoundAudioClip, 0.152f);
@@ -150,6 +178,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayMusic(Sound sound)
+    {
+        PlayMusic(sound.name);
+    }
+
     //play music not loop
     public void PlayMusicNotLoop(string name)
     {
@@ -176,6 +209,11 @@ public class AudioManager : MonoBehaviour
             return defaultVolume;
         }
         return defaultVolume * (globalVolume / 0.5f);
+    }
+
+    public void PlaySFX(Sound sound)
+    {
+        PlaySFX(sound.name);
     }
 
     public void PlaySFX(string name)
@@ -307,7 +345,42 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDialogue()
     {
-        PlaySFX("dialogue");
+        if (isPC.currentValue)
+        {
+            PlaySFX("demonDialogue");
+
+        }
+        else if (isNPC.currentValue)
+        {
+            if (ghostManager.currentGhost.ghostType == GhostType.cat)
+            {
+                PlaySFX("catDialogue"); // 使用声音名称
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.dog)
+            {
+                PlaySFX("dogDialogue");
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.rat)
+            {
+                PlaySFX("ratDialogue");
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.male)
+            {
+                PlaySFX("humanDialogue");
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.female)
+            {
+                PlaySFX("womanDialogue");
+            }
+        }
+
+        //那怎么判断恶魔呢
+        //
+    }
+
+    public void PlayTpyingSFX()
+    {
+        PlaySFX("typingdialogue");
     }
 
     public void StopDialogue()
