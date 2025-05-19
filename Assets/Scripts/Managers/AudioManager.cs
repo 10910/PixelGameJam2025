@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
         Sound buttonSelectSound = new Sound("buttonSelect", buttonSelectSoundAudioClip, 0.072f);
         Sound buttonClickSound = new Sound("buttonClick", buttonClickSoundAudioClip, 0.072f);
 
-        Sound scaleClickClickSound = new Sound("scaleClick", scaleClickAudioClip, 0.6f);
+        Sound scaleClickClickSound = new Sound("scaleClick", scaleClickAudioClip, 0.2f);
         Sound scaleJudgeClickSound = new Sound("scaleJudge", scaleJudgeAudioClip, 1f);
         Sound documentClickSound = new Sound("documentClick", documentClickAudioClip, 1.1f);
         Sound hellSound = new Sound("hell", hellAudioClip, 1f);
