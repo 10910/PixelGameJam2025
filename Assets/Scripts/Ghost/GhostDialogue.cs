@@ -200,10 +200,11 @@ public class GhostDialogue : MonoBehaviour
         // 在这里执行对话结束后的逻辑
         //让小恶魔把资料拿过来
         //判断如果对话不是被强行结束的，则让小恶魔把资料拿过来
-        if (!isDialogueEndForced)
-        {
-            onDialogueEnd?.Invoke();
-        }
+        // if (!isDialogueEndForced)
+        // {
+        //     onDialogueEnd?.Invoke();
+        // }
+        onDialogueEnd?.Invoke();
     }
 
     private void OnConversationStart(Transform actor)

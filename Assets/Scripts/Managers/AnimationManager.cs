@@ -131,7 +131,8 @@ public class AnimationManager : MonoBehaviour
         demon.Rebirth();
         GhostManager.Instance.StopGhostDialogue();
         littleDemon.WalkBackToGetNewFile();
-        littleDemonScale.EnableInteraction();
+        littleDemonScale.DisableInteraction();
+
     }
 
     public void PullGhostDown()
