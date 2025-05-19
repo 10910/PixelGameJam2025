@@ -12832,7 +12832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcbe69feee42194d847ec17aae01299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handCursor: {fileID: 21300000, guid: 7f30a915079df204f8941e73497a7133, type: 3}
+  handCursor: {fileID: 21300000, guid: 6a2446339a7143b45951e479979e6cdd, type: 3}
   normalCursor: {fileID: 21300000, guid: 6a2446339a7143b45951e479979e6cdd, type: 3}
   hiddenCursor: {fileID: 0}
   clickEffect: {fileID: 0}
