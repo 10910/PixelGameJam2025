@@ -8,13 +8,13 @@ public class LittleDemonScale : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        GhostDialogue.onDialogueStart += DisableInteraction;
+        //GhostDialogue.onDialogueStart += DisableInteraction;
         GhostDialogue.onDialogueEnd += EnableInteraction;
     }
 
     private void OnDestroy()
     {
-        GhostDialogue.onDialogueStart -= DisableInteraction;
+        //GhostDialogue.onDialogueStart -= DisableInteraction;
         GhostDialogue.onDialogueEnd -= EnableInteraction;
     }
 
