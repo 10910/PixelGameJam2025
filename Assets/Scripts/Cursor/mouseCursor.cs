@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class mouseCursor : MonoBehaviour
+public class MouseCursor : MonoBehaviour
 {
 
     private SpriteRenderer rend;
@@ -34,11 +34,13 @@ public class mouseCursor : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            DisableDefaultCursor();
             rend.sprite = handCursor;
             // Instantiate(clickEffect, transform.position, Quaternion.identity);
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            DisableDefaultCursor();
             rend.sprite = normalCursor;
         }
 
@@ -50,7 +52,10 @@ public class mouseCursor : MonoBehaviour
 
     public void DisableDefaultCursor()
     {
+        // 隐藏Unity内部的鼠标
         Cursor.visible = false;
+        // 锁定鼠标位置在屏幕中心（可选）
+        // Cursor.lockState = CursorLockMode.Locked;
         SetCustomCursor(hiddenCursor);
     }
 
