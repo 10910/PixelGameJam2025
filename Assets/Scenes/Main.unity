@@ -16090,6 +16090,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906209458}
   m_CullTransparentMesh: 1
+--- !u!1 &1908161793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908161794}
+  - component: {fileID: 1908161795}
+  m_Layer: 0
+  m_Name: DialogueSFXSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1908161794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908161793}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2019357231}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1908161795
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908161793}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1909012587
 GameObject:
   m_ObjectHideFlags: 0
@@ -16707,6 +16836,7 @@ Transform:
   m_Children:
   - {fileID: 1275122569}
   - {fileID: 110449747}
+  - {fileID: 1908161794}
   m_Father: {fileID: 972606561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2019357232
@@ -16730,6 +16860,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dialogueSFXSource: {fileID: 1908161795}
   globalMusicVolume: {fileID: 11400000, guid: 557453cd99106fc4798bf778d20bda58, type: 2}
   globalSFXVolume: {fileID: 11400000, guid: 3f39e33fac967eb4d8339fd5036859e2, type: 2}
   isFirstPlayGame: {fileID: 11400000, guid: c11a4ec3b17268f4faa0ee7097829ccd, type: 2}
@@ -16748,7 +16879,7 @@ MonoBehaviour:
   catDialogueAudioClip: {fileID: 8300000, guid: c46b952ae002c8741abe0acdb6ad552b, type: 3}
   dogDialogueAudioClip: {fileID: 8300000, guid: e1863886fe265b54b8363d60042f158f, type: 3}
   ratDialogueAudioClip: {fileID: 8300000, guid: b636fa76a65cf484ca1c459c8ac92f00, type: 3}
-  humanDialogueAudioClip: {fileID: 8300000, guid: 146ad3a616bdca048860eaaf830ae161, type: 3}
+  humanDialogueAudioClip: {fileID: 8300000, guid: 5cc4f09b3dafbe943b02fd7e604b9257, type: 3}
   womanDialogueAudioClip: {fileID: 8300000, guid: 1848c619f290fb04388f2b38fa725694, type: 3}
   demonDialogueAudioClip: {fileID: 8300000, guid: 7ede37d23f52bd945bb18830f0e998fb, type: 3}
   noormalbattleSoundAudioClip: {fileID: 0}

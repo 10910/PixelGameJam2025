@@ -14,8 +14,9 @@ public class AudioManager : MonoBehaviour
     // 修改此部分，增加四个用于播放 SFX 的 AudioSource
     public AudioSource[] sfxSources = new AudioSource[4];
 
+    [SerializeField]
+    private AudioSource dialogueSFXSource;
     public static AudioManager Instance;
-
     public FloatVariable globalMusicVolume;
     public FloatVariable globalSFXVolume;
 
@@ -237,6 +238,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayDialogueSFX(string name)
+    {
+        Sound s = sfxSounds.Find(sound => sound.name == name);
+        dialogueSFXSource.PlayOneShot(s.clip);
+    }
+
     public void StopSFX(string name)
     {
         Sound s = sfxSounds.Find(sound => sound.name == name);
@@ -347,30 +354,30 @@ public class AudioManager : MonoBehaviour
     {
         if (isPC.currentValue)
         {
-            PlaySFX("demonDialogue");
+            PlayDialogueSFX("demonDialogue");
 
         }
         else if (isNPC.currentValue)
         {
             if (ghostManager.currentGhost.ghostType == GhostType.cat)
             {
-                PlaySFX("catDialogue"); // 使用声音名称
+                PlayDialogueSFX("catDialogue"); // 使用声音名称
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.dog)
             {
-                PlaySFX("dogDialogue");
+                PlayDialogueSFX("dogDialogue");
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.rat)
             {
-                PlaySFX("ratDialogue");
+                PlayDialogueSFX("ratDialogue");
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.male)
             {
-                PlaySFX("humanDialogue");
+                PlayDialogueSFX("humanDialogue");
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.female)
             {
-                PlaySFX("womanDialogue");
+                PlayDialogueSFX("womanDialogue");
             }
         }
 
@@ -380,7 +387,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayTpyingSFX()
     {
-        PlaySFX("typingdialogue");
+        PlayDialogueSFX("typingdialogue");
     }
 
     public void StopDialogue()
