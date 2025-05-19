@@ -170,6 +170,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         FilesPanel.SetActive(true);
         DocumentPanel.SetActive(true);
         IDPanel.SetActive(false);
+        AudioManager.Instance.PlaySFX("documentClick");
     }
 
     public void OpenIDPanel()
@@ -178,6 +179,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         FilesPanel.SetActive(true);
         IDPanel.SetActive(true);
         DocumentPanel.SetActive(false);
+        AudioManager.Instance.PlaySFX("documentClick");
     }
 
     public void CloseFilesPanel()

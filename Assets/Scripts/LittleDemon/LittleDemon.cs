@@ -70,11 +70,13 @@ public class LittleDemon : MonoBehaviour
     public void LittleDemonFileButtonCallback()
     {
         UIManager.Instance.OpenFilesPanel();
+        //AudioManager.Instance.PlaySFX("documentClick");
     }
 
     public void LittleDemonIDButtonCallback()
     {
         UIManager.Instance.OpenIDPanel();
+        //AudioManager.Instance.PlaySFX("documentClick");
     }
 }
 

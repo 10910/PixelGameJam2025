@@ -35,4 +35,9 @@ public class LittleDemonScale : MonoBehaviour
     {
         button.interactable = true;
     }
+
+    public void OpenScale() {
+        UIManager.Instance.OpenJudgePanel();
+        AudioManager.Instance.PlaySFX("scaleClick");
+    }
 }

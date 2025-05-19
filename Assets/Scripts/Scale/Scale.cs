@@ -13,6 +13,7 @@ public class scale : MonoBehaviour
     {
         // 记录审判
         JudgeManager.Instance.SetJudgement(shouldReborn);
+        AudioManager.Instance.PlaySFX("scaleJudge");
 
         if (shouldReborn)
         {
@@ -32,6 +33,7 @@ public class scale : MonoBehaviour
         CloseJudgePanel();
         Debug.Log("Scale PullToHell");
         AnimationManager.Instance.PlayPullToHell();
+        AudioManager.Instance.PlaySFX("hell");
     }
 
     // 由Animation Event调用
@@ -40,6 +42,7 @@ public class scale : MonoBehaviour
         CloseJudgePanel();
         //JudgeManager.Instance.Rebirth();
         AnimationManager.Instance.PlayRebirth();
+        AudioManager.Instance.PlaySFX("rebirth");
     }
 
     private void CloseJudgePanel()

@@ -29,6 +29,7 @@ public class Light : MonoBehaviour
     {
         animator.SetTrigger("Open");
         floorAnimator.SetTrigger("Open");
+        AudioManager.Instance.PlaySFX("lightOn");
     }
 
     [Button("Close Light")]
@@ -37,6 +38,7 @@ public class Light : MonoBehaviour
         Debug.Log("Close Light");
         animator.SetTrigger("Close");
         floorAnimator.SetTrigger("Close");
+        //AudioManager.Instance.PlaySFX("lightOn");
     }
     [Button("Close Light Immediately")]
     public void CloseLightImmediately()
