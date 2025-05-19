@@ -26,6 +26,11 @@ public class MouseCursor : MonoBehaviour
         DisableDefaultCursor();
     }
 
+    void OnDisable()
+    {
+        EnableDefaultCursor();
+    }
+
 
     void Update()
     {
@@ -57,6 +62,11 @@ public class MouseCursor : MonoBehaviour
         // 锁定鼠标位置在屏幕中心（可选）
         // Cursor.lockState = CursorLockMode.Locked;
         SetCustomCursor(hiddenCursor);
+    }
+
+    public void EnableDefaultCursor()
+    {
+        Cursor.visible = true;
     }
 
     private void SetCustomCursor(Texture2D cursorTexture)

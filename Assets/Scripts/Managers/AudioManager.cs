@@ -39,6 +39,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip rebirthAudioClip;
     public AudioClip lightOnAudioClip;
 
+    public AudioClip dialogueAudioClip;
+
 
     [Header("music")]
     //music
@@ -80,7 +82,7 @@ public class AudioManager : MonoBehaviour
         Sound hellSound = new Sound("hell", hellAudioClip, 1f);
         Sound rebirthSound = new Sound("rebirth", rebirthAudioClip, 1f);
         Sound lightOnSound = new Sound("lightOn", lightOnAudioClip, 1f);
-        
+        Sound dialogueSound = new Sound("dialogue", dialogueAudioClip, 1f);
 
         sfxSounds.Add(moveFailSound);
 
@@ -92,7 +94,7 @@ public class AudioManager : MonoBehaviour
         sfxSounds.Add(hellSound);
         sfxSounds.Add(rebirthSound);
         sfxSounds.Add(lightOnSound);
-
+        sfxSounds.Add(dialogueSound);
         Sound noormalbattleSound = new Sound("noormalBattle", noormalbattleSoundAudioClip, 0.05f);
 
         Sound menuSound = new Sound("menu", menuSoundAudioClip, 0.152f);
@@ -197,6 +199,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopSFX(string name)
+    {
+        Sound s = sfxSounds.Find(sound => sound.name == name);
+        sfxSources[currentSFXIndex].Stop();
+    }
+
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute;
@@ -295,6 +303,16 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("PlayGamePlayMusic");
         PlayMusic("gamePlay");
+    }
+
+    public void PlayDialogue()
+    {
+        PlaySFX("dialogue");
+    }
+
+    public void StopDialogue()
+    {
+        StopSFX("dialogue");
     }
 
 }
