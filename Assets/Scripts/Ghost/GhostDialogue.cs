@@ -32,6 +32,8 @@ public class GhostDialogue : MonoBehaviour
     private bool isDialogueEndForced = false;
 
 
+    private int conversationEndCount = 0;
+    private int conversationStartCount = 0;
     [Header("Actions")]
     public static Action onDialogueEnd;
     public static Action onDialogueStart;
@@ -62,6 +64,8 @@ public class GhostDialogue : MonoBehaviour
     void OnEnable()
     {
         isDialogueEndForced = false;
+        conversationEndCount = 0;
+        conversationStartCount = 0;
     }
 
     private void OnDisable()
@@ -204,11 +208,19 @@ public class GhostDialogue : MonoBehaviour
         // {
         //     onDialogueEnd?.Invoke();
         // }
-        if(JudgeManager.Instance.isFirstJudgement){
+
+        conversationEndCount++;
+        if (conversationEndCount % 2 != 0) return; // 忽略奇数次事件
+
+        if (JudgeManager.Instance.isFirstJudgement)
+        {
             //dialogueSystemTrigger.conversation = ;
             DialogueManager.StartConversation("Demon_Tutorial");
             JudgeManager.Instance.isFirstJudgement = false;
-        }else{
+            AnimationManager.Instance.littleDemonScale.DisableInteraction();
+        }
+        else
+        {
             onDialogueEnd?.Invoke();
         }
     }
@@ -216,6 +228,8 @@ public class GhostDialogue : MonoBehaviour
     private void OnConversationStart(Transform actor)
     {
         Debug.Log("对话已开始");
+        conversationStartCount++;
+        if (conversationStartCount % 2 != 0) return; // 忽略奇数次事件
         //禁止天平小恶魔按钮交互
         onDialogueStart?.Invoke();
     }

@@ -6633,6 +6633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f098642e26a5c541a0d6f18d4a93211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseCursor: {fileID: 1460536433}
 --- !u!1 &665286668
 GameObject:
   m_ObjectHideFlags: 0
@@ -7719,6 +7720,7 @@ MonoBehaviour:
   pullToHellEffect: {fileID: 276143842}
   rebirthEffect: {fileID: 365434850}
   demon: {fileID: 2101993425}
+  littleDemonScale: {fileID: 0}
 --- !u!1 &766373627
 GameObject:
   m_ObjectHideFlags: 0
@@ -16935,10 +16937,10 @@ MonoBehaviour:
   hellAudioClip: {fileID: 8300000, guid: c23bf5ffa15580c43a4f43d1cc0aa695, type: 3}
   rebirthAudioClip: {fileID: 8300000, guid: d36c053cea376c548862a93f3cff49b0, type: 3}
   lightOnAudioClip: {fileID: 8300000, guid: e4f16ffb6f6ea424591f4926a8afe70d, type: 3}
-  typingdialogueAudioClip: {fileID: 8300000, guid: c46b952ae002c8741abe0acdb6ad552b, type: 3}
-  catDialogueAudioClip: {fileID: 8300000, guid: 7e7a412b4bacb90408b3d6ce2e9d4a96, type: 3}
-  dogDialogueAudioClip: {fileID: 8300000, guid: 7e7a412b4bacb90408b3d6ce2e9d4a96, type: 3}
-  ratDialogueAudioClip: {fileID: 8300000, guid: 7e7a412b4bacb90408b3d6ce2e9d4a96, type: 3}
+  typingdialogueAudioClip: {fileID: 8300000, guid: 79ad96a9cd04217409cfdb8f26ebcd64, type: 3}
+  catDialogueAudioClip: {fileID: 8300000, guid: 30a660ac38b981d49b4bfda1af20e13d, type: 3}
+  dogDialogueAudioClip: {fileID: 8300000, guid: 13a713fd676a3f6458f453f82ff50129, type: 3}
+  ratDialogueAudioClip: {fileID: 8300000, guid: d02dc527ec32bb04eaa7226c86b9f0d3, type: 3}
   humanDialogueAudioClip: {fileID: 8300000, guid: 7e7a412b4bacb90408b3d6ce2e9d4a96, type: 3}
   womanDialogueAudioClip: {fileID: 8300000, guid: 7e7a412b4bacb90408b3d6ce2e9d4a96, type: 3}
   demonDialogueAudioClip: {fileID: 8300000, guid: 79ad96a9cd04217409cfdb8f26ebcd64, type: 3}

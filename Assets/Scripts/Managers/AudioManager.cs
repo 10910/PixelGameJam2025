@@ -354,39 +354,42 @@ public class AudioManager : MonoBehaviour
     {
         if (isPC.currentValue)
         {
+            Debug.Log("PlayDialogue demon");
             PlayDialogueSFX("demonDialogue");
-
         }
         else if (isNPC.currentValue)
         {
             if (ghostManager.currentGhost.ghostType == GhostType.cat)
             {
+                Debug.Log("PlayDialogue cat");
                 PlayDialogueSFX("catDialogue"); // 使用声音名称
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.dog)
             {
+                Debug.Log("PlayDialogue dog");
                 PlayDialogueSFX("dogDialogue");
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.rat)
             {
+                Debug.Log("PlayDialogue rat");
                 PlayDialogueSFX("ratDialogue");
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.male)
             {
+                Debug.Log("PlayDialogue human");
                 PlayDialogueSFX("humanDialogue");
             }
             else if (ghostManager.currentGhost.ghostType == GhostType.female)
             {
+                Debug.Log("PlayDialogue woman");
                 PlayDialogueSFX("womanDialogue");
             }
         }
-
-        //那怎么判断恶魔呢
-        //
     }
 
     public void PlayTpyingSFX()
     {
+        Debug.Log("PlayTpyingSFX");
         PlayDialogueSFX("typingdialogue");
     }
 

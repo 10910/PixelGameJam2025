@@ -39,21 +39,21 @@ public class LittleDemon : MonoBehaviour
     {
         Debug.Log("DeliverFile");
         //判断是否在startposition 
-        if (transform.position == startPosition.position)
-        {
-            transform.position = startPosition.position;
-            // rectTransform.anchoredPosition = startPosition;
-            animator.SetBool("isWalk", true);
-            float duration = Vector3.Distance(startPosition.position, targetPosition.position) / speed;
-            transform.DOMove(targetPosition.position, duration)
-                 .SetEase(Ease.Linear)
-                 //   .OnComplete(() => animator.SetBool("isWalk", false)); // 在移动结束时设置 isWalk 为 false回到idle状态
-                 .OnComplete(() =>
-                 {
-                     SwitchToAnimation("LittleDemon_idle");
-                     animator.SetBool("isWalk", false);
-                 }); // 在移动结束时设置 isWalk 为 false回到idle状态
-        }
+        // if (transform.position == startPosition.position)
+        // {
+        transform.position = startPosition.position;
+        // rectTransform.anchoredPosition = startPosition;
+        animator.SetBool("isWalk", true);
+        float duration = Vector3.Distance(startPosition.position, targetPosition.position) / speed;
+        transform.DOMove(targetPosition.position, duration)
+             .SetEase(Ease.Linear)
+             //   .OnComplete(() => animator.SetBool("isWalk", false)); // 在移动结束时设置 isWalk 为 false回到idle状态
+             .OnComplete(() =>
+             {
+                 SwitchToAnimation("LittleDemon_idle");
+                 animator.SetBool("isWalk", false);
+             }); // 在移动结束时设置 isWalk 为 false回到idle状态
+        // }
 
     }
 
@@ -62,18 +62,18 @@ public class LittleDemon : MonoBehaviour
     public void WalkBackToGetNewFile()
     {
         Debug.Log("WalkBackToGetNewFile");
-        if (transform.position == targetPosition.position)
-        {
-            transform.position = targetPosition.position;
-            // rectTransform.anchoredPosition = startPosition;
-            animator.SetBool("isWalkback", true);
-            float duration = Vector3.Distance(targetPosition.position, startPosition.position) / speed;
-            transform.DOMove(startPosition.position, duration)
-                     .SetEase(Ease.Linear)
-                      .OnComplete(() => animator.SetBool("isWalkback", false)); // 在移动结束时设置 isWalkback 为 false回到idle状态
-                                                                                //  .OnComplete(() => SwitchToAnimation("LittleDemon_idle")); // 在移动结束时设置 isWalk 为 false回到idle状态
+        // if (transform.position == targetPosition.position)
+        // {
+        transform.position = targetPosition.position;
+        // rectTransform.anchoredPosition = startPosition;
+        animator.SetBool("isWalkback", true);
+        float duration = Vector3.Distance(targetPosition.position, startPosition.position) / speed;
+        transform.DOMove(startPosition.position, duration)
+                 .SetEase(Ease.Linear)
+                  .OnComplete(() => animator.SetBool("isWalkback", false)); // 在移动结束时设置 isWalkback 为 false回到idle状态
+                                                                            //  .OnComplete(() => SwitchToAnimation("LittleDemon_idle")); // 在移动结束时设置 isWalk 为 false回到idle状态
 
-        }
+        // }
     }
     //LittleDemon_idle
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MenuPanel : MonoBehaviour
 {
-
+    [SerializeField]
     private MouseCursor mouseCursor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
