@@ -21,7 +21,7 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private RebirthEffect rebirthEffect;
     [SerializeField] private Demon demon;
 
-    private LittleDemonScale littleDemonScale;
+    public LittleDemonScale littleDemonScale;
     private Light lighting;
 
     public static Action onJudgeAnimEnd;
