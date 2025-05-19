@@ -61,6 +61,8 @@ public class JudgeManager : MonoBehaviour
         foreach (Ending ending in endings.endings){
             endingHistory.Add(ending.Title, false);
         }
+
+        isFirstJudgement = true;
     }
 
     private void OnDestroy()

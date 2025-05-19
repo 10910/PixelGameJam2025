@@ -204,7 +204,13 @@ public class GhostDialogue : MonoBehaviour
         // {
         //     onDialogueEnd?.Invoke();
         // }
-        onDialogueEnd?.Invoke();
+        if(JudgeManager.Instance.isFirstJudgement){
+            //dialogueSystemTrigger.conversation = ;
+            DialogueManager.StartConversation("Demon_Tutorial");
+            JudgeManager.Instance.isFirstJudgement = false;
+        }else{
+            onDialogueEnd?.Invoke();
+        }
     }
 
     private void OnConversationStart(Transform actor)
