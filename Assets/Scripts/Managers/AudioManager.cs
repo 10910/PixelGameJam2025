@@ -32,6 +32,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip moveFailSoundAudioClip;
     public AudioClip buttonSelectSoundAudioClip;
     public AudioClip buttonClickSoundAudioClip;
+    public AudioClip scaleClickAudioClip;
+    public AudioClip documentClickAudioClip;
+    public AudioClip scaleJudgeAudioClip;
+    public AudioClip hellAudioClip;
+    public AudioClip rebirthAudioClip;
+    public AudioClip lightOnAudioClip;
 
 
     [Header("music")]
@@ -68,11 +74,24 @@ public class AudioManager : MonoBehaviour
         Sound buttonSelectSound = new Sound("buttonSelect", buttonSelectSoundAudioClip, 0.072f);
         Sound buttonClickSound = new Sound("buttonClick", buttonClickSoundAudioClip, 0.072f);
 
+        Sound scaleClickClickSound = new Sound("scaleClick", scaleClickAudioClip, 0.6f);
+        Sound scaleJudgeClickSound = new Sound("scaleJudge", scaleJudgeAudioClip, 1f);
+        Sound documentClickSound = new Sound("documentClick", documentClickAudioClip, 1.1f);
+        Sound hellSound = new Sound("hell", hellAudioClip, 1f);
+        Sound rebirthSound = new Sound("rebirth", rebirthAudioClip, 1f);
+        Sound lightOnSound = new Sound("lightOn", lightOnAudioClip, 1f);
+        
 
         sfxSounds.Add(moveFailSound);
 
         sfxSounds.Add(buttonSelectSound);
         sfxSounds.Add(buttonClickSound);
+        sfxSounds.Add(scaleClickClickSound);
+        sfxSounds.Add(scaleJudgeClickSound);
+        sfxSounds.Add(documentClickSound);
+        sfxSounds.Add(hellSound);
+        sfxSounds.Add(rebirthSound);
+        sfxSounds.Add(lightOnSound);
 
         Sound noormalbattleSound = new Sound("noormalBattle", noormalbattleSoundAudioClip, 0.05f);
 

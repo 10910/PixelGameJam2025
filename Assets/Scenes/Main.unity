@@ -8823,9 +8823,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1695763589}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenJudgePanel
+      - m_Target: {fileID: 931737689}
+        m_TargetAssemblyTypeName: LittleDemonScale, Assembly-CSharp
+        m_MethodName: OpenScale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11346,7 +11346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1199786087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16201,6 +16201,12 @@ MonoBehaviour:
   moveFailSoundAudioClip: {fileID: 0}
   buttonSelectSoundAudioClip: {fileID: 0}
   buttonClickSoundAudioClip: {fileID: 0}
+  scaleClickAudioClip: {fileID: 8300000, guid: 0182c3cb5b35d9548bde7222c83121b0, type: 3}
+  documentClickAudioClip: {fileID: 8300000, guid: be28e06ff404c5e42952b52790c5f199, type: 3}
+  scaleJudgeAudioClip: {fileID: 8300000, guid: a4fd90b3c5688714d962b31d367b1704, type: 3}
+  hellAudioClip: {fileID: 8300000, guid: c23bf5ffa15580c43a4f43d1cc0aa695, type: 3}
+  rebirthAudioClip: {fileID: 8300000, guid: d36c053cea376c548862a93f3cff49b0, type: 3}
+  lightOnAudioClip: {fileID: 8300000, guid: e4f16ffb6f6ea424591f4926a8afe70d, type: 3}
   noormalbattleSoundAudioClip: {fileID: 0}
   menuSoundAudioClip: {fileID: 0}
   gamePlaySoundAudioClip: {fileID: 8300000, guid: 73ba4b2a89036084c89110008187fd88, type: 3}
