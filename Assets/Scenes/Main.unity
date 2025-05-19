@@ -2089,12 +2089,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
-      propertyPath: onCharacter.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: onBegin.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
+      propertyPath: onCharacter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
+      propertyPath: onBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
       propertyPath: onCharacter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
+      propertyPath: onBegin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
       propertyPath: onCharacter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2107,7 +2119,6 @@ PrefabInstance:
     - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
       propertyPath: onCharacter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayDialogue
-      value: PlaySFX
       objectReference: {fileID: 0}
     - target: {fileID: 6305421511315940237, guid: 257da4ce65ae5604f87692054bc84ae6, type: 3}
       propertyPath: onCharacter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2655,7 +2666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 287.17, y: -114.993996}
+  m_AnchoredPosition: {x: 287.17, y: -114.99399}
   m_SizeDelta: {x: 574.34, y: 229.98799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206838051
@@ -4108,7 +4119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 287.17, y: -62.496998}
+  m_AnchoredPosition: {x: 287.17, y: -62.496994}
   m_SizeDelta: {x: 574.34, y: 124.993996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &328785700
@@ -6211,7 +6222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 297.84, y: -53.17909}
+  m_AnchoredPosition: {x: 297.84, y: -53.179092}
   m_SizeDelta: {x: 595.68, y: 106.35818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596798829
@@ -8077,7 +8088,19 @@ MonoBehaviour:
       m_Calls: []
   onCharacterVisible:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2019357232}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onMessage:
     m_PersistentCalls:
       m_Calls: []
@@ -8266,7 +8289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 297.84, y: -31.589546}
+  m_AnchoredPosition: {x: 297.84, y: -31.589554}
   m_SizeDelta: {x: 595.68, y: 63.179092}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780612308
@@ -9708,7 +9731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &971673461
 RectTransform:
   m_ObjectHideFlags: 0
