@@ -99,13 +99,13 @@ public class AudioManager : MonoBehaviour
         Sound rebirthSound = new Sound("rebirth", rebirthAudioClip, 1f);
         Sound lightOnSound = new Sound("lightOn", lightOnAudioClip, 1f);
         Sound typingdialogueSound = new Sound("typingdialogue", typingdialogueAudioClip, 1f);
-        Sound catDialogueSound = new Sound("catDialogue", catDialogueAudioClip, 0.3f);
-        Sound dogDialogueSound = new Sound("dogDialogue", dogDialogueAudioClip, 0.3f);
-        Sound ratDialogueSound = new Sound("ratDialogue", ratDialogueAudioClip, 0.3f);
-        Sound humanDialogueSound = new Sound("humanDialogue", humanDialogueAudioClip, 0.3f);
-        Sound womanDialogueSound = new Sound("womanDialogue", womanDialogueAudioClip, 0.3f);
-        Sound demonDialogueSound = new Sound("demonDialogue", demonDialogueAudioClip, 0.3f);
-
+        Sound catDialogueSound = new Sound("catDialogue", catDialogueAudioClip, 0.8f);
+        Sound dogDialogueSound = new Sound("dogDialogue", dogDialogueAudioClip, 0.8f);
+        Sound ratDialogueSound = new Sound("ratDialogue", ratDialogueAudioClip, 0.8f);
+        Sound humanDialogueSound = new Sound("humanDialogue", humanDialogueAudioClip, 0.8f);
+        Sound womanDialogueSound = new Sound("womanDialogue", womanDialogueAudioClip, 0.8f);
+        Sound demonDialogueSound = new Sound("demonDialogue", demonDialogueAudioClip, 0.8f);
+        //原本都是0.3
 
         sfxSounds.Add(buttonCloseSound);
 
@@ -242,6 +242,7 @@ public class AudioManager : MonoBehaviour
     public void PlayDialogueSFX(string name)
     {
         Sound s = sfxSounds.Find(sound => sound.name == name);
+        dialogueSFXSource.volume = CalculateActualVolume(globalSFXVolume.currentValue, s.defaultVolume);
         dialogueSFXSource.clip = s.clip;
         dialogueSFXSource.Play();
     }
