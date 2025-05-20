@@ -3,7 +3,8 @@ using UnityEngine.UI;
 public class scale : MonoBehaviour
 {
     private Animator scaleAnimator;
-
+    public Button featherBtn;
+    public Button heartBtn;
     void Awake()
     {
         scaleAnimator = GetComponent<Animator>();
@@ -11,6 +12,8 @@ public class scale : MonoBehaviour
 
     public void OnScaleClicked(bool shouldReborn)
     {
+
+        SetBtnsInteractable(false);
         // 记录审判
         JudgeManager.Instance.SetJudgement(shouldReborn);
         AudioManager.Instance.PlaySFX("scaleJudge");
@@ -30,6 +33,7 @@ public class scale : MonoBehaviour
     // 由Animation Event调用
     public void PullToHell()
     {
+        SetBtnsInteractable(true);
         CloseJudgePanel();
         Debug.Log("Scale PullToHell");
         AnimationManager.Instance.PlayPullToHell();
@@ -39,6 +43,7 @@ public class scale : MonoBehaviour
     // 由Animation Event调用
     public void Rebirth()
     {
+        SetBtnsInteractable(true);
         CloseJudgePanel();
         //JudgeManager.Instance.Rebirth();
         AnimationManager.Instance.PlayRebirth();
@@ -48,6 +53,11 @@ public class scale : MonoBehaviour
     private void CloseJudgePanel()
     {
         UIManager.Instance.CloseJudgePanel();
+    }
+
+    void SetBtnsInteractable(bool isInteractable){
+        heartBtn.interactable = isInteractable;
+        featherBtn.interactable = isInteractable;
     }
 
 }

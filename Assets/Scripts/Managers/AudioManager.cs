@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
     [Header("sfx")]
 
     //tetrominosound
-    public AudioClip moveFailSoundAudioClip;
+    public AudioClip buttonCloseSoundAudioClip;
     public AudioClip buttonSelectSoundAudioClip;
     public AudioClip buttonClickSoundAudioClip;
     public AudioClip scaleClickAudioClip;
@@ -87,10 +87,10 @@ public class AudioManager : MonoBehaviour
             sfxSourceObject.transform.SetParent(transform);
             sfxSources[i] = sfxSourceObject.AddComponent<AudioSource>();
         }
-        Sound moveFailSound = new Sound("moveFail", moveFailSoundAudioClip, 0.572f);
+        Sound buttonCloseSound = new Sound("buttonClose", buttonCloseSoundAudioClip, 1f);
         //button
         Sound buttonSelectSound = new Sound("buttonSelect", buttonSelectSoundAudioClip, 0.072f);
-        Sound buttonClickSound = new Sound("buttonClick", buttonClickSoundAudioClip, 0.072f);
+        Sound buttonClickSound = new Sound("buttonClick", buttonClickSoundAudioClip, 1f);
 
         Sound scaleClickClickSound = new Sound("scaleClick", scaleClickAudioClip, 0.2f);
         Sound scaleJudgeClickSound = new Sound("scaleJudge", scaleJudgeAudioClip, 1f);
@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour
         Sound demonDialogueSound = new Sound("demonDialogue", demonDialogueAudioClip, 0.3f);
 
 
-        sfxSounds.Add(moveFailSound);
+        sfxSounds.Add(buttonCloseSound);
 
         sfxSounds.Add(buttonSelectSound);
         sfxSounds.Add(buttonClickSound);
@@ -175,6 +175,7 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = s.clip;
             musicSource.volume = CalculateActualVolume(globalMusicVolume.currentValue, s.defaultVolume);
             musicSource.loop = true;
+            musicSource.Stop();
             musicSource.Play();
         }
     }
@@ -241,7 +242,8 @@ public class AudioManager : MonoBehaviour
     public void PlayDialogueSFX(string name)
     {
         Sound s = sfxSounds.Find(sound => sound.name == name);
-        dialogueSFXSource.PlayOneShot(s.clip);
+        dialogueSFXSource.clip = s.clip;
+        dialogueSFXSource.Play();
     }
 
     public void StopSFX(string name)
