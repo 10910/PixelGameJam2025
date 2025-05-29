@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Action onGamePause;
     public Action onGameResume;
     public static Action onStartNewRound;
-    public int RoundsPlayed = 0;
+    public int RoundsPlayed = 0; // 每局开始时+1
 
     private void Awake()
     {

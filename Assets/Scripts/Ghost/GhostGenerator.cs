@@ -26,10 +26,7 @@ public class GhostGenerator : MonoBehaviour
     public ProfessionsSO profsSO;
     public RecordsSO recordsSO;
     public SpriteLists spriteListsSO;
-
-    public TextMeshProUGUI idText;
-    public TextMeshProUGUI recordText;
-    public SpriteRenderer spriteRenderer;
+    public GhostInstancesSO specialGhostsSO;
 
     public int nGhosts;
     public int randomSeed = 10910;
@@ -38,6 +35,7 @@ public class GhostGenerator : MonoBehaviour
     Name[] names;
     string[] professions;
     List<Record> records;
+    Dictionary<string, GhostInstance> specialGhosts;
 
     void Start()
     {
@@ -45,6 +43,11 @@ public class GhostGenerator : MonoBehaviour
         profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO");
         recordsSO = Resources.Load<RecordsSO>("RecordsSO");
         spriteListsSO = Resources.Load<SpriteLists>("SpriteListsSO");
+        specialGhostsSO = Resources.Load<GhostInstancesSO>("SpecialGhostsSO");
+        specialGhosts = new Dictionary<string, GhostInstance>();
+        foreach (GhostInstance ghst in specialGhostsSO.ghostInstances) { 
+            specialGhosts.Add(ghst.ghostName, ghst);
+        }
 
 #if UNITY_EDITOR
         // 仅在编辑器模式下设置随机种子
@@ -71,19 +74,24 @@ public class GhostGenerator : MonoBehaviour
         names = namesSO.names.OrderBy(x => Random.value).ToArray();
         professions = profsSO.professions.OrderBy(x => Random.value).ToArray();
         records = recordsSO.records.OrderBy(x => Random.value).ToList();
+        List<Record> dogRecords = records.Where(r => r.typeCondition == GhostType.dog).ToList();
+        List<Record> catRecords = records.Where(r => r.typeCondition == GhostType.cat).ToList();
+        List<Record> ratRecords = records.Where(r => r.typeCondition == GhostType.rat).ToList();
+        List<Record> humanRecords = recordsSO.records.Where(r => r.typeCondition == GhostType.male || r.typeCondition == GhostType.female).ToList();
 
-        // 每个人用的records数目不确定 所以用enumerator访问
-        IEnumerator<Record> enumerator = records.GetEnumerator();
-        enumerator.MoveNext();  // 进入第一项
-
+        // 随机幽灵
         for (int i = 0; i < nGhosts; i++)
         {
             GhostInstance ghost = new GhostInstance();
-            ghost.ghostName = names[i]._name;
-            ghost.ghostType = names[i]._type;
-            if (ghost.ghostType == GhostType.male || ghost.ghostType == GhostType.female)
-            {
-                // 人类
+
+            float typeRnd = Random.Range(0, 1.0f);
+
+            // 1. 超过animalProbability时此次生成的幽灵是人类
+            // 2. 为了避免动物和其他结局同时触发，每局最后一个幽灵一定是人类
+            // 3. 第一轮只会生成人类
+            if(typeRnd >= animalProbability || i == nGhosts - 1 || GameManager.Instance.RoundsPlayed == 1){
+                ghost.ghostName = humanNames[i]._name;
+                ghost.ghostType = humanNames[i]._type;
                 ghost.profession = professions[i];
                 int age = Random.Range(15, 100);
                 ghost.age = age;
@@ -137,6 +145,21 @@ public class GhostGenerator : MonoBehaviour
             }
             ghosts.Add(ghost);
         }
+
+        // 特殊幽灵
+        if (GameManager.Instance.RoundsPlayed == 1){
+            // 第一局最后出现黑帮老大
+            ghosts.Add(specialGhosts["Elias"]);
+        }
+        else if(GameManager.Instance.RoundsPlayed == 2) {   // todo：应该改成：根据本局结局是否特殊加入
+            // 第二局最后出现疯恶魔
+            ghosts.Add(specialGhosts["CrazyDemon"]);
+        }
+        else if(GameManager.Instance.RoundsPlayed == 3){
+            // 第三局中段出现疯女人
+            ghosts.Insert(ghosts.Count / 2, specialGhosts["Marla"]);
+        }
+
         return ghosts;
     }
 }

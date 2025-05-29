@@ -21,6 +21,8 @@ public class JudgeManager : MonoBehaviour
     public static Action onStartNewJudge;
     public static Action onJudgeEnd;
     public static Action onRoundEnd;
+    public static Action onAllDocumentRead;
+
 
 
     public bool isFirstJudgement; // 用于显示教程
@@ -36,6 +38,7 @@ public class JudgeManager : MonoBehaviour
     public Dictionary<string, int[]> history = new Dictionary<string, int[]>();
     public Ending currentEnding; // 本局结局
     public Dictionary<string, bool> endingHistory; // 记录结局是否被浏览过, 结局名作为key
+    public Dictionary<string, bool> documentHistory; // 记录文件是否被浏览过, key是id和document, value为true代表已经打开过至少一次
 
     public int currentGhostIdx; // 当前审判的幽灵索引
     [SerializeField] private GhostGenerator generator;
@@ -54,6 +57,10 @@ public class JudgeManager : MonoBehaviour
 
         ghosts = new List<GhostInstance>();
         endingHistory = new Dictionary<string, bool>();
+        documentHistory = new Dictionary<string, bool>();
+        documentHistory.Add("id", false);
+        documentHistory.Add("records", false);
+
         GameManager.onStartNewRound += OnStartNewRoundCallback;
         endings = Resources.Load<EndingsSO>("EndingsSO");
         

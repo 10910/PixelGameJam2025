@@ -52,3 +52,12 @@ MonoBehaviour:
       a divine force is punishing the wicked, and the world has plunged into religious
       frenzy."
     Image: {fileID: 21300000, guid: 696d3b180c7a5304ba06a91e93280f0d, type: 3}
+  - Title: Bad1
+    Description: 'Thanks to you, kindness has gone extinct in the human world, while
+      evil runs rampant. Some begin to question: Is human nature truly evil?'
+    Image: {fileID: 21300000, guid: 266c4de26004cf34581c20ddb2646e09, type: 3}
+  - Title: Bad2
+    Description: "The guilty fall into Hell, but the most wicked lose their identity
+      and memories, becoming Judges. Until a soul arrives whom you deem more sinful
+      than yourself, you shall remain here\u2014keeper of The Scales of The Guilty."
+    Image: {fileID: 21300000, guid: 7d17e2a03e3572a44ab709d4dfb525da, type: 3}
