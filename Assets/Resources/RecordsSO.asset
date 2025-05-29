@@ -22,7 +22,7 @@ MonoBehaviour:
     typeCondition: 0
     professionCondition: 
   - description: Never finished a game jam on time
-    goodness: 0
+    goodness: -1
     typeCondition: 0
     professionCondition: 
   - description: Saved a drowning child
@@ -41,7 +41,7 @@ MonoBehaviour:
     goodness: -3
     typeCondition: 0
     professionCondition: 
-  - description: 'Killed people by baguette '
+  - description: 'Hurt people by baguette '
     goodness: -2
     typeCondition: 0
     professionCondition: 
@@ -50,7 +50,7 @@ MonoBehaviour:
     typeCondition: 0
     professionCondition: 
   - description: Removed the emergency button from elevator
-    goodness: -1
+    goodness: -3
     typeCondition: 0
     professionCondition: 
   - description: Peed in the food bowl
@@ -58,18 +58,26 @@ MonoBehaviour:
     typeCondition: 3
     professionCondition: 
   - description: Bit other dogs
-    goodness: -1
+    goodness: -2
     typeCondition: 3
     professionCondition: 
   - description: Chased off a thief
-    goodness: 1
+    goodness: 2
     typeCondition: 3
     professionCondition: 
   - description: Cleaned up all leftovers
+    goodness: 1
+    typeCondition: 3
+    professionCondition: 
+  - description: Broke 25 office mugs
+    goodness: 1
+    typeCondition: 2
+    professionCondition: 
+  - description: Spun 10,910 times in lifetime
     goodness: 0
     typeCondition: 3
     professionCondition: 
-  - description: Broke 15 cups
+  - description: Sartled by a cucumber 12 times
     goodness: 0
     typeCondition: 2
     professionCondition: 
@@ -77,11 +85,71 @@ MonoBehaviour:
     goodness: -1
     typeCondition: 2
     professionCondition: 
-  - description: Helped catch bugs
+  - description: Caught bugs for the family
     goodness: 1
     typeCondition: 2
     professionCondition: 
-  - description: Doesn't mind belly rubs
-    goodness: 0
+  - description: Never hurt anyone during belly rubs
+    goodness: 2
     typeCondition: 2
+    professionCondition: 
+  - description: Chewed main Internet Cable
+    goodness: -2
+    typeCondition: 4
+    professionCondition: 
+  - description: Ate through 23 bags of rice
+    goodness: -1
+    typeCondition: 4
+    professionCondition: 
+  - description: Spent over 500 days zoning out
+    goodness: 0
+    typeCondition: 4
+    professionCondition: 
+  - description: Once worked for a research lab
+    goodness: 2
+    typeCondition: 4
+    professionCondition: 
+  - description: Helped the owner overcome depression
+    goodness: 1
+    typeCondition: 4
+    professionCondition: 
+  - description: Stole all the labels in supermarket
+    goodness: -1
+    typeCondition: 0
+    professionCondition: 
+  - description: Kept 30 stray cats
+    goodness: 3
+    typeCondition: 0
+    professionCondition: 
+  - description: Broke other's bones while massaging
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: Reported a hit-and-run car accident
+    goodness: 2
+    typeCondition: 0
+    professionCondition: 
+  - description: Reported a drug deal
+    goodness: 3
+    typeCondition: 0
+    professionCondition: 
+  - description: Never clogged a public toilet
+    goodness: 2
+    typeCondition: 0
+    professionCondition: 
+  - description: 'Organized an entire-exam-hall cheating '
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: Raised mosquitoes and sold as weapons
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: Helped elderly people cross the street
+    goodness: 1
+    typeCondition: 0
+    professionCondition: 
+  - description: Sent flashlight signals toward outer space
+    goodness: 0
+    typeCondition: 0
     professionCondition: 

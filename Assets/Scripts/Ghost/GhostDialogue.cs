@@ -29,18 +29,25 @@ public class GhostDialogue : MonoBehaviour
     [SerializeField]
     private GhostDialogueSO youngWomanghostDialogueSO;
 
+    private bool isDialogueEndForced = false;
 
+
+    private int conversationEndCount = 0;
+    private int conversationStartCount = 0;
     [Header("Actions")]
     public static Action onDialogueEnd;
+    public static Action onDialogueStart;
     private DialogueSystemTrigger dialogueSystemTrigger;
     public string conversationName = "Cat_Conversation";
 
     private void Awake()
     {
         dialogueSystemTrigger = GetComponent<DialogueSystemTrigger>();
+        isDialogueEndForced = false;
 
         // 注册对话结束事件
         DialogueManager.instance.conversationEnded += OnConversationEnd;
+        DialogueManager.instance.conversationStarted += OnConversationStart;
         dialogueSystemTrigger.conversation = conversationName;
 
         catGhostDialogueSO = Resources.Load<GhostDialogueSO>("GhostDialogue/CatGhostDialogueSO");
@@ -56,11 +63,14 @@ public class GhostDialogue : MonoBehaviour
     }
     void OnEnable()
     {
+        isDialogueEndForced = false;
+        conversationEndCount = 0;
+        conversationStartCount = 0;
     }
 
     private void OnDisable()
     {
-        DialogueManager.instance.StopConversation();
+        ForceEndDialogue();
     }
 
     private void OnDestroy()
@@ -69,8 +79,18 @@ public class GhostDialogue : MonoBehaviour
         if (DialogueManager.instance != null)
         {
             DialogueManager.instance.conversationEnded -= OnConversationEnd;
+            DialogueManager.instance.conversationStarted -= OnConversationStart;
         }
-        DialogueManager.instance.StopConversation();
+        ForceEndDialogue();
+    }
+
+    public void ForceEndDialogue()
+    {
+        isDialogueEndForced = true;
+        if (DialogueManager.instance != null)
+        {
+            DialogueManager.instance.StopConversation();
+        }
     }
 
     public void GetNewDialogue()
@@ -183,6 +203,34 @@ public class GhostDialogue : MonoBehaviour
         Debug.Log("对话已结束");
         // 在这里执行对话结束后的逻辑
         //让小恶魔把资料拿过来
-        onDialogueEnd?.Invoke();
+        //判断如果对话不是被强行结束的，则让小恶魔把资料拿过来
+        // if (!isDialogueEndForced)
+        // {
+        //     onDialogueEnd?.Invoke();
+        // }
+
+        conversationEndCount++;
+        if (conversationEndCount % 2 != 0) return; // 忽略奇数次事件
+
+        if (JudgeManager.Instance.isFirstJudgement)
+        {
+            //dialogueSystemTrigger.conversation = ;
+            DialogueManager.StartConversation("Demon_Tutorial");
+            JudgeManager.Instance.isFirstJudgement = false;
+            AnimationManager.Instance.littleDemonScale.DisableInteraction();
+        }
+        else
+        {
+            onDialogueEnd?.Invoke();
+        }
+    }
+
+    private void OnConversationStart(Transform actor)
+    {
+        Debug.Log("对话已开始");
+        conversationStartCount++;
+        if (conversationStartCount % 2 != 0) return; // 忽略奇数次事件
+        //禁止天平小恶魔按钮交互
+        onDialogueStart?.Invoke();
     }
 }

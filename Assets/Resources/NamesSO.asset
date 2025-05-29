@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: NamesSO
   m_EditorClassIdentifier: Assembly-CSharp::NamesSO
   names:
-  - _name: James
-    _type: 0
-  - _name: John
-    _type: 0
   - _name: Wang
     _type: 0
   - _name: Diego
@@ -25,11 +21,57 @@ MonoBehaviour:
     _type: 1
   - _name: Alexando
     _type: 1
-  - _name: Mao
+  - _name: King
+    _type: 2
+  - _name: Armstrong
     _type: 2
   - _name: Nick
     _type: 2
-  - _name: Gnall
+  - _name: Furball
+    _type: 2
+  - _name: No.41
     _type: 4
-  - _name: Whoof
+  - _name: Wheel
+    _type: 4
+  - _name: Cheez
+    _type: 4
+  - _name: '[NoName]'
+    _type: 4
+  - _name: Mygo
     _type: 3
+  - _name: Park
+    _type: 3
+  - _name: Tofu
+    _type: 3
+  - _name: Sausage
+    _type: 3
+  - _name: Dare
+    _type: 1
+  - _name: Ludun
+    _type: 0
+  - _name: Buzz
+    _type: 0
+  - _name: Marvin
+    _type: 0
+  - _name: Kiruko
+    _type: 1
+  - _name: Rachel
+    _type: 1
+  - _name: Becky
+    _type: 1
+  - _name: Loopy
+    _type: 1
+  - _name: Gabriel
+    _type: 0
+  - _name: Waffo
+    _type: 1
+  - _name: Shacksphere
+    _type: 0
+  - _name: Latte
+    _type: 1
+  - _name: Unity
+    _type: 0
+  - _name: Godot
+    _type: 0
+  - _name: Lua
+    _type: 1

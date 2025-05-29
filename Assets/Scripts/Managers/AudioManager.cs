@@ -14,8 +14,9 @@ public class AudioManager : MonoBehaviour
     // 修改此部分，增加四个用于播放 SFX 的 AudioSource
     public AudioSource[] sfxSources = new AudioSource[4];
 
+    [SerializeField]
+    private AudioSource dialogueSFXSource;
     public static AudioManager Instance;
-
     public FloatVariable globalMusicVolume;
     public FloatVariable globalSFXVolume;
 
@@ -25,13 +26,35 @@ public class AudioManager : MonoBehaviour
     private float defaultSFXVolume = 0.5f;
 
     public BoolVariable isFirstPlayGame;
+    private GhostManager ghostManager;
+
+    [SerializeField]
+    private BoolVariable isNPC;
+
+    [SerializeField]
+    private BoolVariable isPC;
 
     [Header("sfx")]
 
     //tetrominosound
-    public AudioClip moveFailSoundAudioClip;
+    public AudioClip buttonCloseSoundAudioClip;
     public AudioClip buttonSelectSoundAudioClip;
     public AudioClip buttonClickSoundAudioClip;
+    public AudioClip scaleClickAudioClip;
+    public AudioClip documentClickAudioClip;
+    public AudioClip scaleJudgeAudioClip;
+    public AudioClip hellAudioClip;
+    public AudioClip rebirthAudioClip;
+    public AudioClip lightOnAudioClip;
+
+    public AudioClip typingdialogueAudioClip;
+    public AudioClip catDialogueAudioClip;
+    public AudioClip dogDialogueAudioClip;
+    public AudioClip ratDialogueAudioClip;
+    public AudioClip humanDialogueAudioClip;
+    public AudioClip womanDialogueAudioClip;
+    public AudioClip demonDialogueAudioClip;
+
 
 
     [Header("music")]
@@ -55,6 +78,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        ghostManager = FindAnyObjectByType<GhostManager>(FindObjectsInactive.Include);
 
         // 初始化四个 SFX AudioSource
         for (int i = 0; i < sfxSources.Length; i++)
@@ -63,17 +87,43 @@ public class AudioManager : MonoBehaviour
             sfxSourceObject.transform.SetParent(transform);
             sfxSources[i] = sfxSourceObject.AddComponent<AudioSource>();
         }
-        Sound moveFailSound = new Sound("moveFail", moveFailSoundAudioClip, 0.572f);
+        Sound buttonCloseSound = new Sound("buttonClose", buttonCloseSoundAudioClip, 1f);
         //button
         Sound buttonSelectSound = new Sound("buttonSelect", buttonSelectSoundAudioClip, 0.072f);
-        Sound buttonClickSound = new Sound("buttonClick", buttonClickSoundAudioClip, 0.072f);
+        Sound buttonClickSound = new Sound("buttonClick", buttonClickSoundAudioClip, 1f);
 
+        Sound scaleClickClickSound = new Sound("scaleClick", scaleClickAudioClip, 0.2f);
+        Sound scaleJudgeClickSound = new Sound("scaleJudge", scaleJudgeAudioClip, 1f);
+        Sound documentClickSound = new Sound("documentClick", documentClickAudioClip, 1.1f);
+        Sound hellSound = new Sound("hell", hellAudioClip, 1f);
+        Sound rebirthSound = new Sound("rebirth", rebirthAudioClip, 1f);
+        Sound lightOnSound = new Sound("lightOn", lightOnAudioClip, 1f);
+        Sound typingdialogueSound = new Sound("typingdialogue", typingdialogueAudioClip, 1f);
+        Sound catDialogueSound = new Sound("catDialogue", catDialogueAudioClip, 0.8f);
+        Sound dogDialogueSound = new Sound("dogDialogue", dogDialogueAudioClip, 0.8f);
+        Sound ratDialogueSound = new Sound("ratDialogue", ratDialogueAudioClip, 0.8f);
+        Sound humanDialogueSound = new Sound("humanDialogue", humanDialogueAudioClip, 0.8f);
+        Sound womanDialogueSound = new Sound("womanDialogue", womanDialogueAudioClip, 0.8f);
+        Sound demonDialogueSound = new Sound("demonDialogue", demonDialogueAudioClip, 0.8f);
+        //原本都是0.3
 
-        sfxSounds.Add(moveFailSound);
+        sfxSounds.Add(buttonCloseSound);
 
         sfxSounds.Add(buttonSelectSound);
         sfxSounds.Add(buttonClickSound);
-
+        sfxSounds.Add(scaleClickClickSound);
+        sfxSounds.Add(scaleJudgeClickSound);
+        sfxSounds.Add(documentClickSound);
+        sfxSounds.Add(hellSound);
+        sfxSounds.Add(rebirthSound);
+        sfxSounds.Add(lightOnSound);
+        sfxSounds.Add(typingdialogueSound);
+        sfxSounds.Add(catDialogueSound);
+        sfxSounds.Add(dogDialogueSound);
+        sfxSounds.Add(ratDialogueSound);
+        sfxSounds.Add(humanDialogueSound);
+        sfxSounds.Add(womanDialogueSound);
+        sfxSounds.Add(demonDialogueSound);
         Sound noormalbattleSound = new Sound("noormalBattle", noormalbattleSoundAudioClip, 0.05f);
 
         Sound menuSound = new Sound("menu", menuSoundAudioClip, 0.152f);
@@ -125,8 +175,14 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = s.clip;
             musicSource.volume = CalculateActualVolume(globalMusicVolume.currentValue, s.defaultVolume);
             musicSource.loop = true;
+            musicSource.Stop();
             musicSource.Play();
         }
+    }
+
+    public void PlayMusic(Sound sound)
+    {
+        PlayMusic(sound.name);
     }
 
     //play music not loop
@@ -157,6 +213,11 @@ public class AudioManager : MonoBehaviour
         return defaultVolume * (globalVolume / 0.5f);
     }
 
+    public void PlaySFX(Sound sound)
+    {
+        PlaySFX(sound.name);
+    }
+
     public void PlaySFX(string name)
     {
         Sound s = sfxSounds.Find(sound => sound.name == name);
@@ -178,6 +239,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayDialogueSFX(string name)
+    {
+        Sound s = sfxSounds.Find(sound => sound.name == name);
+        dialogueSFXSource.volume = CalculateActualVolume(globalSFXVolume.currentValue, s.defaultVolume);
+        dialogueSFXSource.clip = s.clip;
+        dialogueSFXSource.Play();
+    }
+
+    public void StopSFX(string name)
+    {
+        Sound s = sfxSounds.Find(sound => sound.name == name);
+        sfxSources[currentSFXIndex].Stop();
+    }
+
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute;
@@ -189,7 +264,10 @@ public class AudioManager : MonoBehaviour
     }
     public void PauseMusic()
     {
-        musicSource.Pause();
+        if (musicSource != null)
+        {
+            musicSource.Pause();
+        }
     }
     public void StartMusic()
     {
@@ -272,7 +350,55 @@ public class AudioManager : MonoBehaviour
     public void PlayGamePlayMusic()
     {
         Debug.Log("PlayGamePlayMusic");
-        PlayMusicNotLoop("gamePlay");
+        PlayMusic("gamePlay");
+    }
+
+    public void PlayDialogue()
+    {
+        if (isPC.currentValue)
+        {
+            Debug.Log("PlayDialogue demon");
+            PlayDialogueSFX("demonDialogue");
+        }
+        else if (isNPC.currentValue)
+        {
+            if (ghostManager.currentGhost.ghostType == GhostType.cat)
+            {
+                Debug.Log("PlayDialogue cat");
+                PlayDialogueSFX("catDialogue"); // 使用声音名称
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.dog)
+            {
+                Debug.Log("PlayDialogue dog");
+                PlayDialogueSFX("dogDialogue");
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.rat)
+            {
+                Debug.Log("PlayDialogue rat");
+                PlayDialogueSFX("ratDialogue");
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.male)
+            {
+                Debug.Log("PlayDialogue human");
+                PlayDialogueSFX("humanDialogue");
+            }
+            else if (ghostManager.currentGhost.ghostType == GhostType.female)
+            {
+                Debug.Log("PlayDialogue woman");
+                PlayDialogueSFX("womanDialogue");
+            }
+        }
+    }
+
+    public void PlayTpyingSFX()
+    {
+        Debug.Log("PlayTpyingSFX");
+        PlayDialogueSFX("typingdialogue");
+    }
+
+    public void StopDialogue()
+    {
+        StopSFX("dialogue");
     }
 
 }

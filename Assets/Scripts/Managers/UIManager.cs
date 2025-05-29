@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     public static UIManager Instance;
     [Header("Elements")]
     private GameManager gameManager;
-    [SerializeField] private GameObject Light;
+    // [SerializeField] private GameObject Light;
     [SerializeField] private GameObject Background_Light;
     [SerializeField] private GameObject Background_Dark;
 
@@ -114,6 +114,26 @@ public class UIManager : MonoBehaviour, IGameStateListener
         }
     }
 
+    public void OpenPullToHellEffect()
+    {
+        PullToHellEffect.SetActive(true);
+    }
+
+    public void ClosePullToHellEffect()
+    {
+        PullToHellEffect.SetActive(false);
+    }
+
+    public void OpenRebirthEffect()
+    {
+        RebirthEffect.SetActive(true);
+    }
+
+    public void CloseRebirthEffect()
+    {
+        RebirthEffect.SetActive(false);
+    }
+
     public void OpenJudgePanel()
     {
         judgePanel.SetActive(true);
@@ -150,6 +170,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         FilesPanel.SetActive(true);
         DocumentPanel.SetActive(true);
         IDPanel.SetActive(false);
+        AudioManager.Instance.PlaySFX("documentClick");
     }
 
     public void OpenIDPanel()
@@ -158,6 +179,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         FilesPanel.SetActive(true);
         IDPanel.SetActive(true);
         DocumentPanel.SetActive(false);
+        AudioManager.Instance.PlaySFX("documentClick");
     }
 
     public void CloseFilesPanel()
@@ -220,6 +242,13 @@ public class UIManager : MonoBehaviour, IGameStateListener
         RecordsTMP.text = JudgeManager.Instance.recordsText;
     }
 
+    private void JudgeEndCallback()
+    {
+        ClosePullToHellEffect();
+        CloseRebirthEffect();
+        // Invoke("CloseLight", 1f);
+    }
+
     [Button("roundend")]
     private void RoundEndCallback()
     {
@@ -267,26 +296,23 @@ public class UIManager : MonoBehaviour, IGameStateListener
         SetResultUI(dog, dogCnts[0], dogCnts[1]);
         SetResultUI(rat, ratCnts[0], ratCnts[1]);
 
+        Debug.Log("humanCnts: " + humanCnts[0] + " " + humanCnts[1]);
+
         // 设置轮次文本
         ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
 
         // 设置功德值文本
-        ResultGoodness.text = JudgeManager.Instance.currentGoodness.ToString();
+        ResultGoodness.text = JudgeManager.Instance.totalGoodness.ToString();
 
         // 设置结局图片和文本
-        if (JudgeManager.Instance.currentEnding.Title == "Normal")
-        {
-            EndingBackground.sprite = null;
-        }
-        else
-        {
-            EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
-        }
+        EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
         EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
         // 打开结局面板
         Debug.Log("Opening EndingPanel");
         ShowPanel(EndingPanel);
     }
+
+
 
     private void SetResultUI(Transform counterUI, int nRebirth, int nHell)
     {
@@ -294,11 +320,11 @@ public class UIManager : MonoBehaviour, IGameStateListener
         if (nRebirth == 0 && nHell == 0)
         {
             counterUI.gameObject.SetActive(false);
-            return;
+        }else{
+            counterUI.gameObject.SetActive(true);
+            // 设置文本
+            counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
+            counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
         }
-        // 设置文本
-        counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
-        counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
     }
-
 }

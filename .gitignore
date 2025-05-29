@@ -95,3 +95,5 @@ Assets/Plugins/ConsolePro.meta
 # Console Pro Editor 脚本
 Assets/Editor/ConsolePro*
 
+/WebGLBuild
+

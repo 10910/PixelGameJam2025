@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 9556136}
   - component: {fileID: 11483934}
   - component: {fileID: 11466480}
+  - component: {fileID: 763568266902302234}
   m_Layer: 5
   m_Name: NPC Subtitle Panel
   m_TagString: Untagged
@@ -243,8 +244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 287.7411, y: -8}
-  m_SizeDelta: {x: -591.4822, y: 206.1013}
+  m_AnchoredPosition: {x: 516.28394, y: -8}
+  m_SizeDelta: {x: -1054.9542, y: 370.6893}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &22253428
 CanvasRenderer:
@@ -400,6 +401,19 @@ MonoBehaviour:
   m_hasFocus: 1
   m_isFocusing: 1
   m_actorOverridingPanel: {fileID: 0}
+--- !u!114 &763568266902302234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd43b037d2b985442aeef69eefdb50bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNPC: {fileID: 0}
 --- !u!1 &128456
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,10 +672,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 22487244}
-  - {fileID: 1447094664501687844}
-  - {fileID: 8969442447279600358}
   - {fileID: 25384672738399470}
   - {fileID: 22461342}
+  - {fileID: 1447094664501687844}
+  - {fileID: 8969442447279600358}
   - {fileID: 22418282}
   m_Father: {fileID: 22496680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1131,10 +1145,10 @@ RectTransform:
   - {fileID: 2373301414793989273}
   m_Father: {fileID: 22433532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 4, y: -4}
+  m_SizeDelta: {x: 1267.9056, y: 160.5102}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &22239856
 CanvasRenderer:
@@ -1552,7 +1566,7 @@ RectTransform:
   m_Father: {fileID: 22489492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1699,8 +1713,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22472254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1835,7 +1849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &22461342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1854,7 +1868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -298.7, y: 188.00002}
+  m_AnchoredPosition: {x: -298.7, y: 188}
   m_SizeDelta: {x: -613.41, y: 191.68}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &22259886
@@ -2163,7 +2177,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 26.39473, y: 22.478569, z: 25.195053, w: 46.891003}
+  m_margin: {x: 26.39473, y: 22.478569, z: 25.195053, w: 61.607315}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2208,7 +2222,19 @@ MonoBehaviour:
       m_Calls: []
   onCharacter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -2470,8 +2496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -298.70444, y: 188}
-  m_SizeDelta: {x: -613.4088, y: 191.6837}
+  m_AnchoredPosition: {x: -536.92084, y: 310}
+  m_SizeDelta: {x: -1089.8418, y: 352.3412}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7812465206421849522
 CanvasRenderer:
@@ -2804,7 +2830,19 @@ MonoBehaviour:
       m_Calls: []
   onCharacter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -2978,10 +3016,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22445010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 414.57, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 207.285, y: -80.2551}
+  m_SizeDelta: {x: 414.57, y: 160.5102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6236696715359867784
 CanvasRenderer:
