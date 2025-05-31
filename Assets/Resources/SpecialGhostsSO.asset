@@ -26,9 +26,9 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 0cceb9cc1466c9d4fa0954684da5682b, type: 3}
     isReborn: 0
     introDialogue: 
-    midDialogue: 
+    midDialogue: Elias_Mid
     endDialogue: 
-    isJudgement: 
+    isPlainDialogue: 0
   - ghostName: Marla
     ghostType: 1
     profession: 
@@ -44,7 +44,7 @@ MonoBehaviour:
     introDialogue: 
     midDialogue: 
     endDialogue: 
-    isJudgement: 
+    isPlainDialogue: 0
   - ghostName: Lena
     ghostType: 1
     profession: 
@@ -60,7 +60,7 @@ MonoBehaviour:
     introDialogue: 
     midDialogue: 
     endDialogue: 
-    isJudgement: 
+    isPlainDialogue: 0
   - ghostName: Simon
     ghostType: 0
     profession: 
@@ -76,7 +76,7 @@ MonoBehaviour:
     introDialogue: 
     midDialogue: 
     endDialogue: 
-    isJudgement: 
+    isPlainDialogue: 0
   - ghostName: Gabriel
     ghostType: 0
     profession: 
@@ -92,7 +92,7 @@ MonoBehaviour:
     introDialogue: 
     midDialogue: 
     endDialogue: 
-    isJudgement: 
+    isPlainDialogue: 0
   - ghostName: CrazyDemon
     ghostType: 0
     profession: 
@@ -104,4 +104,4 @@ MonoBehaviour:
     introDialogue: 
     midDialogue: 
     endDialogue: 
-    isJudgement: 
+    isPlainDialogue: 0

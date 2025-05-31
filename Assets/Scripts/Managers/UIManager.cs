@@ -164,6 +164,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         creditsPanel.SetActive(false);
     }
 
+    // document = records 都是记录生平的那个东西
     public void OpenFilesPanel()
     {
         Debug.Log("OpenFilesPanel");
@@ -171,6 +172,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
         DocumentPanel.SetActive(true);
         IDPanel.SetActive(false);
         AudioManager.Instance.PlaySFX("documentClick");
+        // 如果是第一次浏览，设置历史标志位为true
+        if (!JudgeManager.Instance.documentHistory["records"])
+            JudgeManager.Instance.documentHistory["records"] = true;
     }
 
     public void OpenIDPanel()
@@ -180,13 +184,18 @@ public class UIManager : MonoBehaviour, IGameStateListener
         IDPanel.SetActive(true);
         DocumentPanel.SetActive(false);
         AudioManager.Instance.PlaySFX("documentClick");
+        // 如果是第一次浏览，设置历史标志位为true
+        if (!JudgeManager.Instance.documentHistory["id"])
+            JudgeManager.Instance.documentHistory["id"] = true;
     }
 
+    // 关闭按钮触发
     public void CloseFilesPanel()
     {
         FilesPanel.SetActive(false);
         DocumentPanel.SetActive(false);
         IDPanel.SetActive(false);
+        JudgeManager.Instance.CheckSpecialConversation();
     }
 
     [Button]

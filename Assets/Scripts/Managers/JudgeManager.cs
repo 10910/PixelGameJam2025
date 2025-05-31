@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using DG.Tweening;
 using PixelCrushers.DialogueSystem;
+using System.Linq;
 
 public class JudgeHistory
 {
@@ -38,6 +39,7 @@ public class JudgeManager : MonoBehaviour
     public Dictionary<string, int[]> history = new Dictionary<string, int[]>();
     public Ending currentEnding; // 本局结局
     public Dictionary<string, bool> endingHistory; // 记录结局是否被浏览过, 结局名作为key
+    [ShowInInspector]
     public Dictionary<string, bool> documentHistory; // 记录文件是否被浏览过, key是id和document, value为true代表已经打开过至少一次
 
     public int currentGhostIdx; // 当前审判的幽灵索引
@@ -100,6 +102,9 @@ public class JudgeManager : MonoBehaviour
     {
         Debug.Log("Judge End");
         //onJudgeEnd?.Invoke();
+        // 清除文件浏览记录
+        ClearDocHistory();
+
         // 根据审判结果更新功德值和历史记录
         UpdateHistory();
 
@@ -174,42 +179,6 @@ public class JudgeManager : MonoBehaviour
         // 生成新的幽灵 暂时只用来生成新的幽灵对话
         GhostManager.Instance.GenerateNewGhost();
     }
-
-    //void SetResult()
-    //{
-    //    int goodness = 0;  // 玩家功德值
-    //    foreach (var ghost in ghosts)
-    //    {
-    //        // 计算单个幽灵的总善良值
-    //        int ghostGoodness = 0;
-    //        foreach (var record in ghost.records)
-    //        {
-    //            ghostGoodness += record.goodness;
-    //        }
-
-    //        // 累积判决结果和功德值
-    //        string type = ghost.ghostType.ToString();
-    //        if (!history.ContainsKey(type))
-    //        {
-    //            history[type] = new int[2];
-    //        }
-
-    //        if (ghost.isReborn)
-    //        {
-    //            // 转生时好人增加功德值 坏人减少功德值 幽灵善良值正负不变
-    //            history[type][0]++;
-    //        }
-    //        else
-    //        {
-    //            // 下地狱时好人减少功德值 坏人增加功德值 给幽灵善良值正负取反
-    //            ghostGoodness = -ghostGoodness;
-    //            history[type][1]++;
-    //        }
-    //        goodness += ghostGoodness;
-    //    }
-    //    currentGoodness = goodness;
-    //    totalGoodness += currentGoodness;
-    //}
 
     // 猫/狗/鼠结局 可在每次审判结束时触发 有结局触发时返回true
     bool CheckInRoundEnding(){
@@ -317,5 +286,22 @@ public class JudgeManager : MonoBehaviour
     {
         print("judgement: " + judgement);
         ghosts[currentGhostIdx].isReborn = judgement;
+    }
+
+    // uimanager关闭filepanel时调用， 如果当前幽灵是特殊幽灵，且id和records都已浏览，则触发特殊角色的对话
+    public void CheckSpecialConversation(){
+        // 这个写法可以判断类型 同时转换类型
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst && documentHistory["records"] && documentHistory["id"]){
+            print("start special dialogue");
+            if (ghst.midDialogue != null) { 
+                DialogueManager.StartConversation(ghst.midDialogue);
+            }
+        }
+    }
+
+    void ClearDocHistory() {
+        foreach (var key in documentHistory.Keys.ToList()) {
+            documentHistory[key] = false;
+        }
     }
 }

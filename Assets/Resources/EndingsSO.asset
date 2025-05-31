@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndingsSO
   endings:
   - Title: Normal
-    Description: The human world continues to run as usual. All in all, you are a
-      fair and impartial Demon Lord.
-    Image: {fileID: 0}
+    Description: The human world continues to run as usual. Just another ordinary
+      judgement day.
+    Image: {fileID: 21300000, guid: 8b6fb5794128ea14ba64650cfe058927, type: 3}
   - Title: AllReborn
     Description: "Due to your constant reincarnation of souls, the number of visitors
       to the underworld keeps increasing. The overworked imps groan in agony\u2014even
