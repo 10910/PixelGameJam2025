@@ -25,7 +25,7 @@ MonoBehaviour:
       professionCondition: 
     sprite: {fileID: 21300000, guid: 0cceb9cc1466c9d4fa0954684da5682b, type: 3}
     isReborn: 0
-    introDialogue: 
+    introDialogue: Elias_Intro
     midDialogue: Elias_Mid
     endDialogue: 
     isPlainDialogue: 0
