@@ -44,7 +44,7 @@ public class JudgeManager : MonoBehaviour
 
     public int currentGhostIdx; // 当前审判的幽灵索引
     [SerializeField] private GhostGenerator generator;
-    private EndingsSO endings;   // 结局数据
+    public EndingsSO endings;   // 结局数据
 
     private void Awake()
     {

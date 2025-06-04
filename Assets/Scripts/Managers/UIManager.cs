@@ -4,6 +4,10 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.AddressableAssets;
+using Sirenix.OdinInspector.Editor;
+using PixelCrushers.DialogueSystem.ChatMapper;
 public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;
@@ -31,6 +35,10 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private Image EndingBackground;
     [SerializeField] private TextMeshProUGUI EndingTMP;
 
+    [Header("Gallery")]
+    [SerializeField] private List<GameObject> EndingContainers; // 储存结局图+文字的container 排列顺序与EndingsSO一致
+    [SerializeField] private Transform Page1, Page2;
+
     [Header("Panels")]
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject judgePanel;
@@ -40,6 +48,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject FilesPanel;
     [SerializeField] private GameObject EndingPanel;
     [SerializeField] private GameObject ResultPanel;
+    [SerializeField] private GameObject GalleryPanel;
     private List<GameObject> panels = new List<GameObject>();
 
     [Header("Actions")]
@@ -65,7 +74,16 @@ public class UIManager : MonoBehaviour, IGameStateListener
         panels.Add(FilesPanel);
         panels.Add(EndingPanel);
         panels.Add(ResultPanel);
+        panels.Add(GalleryPanel);
 
+        // 将画廊中每一页里的所有结局container添加到list
+        EndingContainers = new List<GameObject>(JudgeManager.Instance.endingHistory.Count);
+        foreach (Transform container in Page1){
+            EndingContainers.Add(container.gameObject);
+        }
+        foreach (Transform container in Page2) {
+            EndingContainers.Add(container.gameObject);
+        }
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
@@ -85,6 +103,14 @@ public class UIManager : MonoBehaviour, IGameStateListener
 
     void Start()
     {
+        var endings = JudgeManager.Instance.endings.endings;
+        for (int i = 0; i < endings.Length; i++){
+            string clippedImageName = endings[i].Image.name + "_clipped";
+            var handle = Addressables.LoadAssetAsync<Sprite>("Assets/Arts/Ending/Clipped/" + clippedImageName + ".png");
+            handle.WaitForCompletion();
+            EndingContainers[i].GetComponentInChildren<Image>().sprite = handle.Result;
+            EndingContainers[i].GetComponentInChildren<TextMeshProUGUI>().text = endings[i].DisplayCondition;
+        }
     }
 
     public void GameStateChangedCallback(GameState gameState)
@@ -109,7 +135,6 @@ public class UIManager : MonoBehaviour, IGameStateListener
             p.SetActive(p == panel);
             // if (p == panel)
             // {
-
             // }
         }
     }
@@ -157,6 +182,14 @@ public class UIManager : MonoBehaviour, IGameStateListener
     public void OpenCreditsPanel()
     {
         creditsPanel.SetActive(true);
+    }
+
+    public void OpenGalleryPanel(){
+        ShowPanel(GalleryPanel);
+    }
+
+    public void CloseGalleryPanel() {
+        ShowPanel(menuPanel);
     }
 
     public void CloseCreditsPanel()
