@@ -45,6 +45,7 @@ public class JudgeManager : MonoBehaviour
     public int currentGhostIdx; // 当前审判的幽灵索引
     [SerializeField] private GhostGenerator generator;
     public EndingsSO endings;   // 结局数据
+    public Dictionary<string, Ending> endingsDict;   // 结局字典 Ending.Title作为key 结局判断里有一些还在用getEndingByName 可以改为直接用这个字典
 
     private void Awake()
     {
@@ -62,13 +63,15 @@ public class JudgeManager : MonoBehaviour
         documentHistory = new Dictionary<string, bool>();
         documentHistory.Add("id", false);
         documentHistory.Add("records", false);
+        endingsDict = new Dictionary<string, Ending>();
 
         GameManager.onStartNewRound += OnStartNewRoundCallback;
         endings = Resources.Load<EndingsSO>("EndingsSO");
         
-        // 初始化结局访问记录
+        // 初始化结局访问记录, 结局字典
         foreach (Ending ending in endings.endings){
             endingHistory.Add(ending.Title, false);
+            endingsDict.Add(ending.Title, ending);
         }
 
         isFirstJudgement = true;
@@ -235,8 +238,7 @@ public class JudgeManager : MonoBehaviour
     }
 
     void CheckEnding(){
-        // 默认普通结局，优先级：鼠>猫>狗>全转生/地狱>好人/坏人结局
-        Ending roundEnding = endings.GetEndingByName("Normal");
+        // 优先级：鼠>猫>狗>全转生/地狱>好人/坏人>普通
         
         // 所有人转生/下地狱结局
         bool areAllReborn = true;
@@ -265,20 +267,24 @@ public class JudgeManager : MonoBehaviour
         // 好人结局 累计善良值达到一定数量时触发
         if (totalGoodness >= 15 && totalGoodness < 25 && !endingHistory["Good1"]) {
             endingHistory["Good1"] = true;
-            roundEnding = endings.GetEndingByName("Good1");
+            currentEnding = endingsDict["Good1"];
+            return;
         }
         else if(totalGoodness >= 25){
             endingHistory["Good2"] = true;
-            roundEnding = endings.GetEndingByName("Good2");
+            currentEnding = endingsDict["Good2"];
+            return;
         }
 
         // 坏人结局
         if (totalGoodness <= -15  && !endingHistory["Bad1"]) {
             endingHistory["Bad1"] = true;
-            roundEnding = endings.GetEndingByName("Bad1");
+            currentEnding = endingsDict["Bad1"];
+            return;
         }
-        
-        currentEnding = roundEnding;
+
+        endingHistory["Normal"] = true;
+        currentEnding = endingsDict["Normal"];
     }
 
     // true = 转生， false = 地狱

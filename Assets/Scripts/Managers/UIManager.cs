@@ -8,6 +8,7 @@ using DG.Tweening;
 using UnityEngine.AddressableAssets;
 using Sirenix.OdinInspector.Editor;
 using PixelCrushers.DialogueSystem.ChatMapper;
+using static Sirenix.OdinInspector.Editor.UnityPropertyEmitter;
 public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;
@@ -34,9 +35,10 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [Header("Ending")]
     [SerializeField] private Image EndingBackground;
     [SerializeField] private TextMeshProUGUI EndingTMP;
+    [SerializeField] private Sprite EndingLockedImage;
 
     [Header("Gallery")]
-    [SerializeField] private List<GameObject> EndingContainers; // 储存结局图+文字的container 排列顺序与EndingsSO一致
+    [SerializeField] private Dictionary<string, GameObject> EndingContainersDict; // 用于根据endinghistroy的key设置解锁状态
     [SerializeField] private Transform Page1, Page2;
 
     [Header("Panels")]
@@ -76,14 +78,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
         panels.Add(ResultPanel);
         panels.Add(GalleryPanel);
 
-        // 将画廊中每一页里的所有结局container添加到list
-        EndingContainers = new List<GameObject>(JudgeManager.Instance.endingHistory.Count);
-        foreach (Transform container in Page1){
-            EndingContainers.Add(container.gameObject);
-        }
-        foreach (Transform container in Page2) {
-            EndingContainers.Add(container.gameObject);
-        }
+        
+
+        EndingContainersDict = new Dictionary<string, GameObject>();
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
@@ -103,13 +100,29 @@ public class UIManager : MonoBehaviour, IGameStateListener
 
     void Start()
     {
+        InitGallery();
+    }
+
+    private void InitGallery(){
+        // 将画廊中每一页里的所有container添加到list
+        var EndingContainers = new List<GameObject>(JudgeManager.Instance.endingHistory.Count);
+        foreach (Transform container in Page1) {
+            EndingContainers.Add(container.gameObject);
+        }
+        foreach (Transform container in Page2) {
+            EndingContainers.Add(container.gameObject);
+        }
+
+        // 按照list中的顺序初始化字典
         var endings = JudgeManager.Instance.endings.endings;
-        for (int i = 0; i < endings.Length; i++){
-            string clippedImageName = endings[i].Image.name + "_clipped";
-            var handle = Addressables.LoadAssetAsync<Sprite>("Assets/Arts/Ending/Clipped/" + clippedImageName + ".png");
-            handle.WaitForCompletion();
-            EndingContainers[i].GetComponentInChildren<Image>().sprite = handle.Result;
-            EndingContainers[i].GetComponentInChildren<TextMeshProUGUI>().text = endings[i].DisplayCondition;
+        for (int i = 0; i < endings.Length; i++) {
+            EndingContainersDict.Add(endings[i].Title, EndingContainers[i]);
+        }
+
+        // 所有结局图设为未解锁图 并设置解锁条件文本
+        foreach (var ending in JudgeManager.Instance.endingsDict) {
+            EndingContainersDict[ending.Key].GetComponentInChildren<Image>().sprite = EndingLockedImage;
+            EndingContainersDict[ending.Key].GetComponentInChildren<TextMeshProUGUI>().text = ending.Value.DisplayCondition;
         }
     }
 
@@ -349,6 +362,10 @@ public class UIManager : MonoBehaviour, IGameStateListener
         // 设置结局图片和文本
         EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
         EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
+
+        // 更新画廊状态
+        UpdateGallery();
+
         // 打开结局面板
         Debug.Log("Opening EndingPanel");
         ShowPanel(EndingPanel);
@@ -367,6 +384,23 @@ public class UIManager : MonoBehaviour, IGameStateListener
             // 设置文本
             counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
             counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
+        }
+    }
+
+    private void UpdateGallery(){
+        var endingsDict = JudgeManager.Instance.endingsDict;
+        foreach (var ending in JudgeManager.Instance.endingHistory){
+            if (ending.Value == true){
+                // 根据so里的image名称加上clipped后缀查找并加载结局图 
+                string clippedImageName = endingsDict[ending.Key].Image.name + "_clipped";
+                var handle = Addressables.LoadAssetAsync<Sprite>("Assets/Arts/Ending/Clipped/" + clippedImageName + ".png");
+                // 等待异步加载完成
+                handle.WaitForCompletion();
+
+                // 显示结局图和结局名
+                EndingContainersDict[ending.Key].GetComponentInChildren<Image>().sprite = handle.Result;
+                EndingContainersDict[ending.Key].GetComponentInChildren<TextMeshProUGUI>().text = endingsDict[ending.Key].DisplayName;
+            }
         }
     }
 }

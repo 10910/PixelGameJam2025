@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8310af0fbd0b1ad4ca90a5cb3d107617
+    m_Address: Assets/Arts/Ending/Clipped/ending_worst_clipped.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 862ca6adca4219649bea10d0c0e3c7c0
     m_Address: Assets/Arts/Ending/Clipped/ending_dog_clipped.png
     m_ReadOnly: 0
