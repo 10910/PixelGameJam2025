@@ -223,6 +223,9 @@ public class GhostDialogue : MonoBehaviour
             JudgeManager.Instance.isFirstJudgement = false;
             AnimationManager.Instance.littleDemonScale.DisableInteraction();
         }
+        else if (JudgeManager.Instance.IsPlainDialogue()){
+            JudgeManager.Instance.JudgeEnd();
+        }
         else
         {
             onDialogueEnd?.Invoke();

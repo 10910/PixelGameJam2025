@@ -310,4 +310,11 @@ public class JudgeManager : MonoBehaviour
             documentHistory[key] = false;
         }
     }
+
+    // 检查当前幽灵是否只有对话，用于对话结束后跳过审判
+    public bool IsPlainDialogue() {
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst){
+            return ghst.isPlainDialogue;
+        } else{ return false; }
+    }
 }

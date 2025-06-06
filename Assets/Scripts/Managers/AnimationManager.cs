@@ -36,7 +36,7 @@ public class AnimationManager : MonoBehaviour
             Destroy(gameObject);
         }
         lighting = FindAnyObjectByType<Light>();
-        littleDemonScale = FindAnyObjectByType<LittleDemonScale>();
+        //littleDemonScale = FindAnyObjectByType<LittleDemonScale>();
         GameManager.onStartNewRound += OnStartNewRound;
     }
 
