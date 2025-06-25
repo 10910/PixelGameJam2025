@@ -46,6 +46,7 @@ public class JudgeManager : MonoBehaviour
     [SerializeField] private GhostGenerator generator;
     public EndingsSO endings;   // 结局数据
     public Dictionary<string, Ending> endingsDict;   // 结局字典 Ending.Title作为key 结局判断里有一些还在用getEndingByName 可以改为直接用这个字典
+    public bool isEndingBad2 = false; // 判断是否解锁了最坏结局 解锁的当局设置为true并在下一句出现特殊幽灵和结局
 
     private void Awake()
     {
@@ -187,6 +188,11 @@ public class JudgeManager : MonoBehaviour
     bool CheckInRoundEnding(){
         Ending inRoundEnding = null;
 
+        // 疯女人出现的回合或是已经触发最坏结局的情况下不会出现局内触发结局
+        if (GameManager.Instance.RoundsPlayed == 4 || isEndingBad2){
+            return false;
+        }
+
         // 老鼠结局 总计转生次数大于等于5
         int[] cnt = new int[2];
         if (history.TryGetValue("rat", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Rat"]) {
@@ -238,7 +244,13 @@ public class JudgeManager : MonoBehaviour
     }
 
     void CheckEnding(){
-        // 优先级：鼠>猫>狗>全转生/地狱>好人/坏人>普通
+        if(isEndingBad2){
+            isEndingBad2 = false;
+            endingHistory["Bad2"] = true;
+            currentEnding = endings.GetEndingByName("Bad2");
+            return;
+        }
+        // 优先级：最坏>全转生/地狱>好人/坏人>普通
         
         // 所有人转生/下地狱结局
         bool areAllReborn = true;
@@ -277,9 +289,12 @@ public class JudgeManager : MonoBehaviour
         }
 
         // 坏人结局
-        if (totalGoodness <= -15  && !endingHistory["Bad1"]) {
+        if (totalGoodness <= -15  && totalGoodness > -40 && !endingHistory["Bad1"]) {
             endingHistory["Bad1"] = true;
             currentEnding = endingsDict["Bad1"];
+            return;
+        }else if(totalGoodness <= -40 && !endingHistory["Bad2"]){
+            isEndingBad2 = true;
             return;
         }
 

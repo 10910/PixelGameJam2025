@@ -29,6 +29,7 @@ MonoBehaviour:
     midDialogue: Elias_Mid
     endDialogue: 
     isPlainDialogue: 0
+    dictName: GangBoss
   - ghostName: Marla
     ghostType: 1
     profession: 
@@ -45,6 +46,7 @@ MonoBehaviour:
     midDialogue: 
     endDialogue: 
     isPlainDialogue: 0
+    dictName: CrazyWoman
   - ghostName: Lena
     ghostType: 1
     profession: 
@@ -61,6 +63,7 @@ MonoBehaviour:
     midDialogue: 
     endDialogue: 
     isPlainDialogue: 0
+    dictName: Addict
   - ghostName: Simon
     ghostType: 0
     profession: 
@@ -77,7 +80,8 @@ MonoBehaviour:
     midDialogue: 
     endDialogue: 
     isPlainDialogue: 0
-  - ghostName: Gabriel
+    dictName: Oldman
+  - ghostName: Gaberial
     ghostType: 0
     profession: 
     deadBy: 
@@ -93,6 +97,7 @@ MonoBehaviour:
     midDialogue: 
     endDialogue: 
     isPlainDialogue: 0
+    dictName: Player
   - ghostName: CrazyDemon
     ghostType: 0
     profession: 
@@ -105,3 +110,4 @@ MonoBehaviour:
     midDialogue: 
     endDialogue: 
     isPlainDialogue: 0
+    dictName: CrazyDemon
