@@ -226,8 +226,10 @@ public class GhostDialogue : MonoBehaviour
         else if (JudgeManager.Instance.IsPlainDialogue()){
             JudgeManager.Instance.JudgeEnd();
         }
-        else
-        {
+        else if (JudgeManager.Instance.ShouldSkipJudge() && JudgeManager.Instance.HaveReadAllDocs()) {
+            JudgeManager.Instance.JudgeEnd();
+        }
+        else{
             onDialogueEnd?.Invoke();
         }
     }

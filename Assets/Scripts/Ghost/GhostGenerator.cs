@@ -37,10 +37,19 @@ public class GhostGenerator : MonoBehaviour
     void Start()
     {
         namesSO = Resources.Load<NamesSO>("NamesSO");
-        profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO");
-        recordsSO = Resources.Load<RecordsSO>("RecordsSO");
+
+        if(GameManager.Instance.language == Lang.Chinese){
+            recordsSO = Resources.Load<RecordsSO>("RecordsSO" + "_CN");
+            specialGhostsSO = Resources.Load<GhostInstancesSO>("SpecialGhostsSO" + "_CN");
+            profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO" + "_CN");
+        }
+        else {
+            recordsSO = Resources.Load<RecordsSO>("RecordsSO");
+            specialGhostsSO = Resources.Load<GhostInstancesSO>("SpecialGhostsSO");
+            profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO");
+        }
+
         spriteListsSO = Resources.Load<SpriteLists>("SpriteListsSO");
-        specialGhostsSO = Resources.Load<GhostInstancesSO>("SpecialGhostsSO");
         specialGhosts = new Dictionary<string, GhostInstance>();
         foreach (SpecialGhostInstance ghst in specialGhostsSO.ghostInstances) { 
             specialGhosts.Add(ghst.dictName, ghst);
@@ -81,6 +90,18 @@ public class GhostGenerator : MonoBehaviour
         List<Record> catRecords = records.Where(r => r.typeCondition == GhostType.cat).ToList();
         List<Record> ratRecords = records.Where(r => r.typeCondition == GhostType.rat).ToList();
         List<Record> humanRecords = recordsSO.records.Where(r => r.typeCondition == GhostType.male || r.typeCondition == GhostType.female).ToList();
+
+        if(GameManager.Instance.spceialGhostTestMode){
+            var sGhosts = new List<GhostInstance>();
+            sGhosts.Add(specialGhosts["GangBoss"]);
+            //sGhosts.Add(specialGhosts["CrazyDemon"]);
+            sGhosts.Add(specialGhosts["CrazyWoman"]);
+            sGhosts.Add(specialGhosts["Addict"]);
+            sGhosts.Add(specialGhosts["Oldman"]);
+            sGhosts.Add(specialGhosts["Player"]);
+            JudgeManager.Instance.isEndingBad2 = true;
+            return sGhosts;
+        }
 
         // 随机幽灵
         for (int i = 0; i < nGhosts; i++)
@@ -146,11 +167,11 @@ public class GhostGenerator : MonoBehaviour
             // 第二局最后出现疯恶魔
             ghosts.Add(specialGhosts["CrazyDemon"]);
         }
-        else if(GameManager.Instance.RoundsPlayed == 4){
-            // 第四局中段出现疯女人
+        else if(GameManager.Instance.RoundsPlayed == 5){
+            // 第5局中段出现疯女人
             ghosts.Insert(ghosts.Count / 2, specialGhosts["CrazyWoman"]);
-        }else if(GameManager.Instance.RoundsPlayed > 4 && JudgeManager.Instance.totalGoodness <= -30){
-            // 第四局以后且负向功德值达到一定量时出现瘾君子
+        }else if(GameManager.Instance.RoundsPlayed > 5 && JudgeManager.Instance.totalGoodness <= -30){
+            // 第5局以后且负向功德值达到一定量时出现瘾君子
             ghosts.Insert(1, specialGhosts["Addict"]);
         }else if(JudgeManager.Instance.isEndingBad2){
             // 满足最坏结局功德值要求时加入老人和疯恶魔对玩家的审判

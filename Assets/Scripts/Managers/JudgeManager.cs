@@ -67,15 +67,24 @@ public class JudgeManager : MonoBehaviour
         endingsDict = new Dictionary<string, Ending>();
 
         GameManager.onStartNewRound += OnStartNewRoundCallback;
-        endings = Resources.Load<EndingsSO>("EndingsSO");
         
+
+        isFirstJudgement = true;
+    }
+
+    private void Start() {
+        if (GameManager.Instance.language == Lang.Chinese) {
+            endings = Resources.Load<EndingsSO>("EndingsSO" + "_CN");
+        }
+        else {
+            endings = Resources.Load<EndingsSO>("EndingsSO");
+        }
+
         // 初始化结局访问记录, 结局字典
-        foreach (Ending ending in endings.endings){
+        foreach (Ending ending in endings.endings) {
             endingHistory.Add(ending.Title, false);
             endingsDict.Add(ending.Title, ending);
         }
-
-        isFirstJudgement = true;
     }
 
     private void OnDestroy()
@@ -145,19 +154,42 @@ public class JudgeManager : MonoBehaviour
         if (ghosts[idx].ghostType == GhostType.male || ghosts[idx].ghostType == GhostType.female)
         {
             // 人类
-            id = $"{ghosts[idx].ghostName}\n " +
-                 $"{ghosts[idx].ghostType}\n" +
-                 $"Age at Death: {ghosts[idx].age}\n" +
-                 $"{ghosts[idx].profession}\n";
+            id = $"{ghosts[idx].ghostName}\n ";
+            if (GameManager.Instance.language == Lang.Chinese) {
+                if (ghosts[idx].ghostType == GhostType.male) {
+                    id += "男";
+                }else if(ghosts[idx].ghostType == GhostType.female) {
+                    id += "女";
+                }
+                id += "\n";
+                id += $"死亡年龄: {ghosts[idx].age}\n";
+            }
+            else {
+                id += $"{ghosts[idx].ghostType}\n";
+                id += $"Age at Death: {ghosts[idx].age}\n";
+            }
+            id += $"{ghosts[idx].profession}\n";
                  //$"Dead by: ";
         }
         else
         {
             //动物
-            id = $"{ghosts[idx].ghostName}\n " +
-                 $"{ghosts[idx].ghostType}\n" +
-                 $"Age at Death: {ghosts[idx].age}\n";
-                 //$"Dead by: ";
+            id = $"{ghosts[idx].ghostName}\n ";
+            if (GameManager.Instance.language == Lang.Chinese) {
+                if (ghosts[idx].ghostType == GhostType.cat) {
+                    id += "猫";
+                }else if (ghosts[idx].ghostType == GhostType.dog) {
+                    id += "狗";
+                }else if(ghosts[idx].ghostType == GhostType.rat) {
+                    id += "鼠鼠";
+                }
+                id += "\n";
+                id += $"死亡年龄: {ghosts[idx].age}\n";
+            }
+            else {
+                id += $"{ghosts[idx].ghostType}\n";
+                id += $"Age at Death: {ghosts[idx].age}\n";
+            }
         }
         idText = id;
 
@@ -331,5 +363,16 @@ public class JudgeManager : MonoBehaviour
         if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst){
             return ghst.isPlainDialogue;
         } else{ return false; }
+    }
+
+    public bool ShouldSkipJudge() {
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst) {
+            return ghst.shouldSkipJudge;
+        }
+        else { return false; }
+    }
+
+    public bool HaveReadAllDocs(){
+        return documentHistory["records"] && documentHistory["id"];
     }
 }

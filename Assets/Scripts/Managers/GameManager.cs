@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    public Lang language;
+    public bool spceialGhostTestMode = false;
+
     private GameState gameState;
 
     [Header("Actions")]

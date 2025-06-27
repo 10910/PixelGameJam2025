@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4cf84a4bd77534bb769db0aae9b642, type: 3}
+  m_Name: RecordsSO_CN
+  m_EditorClassIdentifier: Assembly-CSharp::RecordsSO
+  records:
+  - description: "\u5728\u725B\u80CC\u4E0A\u6D82\u9E26"
+    goodness: 0
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u548C\u81EA\u52A8\u552E\u8D27\u673A\u7ED3\u5A5A"
+    goodness: 0
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u4ECE\u672A\u6309\u65F6\u5B8C\u6210\u4E00\u573Agame jam"
+    goodness: -1
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u62EF\u6551\u4E86\u6EBA\u6C34\u8005"
+    goodness: 3
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u6551\u4E0B\u4E86\u53D7\u4F24\u7684\u9E3D\u5B50"
+    goodness: 2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u707E\u540E\u53C2\u4E0E\u5FD7\u613F\u8005\u670D\u52A1"
+    goodness: 1
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u628A\u964D\u843D\u4F1E\u5077\u6362\u6210\u5783\u573E\u888B"
+    goodness: -3
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u7528\u6CD5\u68CD\u5C06\u4EBA\u51FB\u6655"
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u6536\u85CF\u5939\u91CC\u6CA1\u770B\u7684\u89C6\u9891\u8D85\u8FC7100\u4E2A"
+    goodness: -1
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u62C6\u6389\u4E86\u7535\u68AF\u7D27\u6025\u547C\u53EB\u6309\u94AE"
+    goodness: -3
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u5728\u98DF\u76C6\u91CC\u6492\u5C3F"
+    goodness: -1
+    typeCondition: 3
+    professionCondition: 
+  - description: "\u54AC\u5176\u4ED6\u72D7"
+    goodness: -2
+    typeCondition: 3
+    professionCondition: 
+  - description: "\u8FFD\u6355\u5C0F\u5077"
+    goodness: 2
+    typeCondition: 3
+    professionCondition: 
+  - description: "\u6253\u7406\u5168\u90E8\u5269\u996D"
+    goodness: 1
+    typeCondition: 3
+    professionCondition: 
+  - description: "\u6253\u574F\u8FC725\u4E2A\u9A6C\u514B\u676F"
+    goodness: 1
+    typeCondition: 2
+    professionCondition: 
+  - description: "\u54AC\u5C3E\u5DF4\u8F6C\u4E8610910\u5708"
+    goodness: 0
+    typeCondition: 3
+    professionCondition: 
+  - description: "\u88AB\u9EC4\u74DC\u5413\u523012\u6B21"
+    goodness: 0
+    typeCondition: 2
+    professionCondition: 
+  - description: "\u8D70\u4E22\u8D85\u8FC71\u4E2A\u6708"
+    goodness: -1
+    typeCondition: 2
+    professionCondition: 
+  - description: "\u4E3A\u4E3B\u4EBA\u5BB6\u91CC\u6293\u87D1\u8782"
+    goodness: 1
+    typeCondition: 2
+    professionCondition: 
+  - description: "\u6478\u809A\u76AE\u65F6\u4ECE\u6CA1\u54AC\u8FC7\u4EBA"
+    goodness: 2
+    typeCondition: 2
+    professionCondition: 
+  - description: "\u54AC\u65AD\u7F51\u7EBF"
+    goodness: -2
+    typeCondition: 4
+    professionCondition: 
+  - description: "\u5403\u8FC723\u888B\u7C73"
+    goodness: -1
+    typeCondition: 4
+    professionCondition: 
+  - description: "\u53D1\u5446\u8D85\u8FC7500\u5C0F\u65F6"
+    goodness: 0
+    typeCondition: 4
+    professionCondition: 
+  - description: "\u4E3A\u79D1\u7814\u505A\u51FA\u8D21\u732E"
+    goodness: 2
+    typeCondition: 4
+    professionCondition: 
+  - description: "\u5E2E\u52A9\u4E3B\u4EBA\u8D70\u51FA\u6291\u90C1"
+    goodness: 1
+    typeCondition: 4
+    professionCondition: 
+  - description: "\u5077\u8D70\u8FC7\u8D85\u5E02\u6240\u6709\u7684\u6807\u7B7E"
+    goodness: -1
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u5582\u517B\u8FC730\u53EA\u6D41\u6D6A\u732B\uFF08\u5DF2\u7EDD\u80B2\uFF09"
+    goodness: 3
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u7ED9\u4EBA\u6309\u6469\u6309\u5230\u9AA8\u6298"
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u62A5\u544A\u4E86\u4E00\u573A\u8087\u4E8B\u9003\u9038"
+    goodness: 2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u4E3E\u62A5\u6BD2\u54C1\u4EA4\u6613"
+    goodness: 3
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u4ECE\u672A\u9020\u6210\u516C\u5171\u9A6C\u6876\u5835\u585E"
+    goodness: 2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u7EC4\u7EC7\u4E86\u6574\u4E2A\u8003\u573A\u7684\u4F5C\u5F0A"
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u9972\u517B\u868A\u5B50\u5E76\u4F5C\u4E3A\u6B66\u5668\u51FA\u552E"
+    goodness: -2
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u6276\u8001\u4EBA\u8FC7\u9A6C\u8DEF"
+    goodness: 1
+    typeCondition: 0
+    professionCondition: 
+  - description: "\u5411\u5916\u592A\u7A7A\u53D1\u5C04\u624B\u7535\u7B52\u4FE1\u53F7"
+    goodness: 0
+    typeCondition: 0
+    professionCondition: 
