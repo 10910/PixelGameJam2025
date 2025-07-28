@@ -224,20 +224,20 @@ public class JudgeManager : MonoBehaviour
             return false;
         }
 
-        // 老鼠结局 总计转生次数大于等于5
+        // 老鼠结局 总计转生次数大于等于animalEndingCnt
         int[] cnt = new int[2];
         if (history.TryGetValue("rat", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Rat"]) {
             endingHistory["Rat"] = true;
             inRoundEnding = endings.GetEndingByName("Rat");
         }
 
-        // 猫结局 总计转生次数大于等于5
+        // 猫结局 总计转生次数大于等于animalEndingCnt
         if (history.TryGetValue("cat", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Cat"]) {
             endingHistory["Cat"] = true;
             inRoundEnding = endings.GetEndingByName("Cat");
         }
 
-        // 狗结局 总计转生次数大于等于5
+        // 狗结局 总计转生次数大于等于animalEndingCnt
         if (history.TryGetValue("dog", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Dog"]) {
             endingHistory["Dog"] = true;
             inRoundEnding = endings.GetEndingByName("Dog");
