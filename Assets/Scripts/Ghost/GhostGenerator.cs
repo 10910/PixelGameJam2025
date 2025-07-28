@@ -163,11 +163,11 @@ public class GhostGenerator : MonoBehaviour
         if (GameManager.Instance.RoundsPlayed == 1){
             // 第一局最后出现黑帮老大
             ghosts.Add(specialGhosts["GangBoss"]);
-            ghosts.Add(specialGhosts["CrazyDemon"]);
+            //ghosts.Add(specialGhosts["CrazyDemon"]);
         }
         else if(GameManager.Instance.RoundsPlayed == 2) {   // todo：应该改成：根据本局结局是否特殊加入
             // 第二局最后出现疯恶魔
-            JudgeManager.Instance.isEndingBad2 = true;
+            //JudgeManager.Instance.isEndingBad2 = true;
             ghosts.Add(specialGhosts["CrazyDemon"]);
             //ghosts.Insert(0, specialGhosts["CrazyWoman"]);
             //ghosts.Insert(2, specialGhosts["Addict"]);
@@ -177,10 +177,12 @@ public class GhostGenerator : MonoBehaviour
         else if(GameManager.Instance.RoundsPlayed == 4){
             // 第4局中段出现疯女人
             ghosts.Insert(ghosts.Count / 2, specialGhosts["CrazyWoman"]);
-        }else if(GameManager.Instance.RoundsPlayed > 4 && JudgeManager.Instance.totalGoodness <= -30){
+        }else if(GameManager.Instance.RoundsPlayed > 4 && !JudgeManager.Instance.hasAddictedAppeared && JudgeManager.Instance.totalGoodness <= -30 ){
             // 第5局以后且负向功德值达到一定量时出现瘾君子
-            ghosts.Insert(1, specialGhosts["Addict"]);
-        }else if(JudgeManager.Instance.isEndingBad2){
+            ghosts.Insert(0, specialGhosts["Addict"]);
+            JudgeManager.Instance.hasAddictedAppeared = true;
+        }
+        else if(JudgeManager.Instance.isEndingBad2){
             // 满足最坏结局功德值要求时加入老人和疯恶魔对玩家的审判
             ghosts.Add(specialGhosts["Oldman"]);
             ghosts.Add(specialGhosts["Player"]);

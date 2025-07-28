@@ -48,6 +48,7 @@ public class JudgeManager : MonoBehaviour
     public Dictionary<string, Ending> endingsDict;   // 结局字典 Ending.Title作为key 结局判断里有一些还在用getEndingByName 可以改为直接用这个字典
     public bool isEndingBad2 = false; // 判断是否解锁了最坏结局 解锁的当局设置为true并在下一句出现特殊幽灵和结局
     public bool hasViewedMidDialogue = false; // 特殊幽灵的中段对话完成后设为true
+    public bool hasAddictedAppeared;  //瘾君子出现一次后设为false
     private void Awake()
     {
         if (Instance == null)

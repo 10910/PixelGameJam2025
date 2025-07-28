@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private Image EndingBackground;
     [SerializeField] private TextMeshProUGUI EndingTMP;
     [SerializeField] private Sprite EndingLockedImage;
+    [SerializeField] private TextMeshProUGUI EndingTitle;
 
     [Header("Gallery")]
     [SerializeField] private Dictionary<string, GameObject> EndingContainersDict; // 用于根据endinghistroy的key设置解锁状态
@@ -98,6 +99,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     void Start()
     {
         InitGallery();
+        UpdateGallery();
     }
 
     private void InitGallery(){
@@ -333,7 +335,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
             catCnts[0] += cnts[0];
             catCnts[1] += cnts[1];
         }
-        if (history.TryGetValue("dot", out cnts))
+        if (history.TryGetValue("dog", out cnts))
         {
             dogCnts[0] += cnts[0];
             dogCnts[1] += cnts[1];
@@ -351,7 +353,13 @@ public class UIManager : MonoBehaviour, IGameStateListener
         Debug.Log("humanCnts: " + humanCnts[0] + " " + humanCnts[1]);
 
         // 设置轮次文本
-        ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
+        string trial;
+        if(GameManager.Instance.language == Lang.Chinese){
+            trial = "审判 ";
+        }else{
+            trial = "Trial ";
+        }
+        ResultRoundCounter.text = trial + GameManager.Instance.RoundsPlayed.ToString();
 
         // 设置功德值文本
         ResultGoodness.text = JudgeManager.Instance.totalGoodness.ToString();
@@ -359,6 +367,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
         // 设置结局图片和文本
         EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
         EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
+        EndingTitle.text = JudgeManager.Instance.currentEnding.DisplayName;
 
         // 更新画廊状态
         UpdateGallery();
