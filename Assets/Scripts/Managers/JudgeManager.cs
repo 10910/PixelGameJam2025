@@ -47,7 +47,7 @@ public class JudgeManager : MonoBehaviour
     public EndingsSO endings;   // 结局数据
     public Dictionary<string, Ending> endingsDict;   // 结局字典 Ending.Title作为key 结局判断里有一些还在用getEndingByName 可以改为直接用这个字典
     public bool isEndingBad2 = false; // 判断是否解锁了最坏结局 解锁的当局设置为true并在下一句出现特殊幽灵和结局
-
+    public bool hasViewedMidDialogue = false; // 特殊幽灵的中段对话完成后设为true
     private void Awake()
     {
         if (Instance == null)
@@ -115,8 +115,7 @@ public class JudgeManager : MonoBehaviour
     {
         Debug.Log("Judge End");
         //onJudgeEnd?.Invoke();
-        // 清除文件浏览记录
-        ClearDocHistory();
+        
 
         // 根据审判结果更新功德值和历史记录
         UpdateHistory();
@@ -273,10 +272,16 @@ public class JudgeManager : MonoBehaviour
             history[type][1]++;
         }
         totalGoodness += ghostGoodness;
+
+        // 清除文档阅览记录
+        ClearDocHistory();
+
+        // 更新对话标志位
+        hasViewedMidDialogue = false;
     }
 
     void CheckEnding(){
-        if(isEndingBad2){
+        if(isEndingBad2 && !endingHistory["Bad2"]){
             isEndingBad2 = false;
             endingHistory["Bad2"] = true;
             currentEnding = endings.GetEndingByName("Bad2");
@@ -309,23 +314,23 @@ public class JudgeManager : MonoBehaviour
         }
 
         // 好人结局 累计善良值达到一定数量时触发
-        if (totalGoodness >= 15 && totalGoodness < 25 && !endingHistory["Good1"]) {
+        if (totalGoodness >= 25 && totalGoodness < 50 && !endingHistory["Good1"]) {
             endingHistory["Good1"] = true;
             currentEnding = endingsDict["Good1"];
             return;
         }
-        else if(totalGoodness >= 25){
+        else if(totalGoodness >= 50){
             endingHistory["Good2"] = true;
             currentEnding = endingsDict["Good2"];
             return;
         }
 
         // 坏人结局
-        if (totalGoodness <= -15  && totalGoodness > -40 && !endingHistory["Bad1"]) {
+        if (totalGoodness <= -25  && totalGoodness > -50 && !endingHistory["Bad1"]) {
             endingHistory["Bad1"] = true;
             currentEnding = endingsDict["Bad1"];
             return;
-        }else if(totalGoodness <= -40 && !endingHistory["Bad2"]){
+        }else if(totalGoodness <= -50 && !endingHistory["Bad2"]){
             isEndingBad2 = true;
             return;
         }
@@ -344,11 +349,12 @@ public class JudgeManager : MonoBehaviour
     // uimanager关闭filepanel时调用， 如果当前幽灵是特殊幽灵，且id和records都已浏览，则触发特殊角色的对话
     public void CheckSpecialConversation(){
         // 这个写法可以判断类型 同时转换类型
-        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst && documentHistory["records"] && documentHistory["id"]){
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst && documentHistory["records"] && documentHistory["id"] && !    hasViewedMidDialogue){
             print("start special dialogue");
             if (ghst.midDialogue != null) { 
                 DialogueManager.StartConversation(ghst.midDialogue);
             }
+            hasViewedMidDialogue = true;
         }
     }
 

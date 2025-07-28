@@ -6,9 +6,6 @@ using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.AddressableAssets;
-using Sirenix.OdinInspector.Editor;
-using PixelCrushers.DialogueSystem.ChatMapper;
-using static Sirenix.OdinInspector.Editor.UnityPropertyEmitter;
 public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;

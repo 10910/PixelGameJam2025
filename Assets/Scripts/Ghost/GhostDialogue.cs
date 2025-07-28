@@ -218,15 +218,20 @@ public class GhostDialogue : MonoBehaviour
 
         if (JudgeManager.Instance.isFirstJudgement)
         {
-            //dialogueSystemTrigger.conversation = ;
-            DialogueManager.StartConversation("Demon_Tutorial");
+            if(GameManager.Instance.language == Lang.Chinese){
+                DialogueManager.StartConversation("Demon_Tutorial_CN");
+            }else{
+                DialogueManager.StartConversation("Demon_Tutorial");
+            }
             JudgeManager.Instance.isFirstJudgement = false;
             AnimationManager.Instance.littleDemonScale.DisableInteraction();
         }
         else if (JudgeManager.Instance.IsPlainDialogue()){
+            GhostManager.Instance.StopGhostDialogue();
             JudgeManager.Instance.JudgeEnd();
         }
         else if (JudgeManager.Instance.ShouldSkipJudge() && JudgeManager.Instance.HaveReadAllDocs()) {
+            GhostManager.Instance.StopGhostDialogue();
             JudgeManager.Instance.JudgeEnd();
         }
         else{

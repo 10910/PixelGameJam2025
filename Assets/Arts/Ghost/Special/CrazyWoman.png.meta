@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bce2156b0041a0f4397864ee0319b1da
+guid: 1416bd9c9d6f8ae4a88eb5eb75f86e08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3072376147721076093
-    second: middle-age_female_1_0
+      213: -8093271945851738833
+    second: CrazyWoman_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,33 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: middle-age_female_1_0
+      name: CrazyWoman_0
       rect:
         serializedVersion: 2
-        x: 21
+        x: 17
         y: 8
-        width: 22
-        height: 59
+        width: 29
+        height: 65
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 382c3bafb2abc55d0800000000000000
-      internalID: -3072376147721076093
+      spriteID: f256fd49b0ceeaf80800000000000000
+      internalID: -8093271945851738833
       vertices: []
       indices: 
       edges: []
@@ -164,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f57adce6f9bcb2845b97a15e5a1f7d63
+    spriteID: 1e0a5614addc33c4b8afccf44b74c56b
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      middle-age_female_1_0: -3072376147721076093
+      CrazyWoman_0: -8093271945851738833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

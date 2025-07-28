@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PixelCrushers.DialogueSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Lang language;
     public bool spceialGhostTestMode = false;
-
+    
     private GameState gameState;
 
     [Header("Actions")]
@@ -38,6 +39,10 @@ public class GameManager : MonoBehaviour
         // 设置帧率
         Application.targetFrameRate = 60;
         SetGameState(GameState.Menu);
+
+        if (language == Lang.Chinese) {
+            DialogueManager.SetLanguage("cn");
+        }
     }
 
     public void SetGameState(GameState gameState)
