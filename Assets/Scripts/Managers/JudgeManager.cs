@@ -333,6 +333,7 @@ public class JudgeManager : MonoBehaviour
             return;
         }else if(totalGoodness <= -50 && !endingHistory["Bad2"]){
             isEndingBad2 = true;
+            currentEnding = endingsDict["Normal"];
             return;
         }
 

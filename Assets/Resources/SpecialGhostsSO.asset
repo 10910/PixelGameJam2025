@@ -37,6 +37,7 @@ MonoBehaviour:
     midDialogue: S_Boss_Mid
     endDialogue: 
     isPlainDialogue: 0
+    shouldSkipJudge: 0
     dictName: GangBoss
   - ghostName: "\u739B\u62C9"
     ghostType: 1
@@ -53,7 +54,7 @@ MonoBehaviour:
       typeCondition: 0
       professionCondition: 
     - description: "\u6B7B\u4E8E\u81EA\u6740"
-      goodness: 0
+      goodness: -2
       typeCondition: 0
       professionCondition: 
     sprite: {fileID: 4016281850929382674, guid: 39d853700c191974ca0a51ea4a2d0939, type: 3}
@@ -62,6 +63,7 @@ MonoBehaviour:
     midDialogue: S_Woman_Mid
     endDialogue: 
     isPlainDialogue: 0
+    shouldSkipJudge: 0
     dictName: CrazyWoman
   - ghostName: "\u8389\u5A1C"
     ghostType: 1
@@ -87,6 +89,7 @@ MonoBehaviour:
     midDialogue: S_Addict_Mid
     endDialogue: 
     isPlainDialogue: 0
+    shouldSkipJudge: 0
     dictName: Addict
   - ghostName: "\u897F\u8499"
     ghostType: 0
@@ -112,6 +115,7 @@ MonoBehaviour:
     midDialogue: S_Oldman_Mid
     endDialogue: 
     isPlainDialogue: 0
+    shouldSkipJudge: 0
     dictName: Oldman
   - ghostName: "\u52A0\u5E03\u91CC\u57C3\u5C14"
     ghostType: 0
@@ -145,6 +149,7 @@ MonoBehaviour:
     midDialogue: S_Player_Mid
     endDialogue: 
     isPlainDialogue: 0
+    shouldSkipJudge: 0
     dictName: Player
   - ghostName: CrazyDemon
     ghostType: 0
@@ -158,4 +163,5 @@ MonoBehaviour:
     midDialogue: 
     endDialogue: 
     isPlainDialogue: 1
+    shouldSkipJudge: 0
     dictName: CrazyDemon

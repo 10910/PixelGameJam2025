@@ -67,11 +67,19 @@ public class GhostGenerator : MonoBehaviour
 
     public List<GhostInstance> GenerateGhosts()
     {
+        
         List<GhostInstance> ghosts = new List<GhostInstance>(nGhosts);
         // 检验nGhost有效性
         if (nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length)
         {
             throw new System.Exception("Not enough elements to generate the requested number of ghosts");
+        }
+
+        if (JudgeManager.Instance.isEndingBad2) {
+            // 最坏结局只有老人和疯恶魔
+            ghosts.Add(specialGhosts["Oldman"]);
+            ghosts.Add(specialGhosts["Player"]);
+            return ghosts;
         }
 
         ghosts = new List<GhostInstance>(nGhosts);
@@ -181,11 +189,6 @@ public class GhostGenerator : MonoBehaviour
             // 第5局以后且负向功德值达到一定量时出现瘾君子
             ghosts.Insert(0, specialGhosts["Addict"]);
             JudgeManager.Instance.hasAddictedAppeared = true;
-        }
-        else if(JudgeManager.Instance.isEndingBad2){
-            // 满足最坏结局功德值要求时加入老人和疯恶魔对玩家的审判
-            ghosts.Add(specialGhosts["Oldman"]);
-            ghosts.Add(specialGhosts["Player"]);
         }
 
         return ghosts;

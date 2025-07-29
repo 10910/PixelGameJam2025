@@ -54,7 +54,7 @@ MonoBehaviour:
       typeCondition: 0
       professionCondition: 
     - description: "\u6B7B\u4E8E\u81EA\u6740"
-      goodness: 0
+      goodness: -1
       typeCondition: 0
       professionCondition: 
     sprite: {fileID: -8093271945851738833, guid: 1416bd9c9d6f8ae4a88eb5eb75f86e08, type: 3}
@@ -72,7 +72,7 @@ MonoBehaviour:
     age: 21
     records:
     - description: "\u4E25\u91CD\u6BD2\u763E"
-      goodness: 7
+      goodness: -2
       typeCondition: 0
       professionCondition: 
     - description: "\u6740\u8FC712\u4EBA"
@@ -84,7 +84,7 @@ MonoBehaviour:
       typeCondition: 0
       professionCondition: 
     sprite: {fileID: 203462163226358020, guid: 9d01051aefdf5324192420c295d7ced2, type: 3}
-    isReborn: 1
+    isReborn: 0
     introDialogue: S_Addict_Intro
     midDialogue: S_Addict_Mid
     endDialogue: 
@@ -98,11 +98,11 @@ MonoBehaviour:
     age: 92
     records:
     - description: "\u6CA1\u6709\u7279\u522B\u7684\u6210\u5C31"
-      goodness: 1
+      goodness: 0
       typeCondition: 0
       professionCondition: 
     - description: "\u6CA1\u6709\u91CD\u5927\u7684\u7F6A\u8FC7"
-      goodness: 1
+      goodness: 0
       typeCondition: 0
       professionCondition: 
     - description: "\u81EA\u7136\u6B7B\u4EA1"
