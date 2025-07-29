@@ -14,45 +14,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndingsSO
   endings:
   - Title: Normal
+    DisplayName: An Ordinary Day
+    DisplayCondition: Nothing special happened
     Description: The human world continues to run as usual. Just another ordinary
-      judgment day.
+      judgement day.
     Image: {fileID: 21300000, guid: 8b6fb5794128ea14ba64650cfe058927, type: 3}
   - Title: AllReborn
+    DisplayName: Metrohell
+    DisplayCondition: Reborn all ghosts in one judgment
     Description: "Due to your constant reincarnation of souls, the number of visitors
       to the underworld keeps increasing. The overworked imps groan in agony\u2014even
       their vacations are canceled!"
     Image: {fileID: 21300000, guid: 998705c9acfc7ea43a8eb42a9639262f, type: 3}
   - Title: AllHell
+    DisplayName: No Encounters of Any Kind
+    DisplayCondition: Send all ghosts to hell in one judgment
     Description: You kept dragging everyone to hell until humanity vanished from
       Earth. When aliens finally visited the Earth, they found nothing but primitive
       creatures, and left with disappointment.
     Image: {fileID: 21300000, guid: 534ad2f5b4222244ab1e5f01e25cddb7, type: 3}
   - Title: Cat
+    DisplayName: Wareware wa Neko de Aru
+    DisplayCondition: Total reborn cat ghosts
     Description: "Under your judgment, the world has become filled with cat-like
       humans. They commit the murder of cups teetering on table edges and present
       captured bugs as gifts\u2026And they\u2019re full of personality, masters of
       saying no."
     Image: {fileID: 21300000, guid: e46426c411d84964795a41e001794b92, type: 3}
   - Title: Dog
+    DisplayName: From Bone to Dogman
+    DisplayCondition: Total reborn dog ghosts
     Description: "Under your judgment, the world became full of people like this\u2014just
       toss something in a public place, you'll spot them right away."
     Image: {fileID: 21300000, guid: 7812de5a19336ed47809314699f3f288, type: 3}
   - Title: Rat
+    DisplayName: Rat King
+    DisplayCondition: Total reborn rat ghosts
     Description: "Mice reincarnate as mice\u2014you\u2019ve stuck firmly to that
       principle. Complimentary pet rodents have now become a non-optional part of
       every takeout meal."
     Image: {fileID: 21300000, guid: 00ffdd3f3d9a7494098eb5f93b392cb2, type: 3}
   - Title: Good1
+    DisplayName: Brave New World
+    DisplayCondition: Be a good judge
     Description: "You stand on the side of justice\u2019s scale. Human kindness has
       evolved\u2014rickshaws now roam the streets solely to help grandmas cross the
       road. Sometimes, they get escorted across before they even consider crossing."
     Image: {fileID: 21300000, guid: ee9fa647fa7f8064781a80948a172222, type: 3}
   - Title: Good2
+    DisplayName: You Are Kira
+    DisplayCondition: Be a saint
     Description: "Your judgment has nearly wiped out all evil\u2014people believe
       a divine force is punishing the wicked, and the world has plunged into religious
       frenzy."
     Image: {fileID: 21300000, guid: 696d3b180c7a5304ba06a91e93280f0d, type: 3}
   - Title: Bad1
+    DisplayName: Sin City
+    DisplayCondition: Be a bad judge
     Description: 'Thanks to you, kindness has gone extinct in the human world, while
       evil runs rampant. Some begin to question: Is human nature truly evil?'
     Image: {fileID: 21300000, guid: 266c4de26004cf34581c20ddb2646e09, type: 3}
+  - Title: Bad2
+    DisplayName: Scales of The Guilty
+    DisplayCondition: Be a villain
+    Description: "The guilty fall into Hell, but the most wicked lose their identity
+      and memories, becoming Judges. Until a soul arrives whom you deem more sinful
+      than yourself, you shall remain here\u2014keeper of The Scales of The Guilty."
+    Image: {fileID: 21300000, guid: 476e7a068837f4c4aa98abaf1d29f459, type: 3}

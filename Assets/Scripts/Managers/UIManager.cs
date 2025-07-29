@@ -4,6 +4,8 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.AddressableAssets;
 public class UIManager : MonoBehaviour, IGameStateListener
 {
     public static UIManager Instance;
@@ -30,6 +32,12 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [Header("Ending")]
     [SerializeField] private Image EndingBackground;
     [SerializeField] private TextMeshProUGUI EndingTMP;
+    [SerializeField] private Sprite EndingLockedImage;
+    [SerializeField] private TextMeshProUGUI EndingTitle;
+
+    [Header("Gallery")]
+    [SerializeField] private Dictionary<string, GameObject> EndingContainersDict; // 用于根据endinghistroy的key设置解锁状态
+    [SerializeField] private Transform Page1, Page2;
 
     [Header("Panels")]
     [SerializeField] private GameObject settingsPanel;
@@ -40,6 +48,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject FilesPanel;
     [SerializeField] private GameObject EndingPanel;
     [SerializeField] private GameObject ResultPanel;
+    [SerializeField] private GameObject GalleryPanel;
     private List<GameObject> panels = new List<GameObject>();
 
     [Header("Actions")]
@@ -65,7 +74,11 @@ public class UIManager : MonoBehaviour, IGameStateListener
         panels.Add(FilesPanel);
         panels.Add(EndingPanel);
         panels.Add(ResultPanel);
+        panels.Add(GalleryPanel);
 
+        
+
+        EndingContainersDict = new Dictionary<string, GameObject>();
 
         gameManager.onGamePause += GamePausedCallback;
         gameManager.onGameResume += GameResumedCallback;
@@ -85,6 +98,31 @@ public class UIManager : MonoBehaviour, IGameStateListener
 
     void Start()
     {
+        InitGallery();
+        UpdateGallery();
+    }
+
+    private void InitGallery(){
+        // 将画廊中每一页里的所有container添加到list
+        var EndingContainers = new List<GameObject>(JudgeManager.Instance.endingHistory.Count);
+        foreach (Transform container in Page1) {
+            EndingContainers.Add(container.gameObject);
+        }
+        foreach (Transform container in Page2) {
+            EndingContainers.Add(container.gameObject);
+        }
+
+        // 按照list中的顺序初始化字典
+        var endings = JudgeManager.Instance.endings.endings;
+        for (int i = 0; i < endings.Length; i++) {
+            EndingContainersDict.Add(endings[i].Title, EndingContainers[i]);
+        }
+
+        // 所有结局图设为未解锁图 并设置解锁条件文本
+        foreach (var ending in JudgeManager.Instance.endingsDict) {
+            EndingContainersDict[ending.Key].GetComponentInChildren<Image>().sprite = EndingLockedImage;
+            EndingContainersDict[ending.Key].GetComponentInChildren<TextMeshProUGUI>().text = ending.Value.DisplayCondition;
+        }
     }
 
     public void GameStateChangedCallback(GameState gameState)
@@ -109,7 +147,6 @@ public class UIManager : MonoBehaviour, IGameStateListener
             p.SetActive(p == panel);
             // if (p == panel)
             // {
-
             // }
         }
     }
@@ -159,11 +196,20 @@ public class UIManager : MonoBehaviour, IGameStateListener
         creditsPanel.SetActive(true);
     }
 
+    public void OpenGalleryPanel(){
+        ShowPanel(GalleryPanel);
+    }
+
+    public void CloseGalleryPanel() {
+        ShowPanel(menuPanel);
+    }
+
     public void CloseCreditsPanel()
     {
         creditsPanel.SetActive(false);
     }
 
+    // document = records 都是记录生平的那个东西
     public void OpenFilesPanel()
     {
         Debug.Log("OpenFilesPanel");
@@ -171,6 +217,9 @@ public class UIManager : MonoBehaviour, IGameStateListener
         DocumentPanel.SetActive(true);
         IDPanel.SetActive(false);
         AudioManager.Instance.PlaySFX("documentClick");
+        // 如果是第一次浏览，设置历史标志位为true
+        if (!JudgeManager.Instance.documentHistory["records"])
+            JudgeManager.Instance.documentHistory["records"] = true;
     }
 
     public void OpenIDPanel()
@@ -180,13 +229,18 @@ public class UIManager : MonoBehaviour, IGameStateListener
         IDPanel.SetActive(true);
         DocumentPanel.SetActive(false);
         AudioManager.Instance.PlaySFX("documentClick");
+        // 如果是第一次浏览，设置历史标志位为true
+        if (!JudgeManager.Instance.documentHistory["id"])
+            JudgeManager.Instance.documentHistory["id"] = true;
     }
 
+    // 关闭按钮触发
     public void CloseFilesPanel()
     {
         FilesPanel.SetActive(false);
         DocumentPanel.SetActive(false);
         IDPanel.SetActive(false);
+        JudgeManager.Instance.CheckSpecialConversation();
     }
 
     [Button]
@@ -281,7 +335,7 @@ public class UIManager : MonoBehaviour, IGameStateListener
             catCnts[0] += cnts[0];
             catCnts[1] += cnts[1];
         }
-        if (history.TryGetValue("dot", out cnts))
+        if (history.TryGetValue("dog", out cnts))
         {
             dogCnts[0] += cnts[0];
             dogCnts[1] += cnts[1];
@@ -299,7 +353,13 @@ public class UIManager : MonoBehaviour, IGameStateListener
         Debug.Log("humanCnts: " + humanCnts[0] + " " + humanCnts[1]);
 
         // 设置轮次文本
-        ResultRoundCounter.text = "Trial " + GameManager.Instance.RoundsPlayed.ToString();
+        string trial;
+        if(GameManager.Instance.language == Lang.Chinese){
+            trial = "审判 ";
+        }else{
+            trial = "Trial ";
+        }
+        ResultRoundCounter.text = trial + GameManager.Instance.RoundsPlayed.ToString();
 
         // 设置功德值文本
         ResultGoodness.text = JudgeManager.Instance.totalGoodness.ToString();
@@ -307,6 +367,11 @@ public class UIManager : MonoBehaviour, IGameStateListener
         // 设置结局图片和文本
         EndingBackground.sprite = JudgeManager.Instance.currentEnding.Image;
         EndingTMP.text = JudgeManager.Instance.currentEnding.Description;
+        EndingTitle.text = JudgeManager.Instance.currentEnding.DisplayName;
+
+        // 更新画廊状态
+        UpdateGallery();
+
         // 打开结局面板
         Debug.Log("Opening EndingPanel");
         ShowPanel(EndingPanel);
@@ -325,6 +390,23 @@ public class UIManager : MonoBehaviour, IGameStateListener
             // 设置文本
             counterUI.Find("Rebirth").GetComponent<TextMeshProUGUI>().text = nRebirth.ToString();
             counterUI.Find("Hell").GetComponent<TextMeshProUGUI>().text = nHell.ToString();
+        }
+    }
+
+    private void UpdateGallery(){
+        var endingsDict = JudgeManager.Instance.endingsDict;
+        foreach (var ending in JudgeManager.Instance.endingHistory){
+            if (ending.Value == true){
+                // 根据so里的image名称加上clipped后缀查找并加载结局图 
+                string clippedImageName = endingsDict[ending.Key].Image.name + "_clipped";
+                var handle = Addressables.LoadAssetAsync<Sprite>("Assets/Arts/Ending/Clipped/" + clippedImageName + ".png");
+                // 等待异步加载完成
+                handle.WaitForCompletion();
+
+                // 显示结局图和结局名
+                EndingContainersDict[ending.Key].GetComponentInChildren<Image>().sprite = handle.Result;
+                EndingContainersDict[ending.Key].GetComponentInChildren<TextMeshProUGUI>().text = endingsDict[ending.Key].DisplayName;
+            }
         }
     }
 }

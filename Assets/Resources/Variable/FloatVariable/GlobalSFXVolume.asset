@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GlobalSFXVolume
   m_EditorClassIdentifier: 
   maxValue: 0
-  currentValue: 0
+  currentValue: 0.5
   ValueChangedEvent: {fileID: 0}
   description: 

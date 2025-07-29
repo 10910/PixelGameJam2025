@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using DG.Tweening;
 using PixelCrushers.DialogueSystem;
+using System.Linq;
 
 public class JudgeHistory
 {
@@ -21,6 +22,8 @@ public class JudgeManager : MonoBehaviour
     public static Action onStartNewJudge;
     public static Action onJudgeEnd;
     public static Action onRoundEnd;
+    public static Action onAllDocumentRead;
+
 
     public int animalEndingCnt;
     public bool isFirstJudgement; // 用于显示教程
@@ -36,11 +39,16 @@ public class JudgeManager : MonoBehaviour
     public Dictionary<string, int[]> history = new Dictionary<string, int[]>();
     public Ending currentEnding; // 本局结局
     public Dictionary<string, bool> endingHistory; // 记录结局是否被浏览过, 结局名作为key
+    [ShowInInspector]
+    public Dictionary<string, bool> documentHistory; // 记录文件是否被浏览过, key是id和document, value为true代表已经打开过至少一次
 
     public int currentGhostIdx; // 当前审判的幽灵索引
     [SerializeField] private GhostGenerator generator;
-    private EndingsSO endings;   // 结局数据
-
+    public EndingsSO endings;   // 结局数据
+    public Dictionary<string, Ending> endingsDict;   // 结局字典 Ending.Title作为key 结局判断里有一些还在用getEndingByName 可以改为直接用这个字典
+    public bool isEndingBad2 = false; // 判断是否解锁了最坏结局 解锁的当局设置为true并在下一句出现特殊幽灵和结局
+    public bool hasViewedMidDialogue = false; // 特殊幽灵的中段对话完成后设为true
+    public bool hasAddictedAppeared;  //瘾君子出现一次后设为false
     private void Awake()
     {
         if (Instance == null)
@@ -54,15 +62,30 @@ public class JudgeManager : MonoBehaviour
 
         ghosts = new List<GhostInstance>();
         endingHistory = new Dictionary<string, bool>();
+        documentHistory = new Dictionary<string, bool>();
+        documentHistory.Add("id", false);
+        documentHistory.Add("records", false);
+        endingsDict = new Dictionary<string, Ending>();
+
         GameManager.onStartNewRound += OnStartNewRoundCallback;
-        endings = Resources.Load<EndingsSO>("EndingsSO");
         
-        // 初始化结局访问记录
-        foreach (Ending ending in endings.endings){
-            endingHistory.Add(ending.Title, false);
-        }
 
         isFirstJudgement = true;
+    }
+
+    private void Start() {
+        if (GameManager.Instance.language == Lang.Chinese) {
+            endings = Resources.Load<EndingsSO>("EndingsSO" + "_CN");
+        }
+        else {
+            endings = Resources.Load<EndingsSO>("EndingsSO");
+        }
+
+        // 初始化结局访问记录, 结局字典
+        foreach (Ending ending in endings.endings) {
+            endingHistory.Add(ending.Title, false);
+            endingsDict.Add(ending.Title, ending);
+        }
     }
 
     private void OnDestroy()
@@ -93,6 +116,8 @@ public class JudgeManager : MonoBehaviour
     {
         Debug.Log("Judge End");
         //onJudgeEnd?.Invoke();
+        
+
         // 根据审判结果更新功德值和历史记录
         UpdateHistory();
 
@@ -129,19 +154,42 @@ public class JudgeManager : MonoBehaviour
         if (ghosts[idx].ghostType == GhostType.male || ghosts[idx].ghostType == GhostType.female)
         {
             // 人类
-            id = $"{ghosts[idx].ghostName}\n " +
-                 $"{ghosts[idx].ghostType}\n" +
-                 $"Age at Death: {ghosts[idx].age}\n" +
-                 $"{ghosts[idx].profession}\n";
+            id = $"{ghosts[idx].ghostName}\n ";
+            if (GameManager.Instance.language == Lang.Chinese) {
+                if (ghosts[idx].ghostType == GhostType.male) {
+                    id += "男";
+                }else if(ghosts[idx].ghostType == GhostType.female) {
+                    id += "女";
+                }
+                id += "\n";
+                id += $"死亡年龄: {ghosts[idx].age}\n";
+            }
+            else {
+                id += $"{ghosts[idx].ghostType}\n";
+                id += $"Age at Death: {ghosts[idx].age}\n";
+            }
+            id += $"{ghosts[idx].profession}\n";
                  //$"Dead by: ";
         }
         else
         {
             //动物
-            id = $"{ghosts[idx].ghostName}\n " +
-                 $"{ghosts[idx].ghostType}\n" +
-                 $"Age at Death: {ghosts[idx].age}\n";
-                 //$"Dead by: ";
+            id = $"{ghosts[idx].ghostName}\n ";
+            if (GameManager.Instance.language == Lang.Chinese) {
+                if (ghosts[idx].ghostType == GhostType.cat) {
+                    id += "猫";
+                }else if (ghosts[idx].ghostType == GhostType.dog) {
+                    id += "狗";
+                }else if(ghosts[idx].ghostType == GhostType.rat) {
+                    id += "鼠鼠";
+                }
+                id += "\n";
+                id += $"死亡年龄: {ghosts[idx].age}\n";
+            }
+            else {
+                id += $"{ghosts[idx].ghostType}\n";
+                id += $"Age at Death: {ghosts[idx].age}\n";
+            }
         }
         idText = id;
 
@@ -168,60 +216,29 @@ public class JudgeManager : MonoBehaviour
         GhostManager.Instance.GenerateNewGhost();
     }
 
-    //void SetResult()
-    //{
-    //    int goodness = 0;  // 玩家功德值
-    //    foreach (var ghost in ghosts)
-    //    {
-    //        // 计算单个幽灵的总善良值
-    //        int ghostGoodness = 0;
-    //        foreach (var record in ghost.records)
-    //        {
-    //            ghostGoodness += record.goodness;
-    //        }
-
-    //        // 累积判决结果和功德值
-    //        string type = ghost.ghostType.ToString();
-    //        if (!history.ContainsKey(type))
-    //        {
-    //            history[type] = new int[2];
-    //        }
-
-    //        if (ghost.isReborn)
-    //        {
-    //            // 转生时好人增加功德值 坏人减少功德值 幽灵善良值正负不变
-    //            history[type][0]++;
-    //        }
-    //        else
-    //        {
-    //            // 下地狱时好人减少功德值 坏人增加功德值 给幽灵善良值正负取反
-    //            ghostGoodness = -ghostGoodness;
-    //            history[type][1]++;
-    //        }
-    //        goodness += ghostGoodness;
-    //    }
-    //    currentGoodness = goodness;
-    //    totalGoodness += currentGoodness;
-    //}
-
     // 猫/狗/鼠结局 可在每次审判结束时触发 有结局触发时返回true
     bool CheckInRoundEnding(){
         Ending inRoundEnding = null;
 
-        // 老鼠结局 总计转生次数大于等于5
+        // 疯女人出现的回合或是已经触发最坏结局的情况下不会出现局内触发结局
+        if (GameManager.Instance.RoundsPlayed == 4 || isEndingBad2){
+            return false;
+        }
+
+        // 老鼠结局 总计转生次数大于等于animalEndingCnt
         int[] cnt = new int[2];
         if (history.TryGetValue("rat", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Rat"]) {
             endingHistory["Rat"] = true;
             inRoundEnding = endings.GetEndingByName("Rat");
         }
 
-        // 猫结局 总计转生次数大于等于5
+        // 猫结局 总计转生次数大于等于animalEndingCnt
         if (history.TryGetValue("cat", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Cat"]) {
             endingHistory["Cat"] = true;
             inRoundEnding = endings.GetEndingByName("Cat");
         }
 
-        // 狗结局 总计转生次数大于等于5
+        // 狗结局 总计转生次数大于等于animalEndingCnt
         if (history.TryGetValue("dog", out cnt) && cnt[0] >= animalEndingCnt && !endingHistory["Dog"]) {
             endingHistory["Dog"] = true;
             inRoundEnding = endings.GetEndingByName("Dog");
@@ -256,11 +273,22 @@ public class JudgeManager : MonoBehaviour
             history[type][1]++;
         }
         totalGoodness += ghostGoodness;
+
+        // 清除文档阅览记录
+        ClearDocHistory();
+
+        // 更新对话标志位
+        hasViewedMidDialogue = false;
     }
 
     void CheckEnding(){
-        // 默认普通结局，优先级：鼠>猫>狗>全转生/地狱>好人/坏人结局
-        Ending roundEnding = endings.GetEndingByName("Normal");
+        if(isEndingBad2 && !endingHistory["Bad2"]){
+            isEndingBad2 = false;
+            endingHistory["Bad2"] = true;
+            currentEnding = endings.GetEndingByName("Bad2");
+            return;
+        }
+        // 优先级：最坏>全转生/地狱>好人/坏人>普通
         
         // 所有人转生/下地狱结局
         bool areAllReborn = true;
@@ -287,22 +315,30 @@ public class JudgeManager : MonoBehaviour
         }
 
         // 好人结局 累计善良值达到一定数量时触发
-        if (totalGoodness >= 15 && totalGoodness < 25 && !endingHistory["Good1"]) {
+        if (totalGoodness >= 25 && totalGoodness < 50 && !endingHistory["Good1"]) {
             endingHistory["Good1"] = true;
-            roundEnding = endings.GetEndingByName("Good1");
+            currentEnding = endingsDict["Good1"];
+            return;
         }
-        else if(totalGoodness >= 25){
+        else if(totalGoodness >= 50){
             endingHistory["Good2"] = true;
-            roundEnding = endings.GetEndingByName("Good2");
+            currentEnding = endingsDict["Good2"];
+            return;
         }
 
         // 坏人结局
-        if (totalGoodness <= -15  && !endingHistory["Bad1"]) {
+        if (totalGoodness <= -25  && totalGoodness > -50 && !endingHistory["Bad1"]) {
             endingHistory["Bad1"] = true;
-            roundEnding = endings.GetEndingByName("Bad1");
+            currentEnding = endingsDict["Bad1"];
+            return;
+        }else if(totalGoodness <= -50 && !endingHistory["Bad2"]){
+            isEndingBad2 = true;
+            currentEnding = endingsDict["Normal"];
+            return;
         }
-        
-        currentEnding = roundEnding;
+
+        endingHistory["Normal"] = true;
+        currentEnding = endingsDict["Normal"];
     }
 
     // true = 转生， false = 地狱
@@ -310,5 +346,41 @@ public class JudgeManager : MonoBehaviour
     {
         print("judgement: " + judgement);
         ghosts[currentGhostIdx].isReborn = judgement;
+    }
+
+    // uimanager关闭filepanel时调用， 如果当前幽灵是特殊幽灵，且id和records都已浏览，则触发特殊角色的对话
+    public void CheckSpecialConversation(){
+        // 这个写法可以判断类型 同时转换类型
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst && documentHistory["records"] && documentHistory["id"] && !    hasViewedMidDialogue){
+            print("start special dialogue");
+            if (ghst.midDialogue != null) { 
+                DialogueManager.StartConversation(ghst.midDialogue);
+            }
+            hasViewedMidDialogue = true;
+        }
+    }
+
+    void ClearDocHistory() {
+        foreach (var key in documentHistory.Keys.ToList()) {
+            documentHistory[key] = false;
+        }
+    }
+
+    // 检查当前幽灵是否只有对话，用于对话结束后跳过审判
+    public bool IsPlainDialogue() {
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst){
+            return ghst.isPlainDialogue;
+        } else{ return false; }
+    }
+
+    public bool ShouldSkipJudge() {
+        if (ghosts[currentGhostIdx] is SpecialGhostInstance ghst) {
+            return ghst.shouldSkipJudge;
+        }
+        else { return false; }
+    }
+
+    public bool HaveReadAllDocs(){
+        return documentHistory["records"] && documentHistory["id"];
     }
 }

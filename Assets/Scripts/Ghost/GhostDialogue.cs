@@ -93,29 +93,33 @@ public class GhostDialogue : MonoBehaviour
         }
     }
 
+    // 普通幽灵随机选取，特殊幽灵直接从instance获取对话名
     public void GetNewDialogue()
     {
-        // 初始化随机数生成器
-        Random.InitState((int)DateTime.Now.Ticks);
-        switch (GhostManager.Instance.currentGhost.ghostType)
-        {
-            case GhostType.cat:
-                conversationName = catGhostDialogueSO.dialogueNames[Random.Range(0, catGhostDialogueSO.dialogueNames.Count)];
-                break;
-            case GhostType.dog:
-                conversationName = dogGhostDialogueSO.dialogueNames[Random.Range(0, dogGhostDialogueSO.dialogueNames.Count)];
-                break;
-            case GhostType.rat:
-                conversationName = ratGhostDialogueSO.dialogueNames[Random.Range(0, ratGhostDialogueSO.dialogueNames.Count)];
-                break;
-            case GhostType.male:
-                GetManDialogue();
-                break;
-            case GhostType.female:
-                GetWomanDialogue();
-                break;
-            default:
-                break;
+        if(JudgeManager.Instance.ghosts[JudgeManager.Instance.currentGhostIdx] is SpecialGhostInstance ghst){
+            conversationName = ghst.introDialogue;
+        }else{
+            // 初始化随机数生成器
+            Random.InitState((int)DateTime.Now.Ticks);
+            switch (GhostManager.Instance.currentGhost.ghostType) {
+                case GhostType.cat:
+                    conversationName = catGhostDialogueSO.dialogueNames[Random.Range(0, catGhostDialogueSO.dialogueNames.Count)];
+                    break;
+                case GhostType.dog:
+                    conversationName = dogGhostDialogueSO.dialogueNames[Random.Range(0, dogGhostDialogueSO.dialogueNames.Count)];
+                    break;
+                case GhostType.rat:
+                    conversationName = ratGhostDialogueSO.dialogueNames[Random.Range(0, ratGhostDialogueSO.dialogueNames.Count)];
+                    break;
+                case GhostType.male:
+                    GetManDialogue();
+                    break;
+                case GhostType.female:
+                    GetWomanDialogue();
+                    break;
+                default:
+                    break;
+            }
         }
         dialogueSystemTrigger.conversation = conversationName;
     }
@@ -214,13 +218,23 @@ public class GhostDialogue : MonoBehaviour
 
         if (JudgeManager.Instance.isFirstJudgement)
         {
-            //dialogueSystemTrigger.conversation = ;
-            DialogueManager.StartConversation("Demon_Tutorial");
+            if(GameManager.Instance.language == Lang.Chinese){
+                DialogueManager.StartConversation("Demon_Tutorial_CN");
+            }else{
+                DialogueManager.StartConversation("Demon_Tutorial");
+            }
             JudgeManager.Instance.isFirstJudgement = false;
             AnimationManager.Instance.littleDemonScale.DisableInteraction();
         }
-        else
-        {
+        else if (JudgeManager.Instance.IsPlainDialogue()){
+            GhostManager.Instance.StopGhostDialogue();
+            JudgeManager.Instance.JudgeEnd();
+        }
+        else if (JudgeManager.Instance.ShouldSkipJudge() && JudgeManager.Instance.HaveReadAllDocs()) {
+            GhostManager.Instance.StopGhostDialogue();
+            JudgeManager.Instance.JudgeEnd();
+        }
+        else{
             onDialogueEnd?.Invoke();
         }
     }

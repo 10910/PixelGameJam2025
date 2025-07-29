@@ -21,6 +21,7 @@ public class GhostGenerator : MonoBehaviour
     public ProfessionsSO profsSO;
     public RecordsSO recordsSO;
     public SpriteLists spriteListsSO;
+    public GhostInstancesSO specialGhostsSO;
 
     public int nGhosts;
     public int randomSeed = 10910;
@@ -31,13 +32,28 @@ public class GhostGenerator : MonoBehaviour
     Name[] names;
     string[] professions;
     List<Record> records;
+    Dictionary<string, GhostInstance> specialGhosts;
 
     void Start()
     {
         namesSO = Resources.Load<NamesSO>("NamesSO");
-        profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO");
-        recordsSO = Resources.Load<RecordsSO>("RecordsSO");
+
+        if(GameManager.Instance.language == Lang.Chinese){
+            recordsSO = Resources.Load<RecordsSO>("RecordsSO" + "_CN");
+            specialGhostsSO = Resources.Load<GhostInstancesSO>("SpecialGhostsSO" + "_CN");
+            profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO" + "_CN");
+        }
+        else {
+            recordsSO = Resources.Load<RecordsSO>("RecordsSO");
+            specialGhostsSO = Resources.Load<GhostInstancesSO>("SpecialGhostsSO");
+            profsSO = Resources.Load<ProfessionsSO>("ProfessionsSO");
+        }
+
         spriteListsSO = Resources.Load<SpriteLists>("SpriteListsSO");
+        specialGhosts = new Dictionary<string, GhostInstance>();
+        foreach (SpecialGhostInstance ghst in specialGhostsSO.ghostInstances) { 
+            specialGhosts.Add(ghst.dictName, ghst);
+        }
 
 #if UNITY_EDITOR
         // 仅在编辑器模式下设置随机种子
@@ -51,11 +67,19 @@ public class GhostGenerator : MonoBehaviour
 
     public List<GhostInstance> GenerateGhosts()
     {
+        
         List<GhostInstance> ghosts = new List<GhostInstance>(nGhosts);
         // 检验nGhost有效性
         if (nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length || nGhosts > namesSO.names.Length)
         {
             throw new System.Exception("Not enough elements to generate the requested number of ghosts");
+        }
+
+        if (JudgeManager.Instance.isEndingBad2) {
+            // 最坏结局只有老人和疯恶魔
+            ghosts.Add(specialGhosts["Oldman"]);
+            ghosts.Add(specialGhosts["Player"]);
+            return ghosts;
         }
 
         ghosts = new List<GhostInstance>(nGhosts);
@@ -75,13 +99,29 @@ public class GhostGenerator : MonoBehaviour
         List<Record> ratRecords = records.Where(r => r.typeCondition == GhostType.rat).ToList();
         List<Record> humanRecords = recordsSO.records.Where(r => r.typeCondition == GhostType.male || r.typeCondition == GhostType.female).ToList();
 
+        if(GameManager.Instance.spceialGhostTestMode){
+            var sGhosts = new List<GhostInstance>();
+            sGhosts.Add(specialGhosts["GangBoss"]);
+            sGhosts.Add(specialGhosts["CrazyWoman"]);
+            sGhosts.Add(specialGhosts["Addict"]);
+            sGhosts.Add(specialGhosts["Oldman"]);
+            sGhosts.Add(specialGhosts["Player"]);
+            //sGhosts.Add(specialGhosts["CrazyDemon"]);
+
+            JudgeManager.Instance.isEndingBad2 = true;
+            return sGhosts;
+        }
+
+        // 随机幽灵
         for (int i = 0; i < nGhosts; i++)
         {
             GhostInstance ghost = new GhostInstance();
 
             float typeRnd = Random.Range(0, 1.0f);
 
-            // 选人，为了避免结局同时触发，最后一个一定是人类
+            // 1. 超过animalProbability时此次生成的幽灵是人类
+            // 2. 为了避免动物和其他结局同时触发，每局最后一个幽灵一定是人类
+            // 3. 第一轮只会生成人类
             if(typeRnd >= animalProbability || i == nGhosts - 1 || GameManager.Instance.RoundsPlayed == 1){
                 ghost.ghostName = humanNames[i]._name;
                 ghost.ghostType = humanNames[i]._type;
@@ -126,6 +166,31 @@ public class GhostGenerator : MonoBehaviour
             // 添加到数组
             ghosts.Add(ghost);
         }
+
+        // 特殊幽灵
+        if (GameManager.Instance.RoundsPlayed == 1){
+            // 第一局最后出现黑帮老大
+            ghosts.Add(specialGhosts["GangBoss"]);
+            //ghosts.Add(specialGhosts["CrazyDemon"]);
+        }
+        else if(GameManager.Instance.RoundsPlayed == 2) {   // todo：应该改成：根据本局结局是否特殊加入
+            // 第二局最后出现疯恶魔
+            //JudgeManager.Instance.isEndingBad2 = true;
+            ghosts.Add(specialGhosts["CrazyDemon"]);
+            //ghosts.Insert(0, specialGhosts["CrazyWoman"]);
+            //ghosts.Insert(2, specialGhosts["Addict"]);
+            //ghosts.Add(specialGhosts["Oldman"]);
+            //ghosts.Add(specialGhosts["Player"]);
+        }
+        else if(GameManager.Instance.RoundsPlayed == 4){
+            // 第4局中段出现疯女人
+            ghosts.Insert(ghosts.Count / 2, specialGhosts["CrazyWoman"]);
+        }else if(GameManager.Instance.RoundsPlayed > 4 && !JudgeManager.Instance.hasAddictedAppeared && JudgeManager.Instance.totalGoodness <= -30 ){
+            // 第5局以后且负向功德值达到一定量时出现瘾君子
+            ghosts.Insert(0, specialGhosts["Addict"]);
+            JudgeManager.Instance.hasAddictedAppeared = true;
+        }
+
         return ghosts;
     }
 

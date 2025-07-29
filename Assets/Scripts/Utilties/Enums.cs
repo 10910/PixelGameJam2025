@@ -24,5 +24,10 @@ public enum GameState
     Game,
 }
 
+public enum Lang{
+    Chinese,
+    English
+}
+
 
 

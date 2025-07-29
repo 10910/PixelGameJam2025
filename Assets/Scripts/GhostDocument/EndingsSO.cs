@@ -4,7 +4,9 @@ using UnityEngine;
 
 [System.Serializable]
 public class Ending{
-    public string Title;
+    public string Title;    // 用于作为字典中的key 不能改
+    public string DisplayName;
+    public string DisplayCondition;
     [TextArea(5, 10)]
     public string Description;
     public Sprite Image;

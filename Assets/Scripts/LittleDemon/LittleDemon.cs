@@ -39,21 +39,21 @@ public class LittleDemon : MonoBehaviour
     {
         Debug.Log("DeliverFile");
         //判断是否在startposition 
-        // if (transform.position == startPosition.position)
-        // {
-        transform.position = startPosition.position;
-        // rectTransform.anchoredPosition = startPosition;
-        animator.SetBool("isWalk", true);
-        float duration = Vector3.Distance(startPosition.position, targetPosition.position) / speed;
-        transform.DOMove(targetPosition.position, duration)
-             .SetEase(Ease.Linear)
-             //   .OnComplete(() => animator.SetBool("isWalk", false)); // 在移动结束时设置 isWalk 为 false回到idle状态
-             .OnComplete(() =>
-             {
-                 SwitchToAnimation("LittleDemon_idle");
-                 animator.SetBool("isWalk", false);
-             }); // 在移动结束时设置 isWalk 为 false回到idle状态
-        // }
+        if (transform.position == startPosition.position)
+        {
+            transform.position = startPosition.position;
+            // rectTransform.anchoredPosition = startPosition;
+            animator.SetBool("isWalk", true);
+            float duration = Vector3.Distance(startPosition.position, targetPosition.position) / speed;
+            transform.DOMove(targetPosition.position, duration)
+                 .SetEase(Ease.Linear)
+                 //   .OnComplete(() => animator.SetBool("isWalk", false)); // 在移动结束时设置 isWalk 为 false回到idle状态
+                 .OnComplete(() =>
+                 {
+                     SwitchToAnimation("LittleDemon_idle");
+                     animator.SetBool("isWalk", false);
+                 }); // 在移动结束时设置 isWalk 为 false回到idle状态
+        }
 
     }
 

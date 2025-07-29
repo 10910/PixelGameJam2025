@@ -1,0 +1,342 @@
+﻿Database
+Name,Version,Author,Description,Emphasis1,Emphasis2,Emphasis3,Emphasis4
+Dialogue Database,,,,#ffffffff ---,#ff0000ff ---,#00ff00ff ---,#0000ffff ---
+Global User Script
+
+Actors
+ID,Portrait,AltPortraits,SpritePortrait,AltSpritePortraits,Name,Pictures,Description,IsPlayer,Display Name
+Number,Special,Special,Special,Special,Text,Files,Text,Boolean,Text
+1,,[],,[],Player,[],,True,Demon
+2,,[],,[],Ghost,[],,False,{{omit}}
+Conversations
+ID,Title,Description,Actor,Conversant,Overrides
+Number,Text,Text,Actor,Actor,JSON
+1,LittleGirl_Initial,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+2,Cat_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+3,OverworkedProgrammer_Converation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+4,StrugglingArtist_Conversation,StrugglingArtist_Conversation,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+5,RookieCriminal_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+6,AlleyCat_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+7,LaboratoryDog_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+8,AlleyCat_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+9,PetFoodTaster_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+10,StrayDog_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+11,SewerRat_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+12,HouseCat_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+13,OldDog_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+14,PetMouse_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+15,Dog_Conversation,Dog_Conversation,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+16,Mouse_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+17,OldMan_Conversation,OldMan_Conversation,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+18,OldMan_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+19,OldMan_Conversation3,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+20,OldMan_Conversation4,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+21,OldWoman_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+22,OldWoman_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+23,OldWoman_Conversation3,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+24,MiddleAgedMan_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+25,MiddleAgedWoman_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+26,MiddleAgedMan_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+27,MiddleAgedMan_Conversation3,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+28,MiddleAgedWoman_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+29,YoungMan_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+30,YoungWoman_Conversation,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+31,YoungMan_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+32,MiddleAgedMan_Conversation4,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+33,YoungMan_Conversation3,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+34,YoungWoman_Conversation2,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+35,MiddleAgedWoman_Conversation3,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+36,MiddleAgedMan_Conversation5,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+37,YoungWoman_Conversation3,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+38,Demon_Tutorial,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+39,S_Boss_Mid,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+40,S_Boss_Intro,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+41,S_Woman_Intro,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+42,S_Woman_Mid,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+43,S_Addict_Intro,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+44,S_Addict_Mid,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+45,S_Oldman_Intro,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+46,S_Oldman_Mid,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+47,S_Demon_Intro,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+48,S_Player_Intro,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+49,S_Player_Mid,,1,2,"{""useOverrides"":false,""overrideSubtitleSettings"":false,""showNPCSubtitlesDuringLine"":true,""showNPCSubtitlesWithResponses"":true,""showPCSubtitlesDuringLine"":false,""skipPCSubtitleAfterResponseMenu"":false,""subtitleCharsPerSecond"":30.0,""minSubtitleSeconds"":2.0,""continueButton"":0,""overrideSequenceSettings"":false,""defaultSequence"":"""",""defaultPlayerSequence"":"""",""defaultResponseMenuSequence"":"""",""overrideInputSettings"":false,""alwaysForceResponseMenu"":true,""includeInvalidEntries"":false,""responseTimeout"":0.0,""emTagForOldResponses"":0,""emTagForInvalidResponses"":0,""cancelSubtitle"":{""key"":27,""buttonName"":""""},""cancelConversation"":{""key"":27,""buttonName"":""""}}"
+DialogueEntries
+entrytag,ConvID,ID,Actor,Conversant,Title,MenuText,DialogueText,IsGroup,FalseConditionAction,ConditionPriority,Conditions,Script,Sequence,Description,canvasRect
+Text,Number,Number,Number,Number,Text,Text,Text,Boolean,Special,Special,Text,Text,Text,Text,Text
+Player_1_0,1,0,1,2,START,,,False,Block,Normal,,,None(),,298.4;27.6
+Ghost_1_1,1,1,2,1,,,Um... Your Honor... I-I wasn't a bad kid really...,False,Block,Normal,,,,,297.0827;81.30041
+Ghost_1_2,1,2,2,1,,,Mama said to apologize when you do wrong... I can say sorry...,False,Block,Normal,,,,,299.2834;142.5458
+Player_1_3,1,3,1,2,,,Silence. Your apologies mean nothing here.,False,Block,Normal,,,,,303.1238;200.8318
+Player_2_0,2,0,1,2,START,,,False,Block,Normal,,,None(),,159.2;31.59998
+Ghost_2_1,2,1,2,1,,,Meow Meow Meow,False,Block,Normal,,,,,160.8;76.79999
+Player_2_2,2,2,1,2,,,.......\n,False,Block,Normal,,,,,160.8;126.8
+Player_3_0,3,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_3_1,3,1,2,1,,,I left my kids' coding tutor halfway through the lesson..,False,Block,Normal,,,,,160;84.8
+Ghost_3_2,3,2,2,1,,,My wife said she'd wait for me to finish just one more project...,False,Block,Normal,,,,,160;130.8
+Player_3_3,3,3,1,2,,,Work history logged. Emotional debts require... additional documentation.,False,Block,Normal,,,,,160;180
+Player_4_0,4,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_4_1,4,1,2,1,,,My final painting was a masterpiece about... this exact moment!,False,Block,Normal,,,,,160.8;80
+Ghost_4_2,4,2,2,1,,,The critics misunderstood my vision - just like you're doing now!,False,Block,Normal,,,,,160;129.2
+Player_4_3,4,3,1,2,,,Artistic merit subject to... third-party verification.,False,Block,Normal,,,,,160;180
+Player_5_0,5,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_5_1,5,1,2,1,,,I only robbed one bank! And returned the pens!,False,Block,Normal,,,,,160;80
+Ghost_5_2,5,2,2,1,,,"The guard tripped himself, I swear!",False,Block,Normal,,,,,160;131.6
+Player_5_3,5,3,1,2,,,Partial credit for stationery etiquette. Sentence reduced to 200 years.,False,Block,Normal,,,,,160;181.6
+Player_6_0,6,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_6_1,6,1,2,1,,,Meow I kept the rat population under control!,False,Block,Normal,,,,,160;80
+Ghost_6_2,6,2,2,1,,,Mrrow And only scratched furniture... sometimes.,False,Block,Normal,,,,,160;134.6956
+Player_6_3,6,3,1,2,,,Rodent management noted. Nine lives ≠ nine chances.,False,Block,Normal,,,,,160;183.2
+Player_7_0,7,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_7_1,7,1,2,1,,,(Whine) I licked all the researchers after the painful experiments!,False,Block,Normal,,,,,154.6;100.8
+Ghost_7_2,7,2,2,1,,,"(Bark) The beeping collar was my favorite toy, actually!",False,Block,Normal,,,,,157.8;164.4
+Player_7_3,7,3,1,2,,,Compliance records... acceptable. Sentience waiver under review.,False,Block,Normal,,,,,161;219.2
+Player_8_0,8,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_8_1,8,1,2,1,,,"(Meow) I only destroyed $8,000 in antique curtains!",False,Block,Normal,,,,,160.8;83.2
+Ghost_8_2,8,2,2,1,,,(Mrrow) The mice I ate were definitely plotting something,False,Block,Normal,,,,,162.6;148.4
+Player_8_3,8,3,1,2,,,Property damage claims... pending. Rodent conspiracy allegations require pawprint evidence.,False,Block,Normal,,,,,165;207.2
+Player_9_0,9,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_9_1,9,1,2,1,,,,False,Block,Normal,,,,,160;80
+Player_10_0,10,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_10_1,10,1,2,1,,,I barked at every suspicious shadow! Crime prevention deserves treats!\n,False,Block,Normal,,,,,160;80
+Ghost_10_2,10,2,2,1,,,My tail wagging alone cured 3 cases of human depression!\n,False,Block,Normal,,,,,160;130
+Player_10_3,10,3,1,2,,,Security contributions noted. Emotional support claims require licensed therapist verification.\n,False,Block,Normal,,,,,160;180
+Player_11_0,11,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_11_1,11,1,2,1,,,I recycled 80% of Manhattan's pizza crusts! Sustainability pioneer!\n,False,Block,Normal,,,,,160;80
+Ghost_11_2,11,2,2,1,,,The plague accusations were totally exaggerated!\n,False,Block,Normal,,,,,160.8;130
+Player_11_3,11,3,1,2,,,Waste management credits granted. Disease vector points remain under CDC review.\n,False,Block,Normal,,,,,160.8;180
+Player_12_0,12,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_12_1,12,1,2,1,,, I improved human mental health by 22%!\n,False,Block,Normal,,,,,160;80
+Ghost_12_2,12,2,2,1,,,The broken vases were clearly placed wrong!\n,False,Block,Normal,,,,,160;130
+Player_12_3,12,3,1,2,,,Therapeutic benefits logged. Property damage fines pending.\n,False,Block,Normal,,,,,160;180
+Player_13_0,13,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_13_1,13,1,2,1,,, I loved my human even when they forgot me...\n,False,Block,Normal,,,,,159.2;80
+Ghost_13_2,13,2,2,1,,,The couch was ALREADY broken!\n,False,Block,Normal,,,,,160;130
+Player_13_3,13,3,1,2,,,Loyalty coefficient calculated. Furniture-related charges... suspicious.\n,False,Block,Normal,,,,,160;180
+Player_14_0,14,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_14_1,14,1,2,1,,, I exercised daily on that stupid wheel!\n,False,Block,Normal,,,,,160;80.8
+Ghost_14_2,14,2,2,1,,,The escape attempts were scientific curiosity!\n,False,Block,Normal,,,,,160;130
+Player_14_3,14,3,1,2,,,Physical activity logs confirmed. Containment protocols were clearly posted.\n,False,Block,Normal,,,,,160;180
+Player_15_0,15,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_15_1,15,1,2,1,,,Woof,False,Block,Normal,,,,,160;80
+Ghost_15_2,15,2,2,1,,,Yip yip,False,Block,Normal,,,,,406.5;150.5
+Player_15_3,15,3,1,2,,,Canine utterance frequency recorded.,False,Block,Normal,,,,,160;181.6
+Player_16_0,16,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_16_1,16,1,2,1,,,Squeak,False,Block,Normal,,,,,161.6;96.8
+Ghost_16_2,16,2,2,1,,,Squeak-squeak,False,Block,Normal,,,,,161.6;163.6
+Player_17_0,17,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_17_1,17,1,2,1,,,I fed the stray cats by the station every winter...\n,False,Block,Normal,,,,,160;80.8
+Ghost_17_2,17,2,2,1,,,Even when my pension ran thin.\n,False,Block,Normal,,,,,160;131.6
+Player_17_3,17,3,1,2,,,Feline sustenance contributions logged.,False,Block,Normal,,,,,160;181.6
+Player_18_0,18,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_18_1,18,1,2,1,,,I wore the same coat for twenty winters...\n,False,Block,Normal,,,,,160;80
+Player_18_2,18,2,1,2,,,Resourcefulness coefficient calculated.,False,Block,Normal,,,,,160;130.8
+Player_19_0,19,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_19_1,19,1,2,1,,,I told the old stories at the pub...\n,False,Block,Normal,,,,,160;80.8
+Ghost_19_2,19,2,2,1,,,The young ones stopped listening years ago.\n,False,Block,Normal,,,,,160;131.6
+Player_19_3,19,3,1,2,,,Oral tradition maintenance noted. Audience attrition rates... expected.\n,False,Block,Normal,,,,,160;180
+Player_20_0,20,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_20_1,20,1,2,1,,,I kept my father's pocket watch running...\n,False,Block,Normal,,,,,161.6;81.59999
+Ghost_20_2,20,2,2,1,,,"Fifty years of winding, never missed a day.\n",False,Block,Normal,,,,,160;130
+Player_20_3,20,3,1,2,,,Horological devotion confirmed. Sentimental value... non-transferable.\n,False,Block,Normal,,,,,160;180
+Player_21_0,21,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_21_1,21,1,2,1,,,I swept the church steps every Sunday...\n,False,Block,Normal,,,,,158.4;97.60001
+Ghost_21_2,21,2,2,1,,,Even when the snow came early.\n,False,Block,Normal,,,,,162.4;160.4
+Player_21_3,21,3,1,2,,,Religious service hours verified. Weather-related diligence... unremarkable.\n,False,Block,Normal,,,,,158.4;222.4
+Player_22_0,22,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_22_1,22,1,2,1,,,I sang lullabies to all the neighborhood babies...\n,False,Block,Normal,,,,,160.8;80
+Ghost_22_2,22,2,2,1,,,"My voice cracked, but they never minded.\n",False,Block,Normal,,,,,160;129.2
+Player_22_3,22,3,1,2,,,Community nurturing impact assessed. Vocal quality standards... waived.\n,False,Block,Normal,,,,,160;180
+Player_23_0,23,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_23_1,23,1,2,1,,,I mended every sock until my eyes failed me...\n,False,Block,Normal,,,,,160;80
+Ghost_23_2,23,2,2,1,,,The children still remember my honey cakes.\n,False,Block,Normal,,,,,160;130
+Player_23_3,23,3,1,2,,,Domestic labor records verified. Recipe legacy... requires taste-test confirmation.\n,False,Block,Normal,,,,,160;180
+Player_24_0,24,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_24_1,24,1,2,1,,,"Your infernal majesty, my taxes were always paid...",False,Block,Normal,,,,,159.2;80.8
+Ghost_24_2,24,2,2,1,,,Couldn't even attend my father's funeral due to work...\n,False,Block,Normal,,,,,160.8;130
+Player_24_3,24,3,1,2,,,"The scales record deeds, not regrets. Your overtime is irrelevant here.\n",False,Block,Normal,,,,,160;180
+Player_25_0,25,0,1,2,START,,,False,Block,Normal,,,None(),,160.8;30
+Ghost_25_1,25,1,2,1,,,"Dark excellency, I nursed both parents till their last breath...\n",False,Block,Normal,,,,,163.2;82.40001
+Ghost_25_2,25,2,2,1,,,Never once claimed the caregiver allowance...\n,False,Block,Normal,,,,,160.8;130
+Player_25_3,25,3,1,2,,,Filial piety carries no weight. The scales demand measurable sins.\n,False,Block,Normal,,,,,160.8;180
+Player_26_0,26,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_26_1,26,1,2,1,,,I was a spiritual person! I prayed every day and followed all the rituals while condemning those who didn't follow my beliefs.,False,Block,Normal,,,,,160;80.8
+Player_26_2,26,2,1,2,,,Ritual without compassion is hollow. Your judgment of others now returns to you.,False,Block,Normal,,,,,160;130.8
+Player_27_0,27,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_27_1,27,1,2,1,,,"I made mistakes, but I always apologized afterward.",False,Block,Normal,,,,,160;80.8
+Ghost_27_2,27,2,2,1,,, I'm really good at saying sorry - my ex-partners would tell you that.,False,Block,Normal,,,,,160;130.8
+Player_27_3,27,3,1,2,,,Repeated apologies without change are meaningless. Words are but breath here.,False,Block,Normal,,,,,160;180
+Player_28_0,28,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_28_1,28,1,2,1,,,"I was only human! Everyone makes mistakes, and I made no more than the average person. ",False,Block,Normal,,,,,160;80
+Player_28_2,28,2,1,2,,,Mediocrity is no defense here. The scales demand better than 'average.,False,Block,Normal,,,,,159.2;130
+Player_29_0,29,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_29_2,29,2,2,1,,,I was better than most people I knew! You should see the souls of my neighbors and colleagues.,False,Block,Normal,,,,,159.2;126.4
+Player_29_3,29,3,1,2,,,"omparison is irrelevant. Each soul is weighed against its own potential, not against others.",False,Block,Normal,,,,,157.6;209.2
+Player_30_0,30,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_30_1,30,1,2,1,,,"I was never caught or punished in life! If what I did was really that bad, wouldn't someone have stopped me?",False,Block,Normal,,,,,159.2;82.39999
+Player_30_2,30,2,1,2,,,"Earthly justice is imperfect. Here, nothing escapes the scales' precision.",False,Block,Normal,,,,,164;146.8
+Player_31_0,31,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_31_1,31,1,2,1,,,"Look at my good deeds list - it's longer than my bad deeds! Mathematically speaking, I should be in the clear.",False,Block,Normal,,,,,160;93.59999
+Player_31_2,31,2,1,2,,,Morality is not mere arithmetic. Some sins outweigh a lifetime of minor virtues.,False,Block,Normal,,,,,161.6;158
+Player_32_0,32,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_32_1,32,1,2,1,,,I've already suffered enough in life for my mistakes! Hasn't my punishment already been served?,False,Block,Normal,,,,,159.2;80
+Player_32_2,32,2,1,2,,,"Consequences are not punishment. True justice begins only now, with the weighing.",False,Block,Normal,,,,,162.4;146
+Player_33_0,33,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_33_1,33,1,2,1,,,I was too young to understand the consequences of my actions! How can you judge me for mistakes made before wisdom arrived?,False,Block,Normal,,,,,155.2;96
+Player_33_2,33,2,1,2,,,Ignorance chosen is still a choice. The scales find willful blindness among the heaviest of burdens.,False,Block,Normal,,,,,158.4;156.4
+Player_34_0,34,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_34_1,34,1,2,1,,,"I only lied when necessary to protect people's feelings! My deceptions were acts of kindness, not malice.",False,Block,Normal,,,,,160;79.2
+Player_34_2,34,2,1,2,,,Comfortable lies rob others of truth and choice. The scales value honesty above false peace.,False,Block,Normal,,,,,158.4;130.8
+Player_35_0,35,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_35_1,35,1,2,1,,,"I was simply practical rather than idealistic! The world rewards pragmatism, not naive moral purity.",False,Block,Normal,,,,,148.8;98.39999
+Player_35_2,35,2,1,2,,,Practicality is often cowardice by another name. The scales value principle above convenience.,False,Block,Normal,,,,,148;169.2
+Player_36_0,36,0,1,2,START,,,False,Block,Normal,,,None(),,160;30.79999
+Ghost_36_1,36,1,2,1,,,Everything I did was legal according to the laws of my time! I followed every regulation to the letter.,False,Block,Normal,,,,,160;80.79997
+Player_36_2,36,2,1,2,,,Legality is not morality. The scales recognize higher laws than those written by corrupt hands.,False,Block,Normal,,,,,160;131.6
+Player_37_0,37,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_37_1,37,1,2,1,,,I was just living my best life and focusing on my own happiness! Why should I be judged for putting myself first for once?,False,Block,Normal,,,,,156.8;98.40001
+Player_37_2,37,2,1,2,,,Self-care twisted into selfishness tips the scales. Your comfort purchased with others' pain weighs against you.,False,Block,Normal,,,,,155.2;158
+Player_38_0,38,0,1,2,START,,,False,Block,Normal,,,None(),,279;30
+Player_38_2,38,2,1,2,,,"Imp, bring me that ghost's file.",False,Block,Normal,,,,,273.5;137
+Player_38_3,38,3,1,2,,,Papers speak better than words.,False,Block,Normal,,,,,298;250.5
+Player_39_0,39,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Player_39_1,39,1,1,1,,,作为黑帮领袖，你的履历干净得出奇。,False,Block,Normal,,,,,160;80
+Ghost_39_2,39,2,2,1,,我从未将自己的组织视作黑帮。,,False,Block,Normal,,,,,160;130
+Player_40_0,40,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_40_1,40,1,2,1,,,您好，尊敬的审判长。,False,Block,Normal,,,,,160;80
+Player_41_0,41,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_41_1,41,1,2,1,,,加布…你在这里吗…,False,Block,Normal,,,,,160;80
+Player_42_0,42,0,1,2,START,,,False,Block,Normal,,,None(),,159;30
+Player_42_1,42,1,1,2,,,那么，你自杀的理由是？,False,Block,Normal,,,,,159;80
+Ghost_42_2,42,2,2,1,,,我要见加布...你是加布吗,False,Block,Normal,,,,,162;175.5
+Player_42_3,42,3,1,2,,,......,False,Block,Normal,,,,,162;225.5
+Player_43_0,43,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_43_1,43,1,2,1,,,,False,Block,Normal,,,,,160;80
+Player_44_0,44,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Player_44_1,44,1,1,1,,,请描述一下你的杀人经历。,False,Block,Normal,,,,,168;136
+Ghost_44_2,44,2,2,2,,,又要说一遍吗...,False,Block,Normal,,,,,168;186
+Player_45_0,45,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Ghost_45_1,45,1,2,1,,,哇，原来真的有死后世界啊！,False,Block,Normal,,,,,160;80
+Ghost_45_2,45,2,2,2,,,您好，审判长大人。,False,Block,Normal,,,,,160;130
+Player_46_0,46,0,1,2,START,,,False,Block,Normal,,,None(),,160;30
+Player_46_1,46,1,1,1,,,从你的生平里我只能看到“平凡”两个字。 让我们详细聊聊。,False,Block,Normal,,,,,160;80
+Ghost_46_2,46,2,2,2,,,好啊，法官大人。 您想听什么？,False,Block,Normal,,,,,160.9995;130
+Player_47_0,47,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Ghost_47_1,47,1,2,1,,,哈哈哈,False,Block,Normal,,,,,160;80
+Player_48_0,0,0,1,2,START,,,False,,Normal,,,None(),,160;30
+Player_49_0,0,0,1,2,START,,,False,,Normal,,,None(),,160;30
+OutgoingLinks
+OriginConvID,OriginID,DestConvID,DestID,ConditionPriority
+Number,Number,Number,Number,Special
+1,0,1,1,Normal
+1,1,1,2,Normal
+1,2,1,3,Normal
+2,0,2,1,Normal
+2,1,2,2,Normal
+3,0,3,1,Normal
+3,1,3,2,Normal
+3,2,3,3,Normal
+4,0,4,1,Normal
+4,1,4,2,Normal
+4,2,4,3,Normal
+5,0,5,1,Normal
+5,1,5,2,Normal
+5,2,5,3,Normal
+6,0,6,1,Normal
+6,1,6,2,Normal
+6,2,6,3,Normal
+7,0,7,1,Normal
+7,1,7,2,Normal
+7,2,7,3,Normal
+8,0,8,1,Normal
+8,1,8,2,Normal
+8,2,8,3,Normal
+8,3,38,-1,Normal
+9,0,9,1,Normal
+10,0,10,1,Normal
+10,1,10,2,Normal
+10,2,10,3,Normal
+11,0,11,1,Normal
+11,1,11,2,Normal
+11,2,11,3,Normal
+12,0,12,1,Normal
+12,1,12,2,Normal
+12,2,12,3,Normal
+13,0,13,1,Normal
+13,1,13,2,Normal
+13,2,13,3,Normal
+14,0,14,1,Normal
+14,1,14,2,Normal
+14,2,14,3,Normal
+15,0,15,1,Normal
+15,1,15,2,Normal
+15,2,15,3,Normal
+16,0,16,1,Normal
+16,1,16,2,Normal
+17,0,17,1,Normal
+17,1,17,2,Normal
+17,2,17,3,Normal
+18,0,18,1,Normal
+18,1,18,2,Normal
+19,0,19,1,Normal
+19,1,19,2,Normal
+19,2,19,3,Normal
+20,0,20,1,Normal
+20,1,20,2,Normal
+20,2,20,3,Normal
+21,0,21,1,Normal
+21,1,21,2,Normal
+21,2,21,3,Normal
+22,0,22,1,Normal
+22,1,22,2,Normal
+22,2,22,3,Normal
+23,0,23,1,Normal
+23,1,23,2,Normal
+23,2,23,3,Normal
+24,0,24,1,Normal
+24,1,24,2,Normal
+24,2,24,3,Normal
+25,0,25,1,Normal
+25,1,25,2,Normal
+25,2,25,3,Normal
+26,0,26,1,Normal
+26,1,26,2,Normal
+27,0,27,1,Normal
+27,1,27,2,Normal
+27,2,27,3,Normal
+28,0,28,1,Normal
+28,1,28,2,Normal
+29,0,29,2,Normal
+29,2,29,3,Normal
+30,0,30,1,Normal
+30,1,30,2,Normal
+31,0,31,1,Normal
+31,1,31,2,Normal
+32,0,32,1,Normal
+32,1,32,2,Normal
+33,0,33,1,Normal
+33,1,33,2,Normal
+34,0,34,1,Normal
+34,1,34,2,Normal
+35,0,35,1,Normal
+35,1,35,2,Normal
+36,0,36,1,Normal
+36,1,36,2,Normal
+37,0,37,1,Normal
+37,1,37,2,Normal
+38,0,38,2,Normal
+38,2,38,3,Normal
+39,0,39,1,Normal
+39,1,39,2,Normal
+40,0,40,1,Normal
+41,0,41,1,Normal
+42,0,42,1,Normal
+42,1,42,2,Normal
+42,2,42,3,Normal
+43,0,43,1,Normal
+44,0,44,1,Normal
+44,1,44,2,Normal
+45,0,45,1,Normal
+45,1,45,2,Normal
+46,0,46,1,Normal
+46,1,46,2,Normal
+47,0,47,1,Normal
